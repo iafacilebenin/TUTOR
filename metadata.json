@@ -1,0 +1,8 @@
+{
+  "name": "BeninEdu AI - Excellence Scolaire",
+  "description": "An interactive AI tutor specialized in the Benin Republic curriculum (CEP, BEPC, BAC), featuring voice, image recognition, and visual learning aids.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
