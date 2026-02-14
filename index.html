@@ -1,33 +1,30 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Mentor Béninois - Système de Formation aux Examens Nationaux</title>
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Le Mentor Béninois - Votre Système de Réussite aux Examens">
-    <meta property="og:description" content="Formation complète pour réussir le BEPC et le BAC avec des stratégies éprouvées">
-    <meta property="og:image" content="https://maitreetude.com/preview-image.png">
-    <meta property="og:url" content="https://maitreetude.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://maitreetude.com/preview-image.png">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
+    <title>Le Mentor Béninois</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Your UI elements here -->
     <div id="root"></div>
-    <!-- React & ReactDOM from CDN -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel Standalone for JSX transformation -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Main Application -->
-    <script type="text/babel" src="app.jsx"></script>
+
+    <script>
+        // This is where the logic goes
+        async function submitToAI(exercise, answer, hints) {
+            const response = await fetch("https://iabeninois-api.iafacilebenin.workers.dev", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    exercise: exercise,
+                    studentAnswer: answer,
+                    hintsUsed: hints,
+                    mode: "student"
+                })
+            });
+            return await response.json();
+        }
+    </script>
 </body>
 </html>
