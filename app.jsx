@@ -373,19 +373,21 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
         })
       });
 
-      const aiResult = await response.json();
+    const aiResult = await response.json();
 
       setFeedback({
         score: aiResult.score || 0,
-        feedback: aiResult.feedback || aiResult.feedback_detaille || "Analyse terminée.",
+        feedback:
+          aiResult.feedback ||
+          aiResult.feedback_detaille ||
+          "Analyse terminée.",
         methodology: aiResult.methodology || `${aiResult.score}/20`
       });
-
     } catch (error) {
       setFeedback({
         score: 0,
-        feedback: '❌ Erreur de connexion. Vérifie ton internet.',
-        methodology: 'N/A'
+        feedback: "❌ Erreur de connexion. Vérifie ton internet.",
+        methodology: "N/A"
       });
     }
   };
@@ -401,12 +403,10 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
         answer: answer,
         hintsUsed: hintsRevealed,
         feedback: feedback.feedback,
-        date: new Date().toLocaleDateString('fr-FR')
+        date: new Date().toLocaleDateString("fr-FR")
       });
     }
     onClose();
-  };
-
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
