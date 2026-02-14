@@ -3,40 +3,8 @@
 // Système LMS avec Carnet de Notes (0-20)
 // ========================================
 
-const handleSubmit = async () => {
-  setFeedback({
-    score: '...',
-    feedback: '⏳ Le Mentor analyse ta copie...',
-    methodology: 'Analyse en cours...'
-  });
+const { useState, useEffect, useCallback } = React;
 
-  try {
-    const response = await fetch("https://iabeninois-api.iafacilebenin.workers.dev", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        exercise: exercise,
-        studentAnswer: answer,
-        hintsUsed: hintsRevealed
-      })
-    });
-
-    const aiResult = await response.json();
-
-    setFeedback({
-      score: aiResult.score || 0,
-      feedback: aiResult.feedback || aiResult.feedback_detaille || "Analyse terminée.",
-      methodology: aiResult.methodology || `${aiResult.score}/20`
-    });
-
-  } catch (error) {
-    setFeedback({
-      score: 0,
-      feedback: '❌ Erreur de connexion. Vérifie ton internet.',
-      methodology: 'N/A'
-    });
-  }
-};
 // ========================================
 // DONNÉES: EXERCICES PAR NIVEAU D'EXAMEN
 // ========================================
@@ -200,72 +168,6 @@ const getAppreciation = (score) => {
   if (score >= 10) return 'Passable - C\'est juste. Il faut travailler davantage.';
   if (score >= 8) return 'Insuffisant - Travail faible. Révise sérieusement.';
   return 'Médiocre - Inacceptable. Reprends tout depuis le début.';
-};
-
-// Fonction d'évaluation socratique (ne donne jamais la réponse directe)
-const evaluateAnswer = (exercise, studentAnswer, hintsUsed) => {
-  const answerLength = studentAnswer.trim().length;
-
-  // Pénalités pour indices utilisés
-  const hintPenalty = hintsUsed * 2;
-
-  // Évaluation basique (à améliorer avec NLP dans version production)
-  let baseScore = 0;
-
-  if (answerLength === 0) {
-    return {
-      score: 0,
-      feedback: 'Tu n\'as rien écrit. Revenons à nos moutons. Le temps presse. Reprends cet exercice sérieusement.',
-      methodology: 'Aucune méthodologie appliquée.'
-    };
-  }
-
-  if (answerLength < 50) {
-    baseScore = 5;
-  } else if (answerLength < 150) {
-    baseScore = 10;
-  } else if (answerLength < 300) {
-    baseScore = 13;
-  } else {
-    baseScore = 16;
-  }
-
-  // Vérifier présence d'étapes attendues (méthodologie)
-  const stepsPresent = exercise.expectedSteps.filter(step =>
-    studentAnswer.toLowerCase().includes(step.toLowerCase().split(' ')[0])
-  ).length;
-
-  const methodologyBonus = (stepsPresent / exercise.expectedSteps.length) * 3;
-
-  // Score final
-  let finalScore = Math.max(0, Math.min(20, baseScore + methodologyBonus - hintPenalty));
-  finalScore = Math.round(finalScore * 2) / 2; // Arrondi à 0.5 près
-
-  // Feedback personnalisé
-  let feedback = `Note : ${finalScore}/20 - ${getAppreciation(finalScore)}\n\n`;
-
-  if (hintsUsed > 0) {
-    feedback += `Tu as utilisé ${hintsUsed} coup(s) de pouce. Cela montre que tu as besoin d'aide, mais tu dois devenir plus autonome.\n\n`;
-  }
-
-  feedback += `MÉTHODOLOGIE : ${stepsPresent}/${exercise.expectedSteps.length} étapes identifiées.\n`;
-  feedback += `Étapes manquantes : ${exercise.expectedSteps.filter(step =>
-    !studentAnswer.toLowerCase().includes(step.toLowerCase().split(' ')[0])
-  ).join(', ') || 'Aucune'}.\n\n`;
-
-  if (finalScore < 10) {
-    feedback += 'CONSEIL : Reprends cet exercice. Relis la question. Applique la méthodologie étape par étape. Ne te précipite pas.';
-  } else if (finalScore < 14) {
-    feedback += 'CONSEIL : Ton travail est acceptable mais incomplet. Développe davantage chaque étape. Sois plus rigoureux.';
-  } else {
-    feedback += 'CONSEIL : Bon travail. Pour atteindre l\'excellence, peaufine ta rédaction et vérifie chaque détail.';
-  }
-
-  return {
-    score: finalScore,
-    feedback: feedback,
-    methodology: `${stepsPresent}/${exercise.expectedSteps.length} étapes correctes`
-  };
 };
 
 // ========================================
@@ -439,7 +341,7 @@ const ExercisesList = ({ exercises, onSelectExercise }) => {
 };
 
 // ========================================
-// COMPOSANT: MODAL EXERCICE
+// COMPOSANT: MODAL EXERCICE (WITH AI)
 // ========================================
 const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
   const [answer, setAnswer] = useState('');
@@ -452,9 +354,40 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
     }
   };
 
-  const handleSubmit = () => {
-    const evaluation = evaluateAnswer(exercise, answer, hintsRevealed);
-    setFeedback(evaluation);
+  const handleSubmit = async () => {
+    setFeedback({
+      score: '...',
+      feedback: '⏳ Le Mentor analyse ta copie...',
+      methodology: 'Analyse en cours...'
+    });
+
+    try {
+      const response = await fetch("https://iabeninois-api.iafacilebenin.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          exercise: exercise,
+          studentAnswer: answer,
+          hintsUsed: hintsRevealed,
+          mode: "student"
+        })
+      });
+
+      const aiResult = await response.json();
+
+      setFeedback({
+        score: aiResult.score || 0,
+        feedback: aiResult.feedback || aiResult.feedback_detaille || "Analyse terminée.",
+        methodology: aiResult.methodology || `${aiResult.score}/20`
+      });
+
+    } catch (error) {
+      setFeedback({
+        score: 0,
+        feedback: '❌ Erreur de connexion. Vérifie ton internet.',
+        methodology: 'N/A'
+      });
+    }
   };
 
   const handleSaveAndClose = () => {
