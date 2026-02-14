@@ -3,8 +3,40 @@
 // Système LMS avec Carnet de Notes (0-20)
 // ========================================
 
-const { useState, useEffect, useCallback } = React;
+const handleSubmit = async () => {
+  setFeedback({
+    score: '...',
+    feedback: '⏳ Le Mentor analyse ta copie...',
+    methodology: 'Analyse en cours...'
+  });
 
+  try {
+    const response = await fetch("https://iabeninois-api.iafacilebenin.workers.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        exercise: exercise,
+        studentAnswer: answer,
+        hintsUsed: hintsRevealed
+      })
+    });
+
+    const aiResult = await response.json();
+
+    setFeedback({
+      score: aiResult.score || 0,
+      feedback: aiResult.feedback || aiResult.feedback_detaille || "Analyse terminée.",
+      methodology: aiResult.methodology || `${aiResult.score}/20`
+    });
+
+  } catch (error) {
+    setFeedback({
+      score: 0,
+      feedback: '❌ Erreur de connexion. Vérifie ton internet.',
+      methodology: 'N/A'
+    });
+  }
+};
 // ========================================
 // DONNÉES: EXERCICES PAR NIVEAU D'EXAMEN
 // ========================================
