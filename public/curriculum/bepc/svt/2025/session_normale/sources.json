@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "sources": [
+    {
+      "source_id": "bepc_svt_2025_sujet_normale",
+      "type": "official_exam_subject",
+      "title": "BEPC 2025 SVT - Session normale - Sujet",
+      "file_reference": "DOC_2025-06-22_BEPC_2025_SVT_Sujet.pdf"
+    },
+    {
+      "source_id": "bepc_svt_2025_corrige_officiel",
+      "type": "official_marking_grid",
+      "title": "BEPC 2025 SVT - Corrigé officiel (grille d'appréciation)",
+      "file_reference": "BEPC_2025_SVT_Corrige_Officiel.pdf"
+    }
+  ]
+}
