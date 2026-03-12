@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benin Republic Education Curriculum — AI Tutor Intelligence Brief</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --green: #008751;
+      --yellow: #FCD116;
+      --red: #E8112D;
+      --dark: #0d1b2a;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #5a6a7a;
+      --accent: #0066cc;
+      --light-bg: #f4f7fb;
+      --border: #e0e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 60%, #0d2e1a 100%);
+      color: #fff;
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .flag-stripe {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 28px;
+    }
+    .flag-stripe span {
+      width: 48px; height: 8px;
+      border-radius: 4px;
+    }
+    .flag-stripe .g { background: var(--green); }
+    .flag-stripe .y { background: var(--yellow); }
+    .flag-stripe .r { background: var(--red); }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ── NAV ── */
+    .sticky-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--dark);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .sticky-nav::-webkit-scrollbar { display: none; }
+    .sticky-nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 14px 22px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .sticky-nav a:hover, .sticky-nav a.active {
+      color: var(--yellow);
+      border-bottom-color: var(--yellow);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+    section:nth-child(even) {
+      background: #fff;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .section-header p {
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 700px;
+      font-size: 1rem;
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .stat-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .stat-card .value {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .stat-card .value.green { color: var(--green); }
+    .stat-card .value.yellow { color: #c89a00; }
+    .stat-card .value.red { color: var(--red); }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .stat-card .sublabel {
+      font-size: 0.75rem;
+      color: #aab;
+      margin-top: 4px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+
+    /* ── GRID LAYOUTS ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 900px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ── EDUCATION LADDER ── */
+    .edu-ladder {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .edu-ladder::before {
+      content: '';
+      position: absolute;
+      left: 28px; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--green), var(--yellow), var(--red));
+      border-radius: 2px;
+    }
+    .edu-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 0;
+      position: relative;
+    }
+    .edu-step-dot {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px var(--border);
+      z-index: 1;
+    }
+    .edu-step-content { flex: 1; }
+    .edu-step-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .edu-step-content p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .edu-step-content .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .tag {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ── CHART CONTAINERS ── */
+    .chart-wrap {
+      position: relative;
+      height: 320px;
+    }
+    .chart-wrap.tall { height: 420px; }
+
+    /* ── SUBJECT TABLE ── */
+    .subject-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .subject-table th {
+      background: var(--dark);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .subject-table th:first-child { border-radius: 8px 0 0 0; }
+    .subject-table th:last-child { border-radius: 0 8px 0 0; }
+    .subject-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .subject-table tr:hover td { background: var(--light-bg); }
+    .subject-table tr:last-child td { border-bottom: none; }
+    .coeff-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .coeff-bar .bar {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--green);
+    }
+
+    /* ── SERIES TABS ── */
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 8px 20px;
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tab-btn.active {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #fff;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── REFORM TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -34px; top: 6px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--green);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--green);
+    }
+    .tl-item .year {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .tl-item h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 4px 0;
+    }
+    .tl-item p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── AI TUTOR SECTION ── */
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .ai-card {
+      background: linear-gradient(135deg, var(--dark) 0%, #1a3a5c 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .ai-card .ai-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .ai-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .ai-card p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+    .ai-card .pill {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-top: 10px;
+      margin-right: 4px;
+    }
+
+    /* ── PROGRESS BARS ── */
+    .progress-item {
+      margin-bottom: 16px;
+    }
+    .progress-item .pi-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .progress-bar {
+      height: 10px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .progress-bar .fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 1s ease;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.85rem;
+    }
+    footer strong { color: #fff; }
+    footer .footer-flags {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    footer .footer-flags span {
+      width: 32px; height: 5px;
+      border-radius: 3px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 40px; }
+      section { padding: 40px 0; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="flag-stripe">
+    <span class="g"></span>
+    <span class="g"></span>
+    <span class="y"></span>
+    <span class="y"></span>
+    <span class="r"></span>
+    <span class="r"></span>
+  </div>
+  <h1>Benin Republic<br/><span>Education Curriculum</span><br/>Intelligence Brief</h1>
+  <p>A comprehensive research report on the national education system of the Republic of Benin — built to power the first AI-native tutor fully aligned with Benin's curriculum, pedagogy, and government vision.</p>
+  <div class="hero-badges">
+    <span class="badge">🇧🇯 République du Bénin</span>
+    <span class="badge">📚 Full Curriculum Mapping</span>
+    <span class="badge">🤖 AI Tutor Ready</span>
+    <span class="badge">PAG 2021–2026 Aligned</span>
+    <span class="badge">APC Competency Framework</span>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="#overview" class="active">Overview</a>
+  <a href="#structure">Structure</a>
+  <a href="#primary">Primary</a>
+  <a href="#secondary">Secondary</a>
+  <a href="#bac">BAC Series</a>
+  <a href="#exams">Exam Stats</a>
+  <a href="#papers">📄 Exam Papers</a>
+  <a href="#reforms">Reforms</a>
+  <a href="#digital">Digital</a>
+  <a href="#culture">Culture</a>
+  <a href="#ai-tutor">AI Tutor</a>
+</nav>
+
+<!-- OVERVIEW STATS -->
+<section id="overview">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">System Overview</div>
+      <h2>Benin's Education System at a Glance</h2>
+      <p>Key indicators from UNESCO, World Bank, and the Beninese Ministry of Education for 2024–2025.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="icon">🏫</div>
+        <div class="value green">97%</div>
+        <div class="label">Primary Net Enrollment Rate</div>
+        <div class="sublabel">Near-universal primary access</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">📖</div>
+        <div class="value yellow">73%</div>
+        <div class="label">Primary Completion Rate (Boys)</div>
+        <div class="sublabel">70% for girls (UNESCO)</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🎓</div>
+        <div class="value green">89.81%</div>
+        <div class="label">CEP Pass Rate 2025</div>
+        <div class="sublabel">Up from 89.67% in 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">📝</div>
+        <div class="value green">77.25%</div>
+        <div class="label">BEPC Pass Rate 2025</div>
+        <div class="sublabel">Up from 73.74% in 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🏆</div>
+        <div class="value green">73.02%</div>
+        <div class="label">BAC Pass Rate 2025</div>
+        <div class="sublabel">Up from 56.93% in 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">💡</div>
+        <div class="value red">56%</div>
+        <div class="label">Learning Poverty Rate</div>
+        <div class="sublabel">Children unable to read by age 10</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🌍</div>
+        <div class="value yellow">40%</div>
+        <div class="label">Human Capital Potential</div>
+        <div class="sublabel">Of full productivity (World Bank)</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">👩‍🎓</div>
+        <div class="value green">9.2</div>
+        <div class="label">Expected Years of Schooling</div>
+        <div class="sublabel">By age 18 (World Bank HCI)</div>
+      </div>
+    </div>
+
+    <!-- Enrollment Chart -->
+    <div class="grid-2">
+      <div class="card">
+        <h3>📊 Enrollment Rates by Education Level</h3>
+        <div class="chart-wrap">
+          <canvas id="enrollmentChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📈 Exam Pass Rate Trends (2023–2025)</h3>
+        <div class="chart-wrap">
+          <canvas id="passRateChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION STRUCTURE -->
+<section id="structure">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">System Architecture</div>
+      <h2>The Education Ladder: From Crèche to University</h2>
+      <p>Benin's education system follows the French model, structured into distinct levels, each with its own curriculum focus, duration, and culminating examination.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="edu-ladder">
+          <div class="edu-step">
+            <div class="edu-step-dot" style="background:#e8f5e9;">🍼</div>
+            <div class="edu-step-content">
+              <h4>Préscolaire (Pre-Primary)</h4>
+              <p>Ages 3–5 · 2 years · Optional but expanding under PAG</p>
+              <div class="tags">
+                <span class="tag">Crèche</span>
+                <span class="tag">Maternelle</span>
+                <span class="tag">Play-based learning</span>
+              </div>
+            </div>
+          </div>
+          <div class="edu-step">
+            <div class="edu-step-dot" style="background:#fff8e1;">📚</div>
+            <div class="edu-step-content">
+              <h4>Enseignement Primaire (Primary)</h4>
+              <p>Ages 6–11 · 6 years · Ends with CEP exam</p>
+              <div class="tags">
+                <span class="tag">CI → CP → CE1 → CE2 → CM1 → CM2</span>
+              </div>
+            </div>
+          </div>
+          <div class="edu-step">
+            <div class="edu-step-dot" style="background:#e3f2fd;">🏫</div>
+            <div class="edu-step-content">
+              <h4>Collège (Lower Secondary)</h4>
+              <p>Ages 12–15 · 4 years · Ends with BEPC exam</p>
+              <div class="tags">
+                <span class="tag">6ème</span>
+                <span class="tag">5ème</span>
+                <span class="tag">4ème</span>
+                <span class="tag">3ème</span>
+              </div>
+            </div>
+          </div>
+          <div class="edu-step">
+            <div class="edu-step-dot" style="background:#fce4ec;">🎓</div>
+            <div class="edu-step-content">
+              <h4>Lycée (Upper Secondary)</h4>
+              <p>Ages 16–18 · 3 years · Ends with Baccalauréat</p>
+              <div class="tags">
+                <span class="tag">Seconde</span>
+                <span class="tag">Première</span>
+                <span class="tag">Terminale</span>
+              </div>
+            </div>
+          </div>
+          <div class="edu-step">
+            <div class="edu-step-dot" style="background:#ede7f6;">🏛️</div>
+            <div class="edu-step-content">
+              <h4>Enseignement Supérieur (Higher Education)</h4>
+              <p>University, Grandes Écoles, Sèmè City Innovation Hub</p>
+              <div class="tags">
+                <span class="tag">UAC Cotonou</span>
+                <span class="tag">Sèmè City</span>
+                <span class="tag">UNSTIM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🗂️ Completion Rates by Level & Gender</h3>
+        <div class="chart-wrap tall">
+          <canvas id="completionChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIMARY CURRICULUM -->
+<section id="primary">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Primary Education</div>
+      <h2>Primary Curriculum: Foundational Competencies</h2>
+      <p>The primary curriculum (CI to CM2) is built on the <strong>Approche Par Compétences (APC)</strong> — a competency-based framework that prioritizes practical skill development over rote learning. The 2019–2022 reform introduced structured pedagogy, decodable textbooks, and cognitive science-based instruction.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card" style="border-top: 4px solid var(--green);">
+        <h3>🇫🇷 Français (French Language)</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">Primary language of instruction. 2022 reform introduced decodable textbooks using the phonic approach to dramatically improve reading outcomes.</p>
+        <div class="progress-item">
+          <div class="pi-header"><span>Reading (Lecture)</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:90%; background:var(--green);"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="pi-header"><span>Writing (Écriture)</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:85%; background:var(--green);"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="pi-header"><span>Grammar & Expression</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:80%; background:var(--green);"></div></div>
+        </div>
+      </div>
+      <div class="card" style="border-top: 4px solid #0066cc;">
+        <h3>🔢 Mathématiques</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">Numeracy, arithmetic, geometry, and problem-solving. Structured to build from concrete to abstract understanding.</p>
+        <div class="progress-item">
+          <div class="pi-header"><span>Numération & Calcul</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:90%; background:#0066cc;"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="pi-header"><span>Géométrie</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:75%; background:#0066cc;"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="pi-header"><span>Résolution de Problèmes</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:80%; background:#0066cc;"></div></div>
+        </div>
+      </div>
+      <div class="card" style="border-top: 4px solid #e67e22;">
+        <h3>🔬 Sciences & Technologie</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">Introduction to natural sciences, the human body, environment, and basic technology concepts.</p>
+        <div class="progress-item">
+          <div class="pi-header"><span>Sciences Naturelles</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:70%; background:#e67e22;"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="pi-header"><span>Hygiène & Santé</span><span>Core</span></div>
+          <div class="progress-bar"><div class="fill" style="width:65%; background:#e67e22;"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="pi-header"><span>Technologie de base</span><span>Supplementary</span></div>
+          <div class="progress-bar"><div class="fill" style="width:55%; background:#e67e22;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:24px;">
+      <div class="card" style="border-top: 4px solid #9b59b6;">
+        <h3>🌍 Éducation Sociale & Civique</h3>
+        <p style="color:var(--muted); font-size:0.88rem;">History, geography, civic education, and social values. Includes local history of Benin (Kingdom of Dahomey, independence, democratic renewal), civic duties, and community values.</p>
+        <div class="tags" style="margin-top:12px;">
+          <span class="tag">Histoire du Bénin</span>
+          <span class="tag">Géographie locale</span>
+          <span class="tag">Droits & Devoirs</span>
+          <span class="tag">Vie communautaire</span>
+        </div>
+      </div>
+      <div class="card" style="border-top: 4px solid #e91e63;">
+        <h3>🎨 Éducation Artistique & EPS</h3>
+        <p style="color:var(--muted); font-size:0.88rem;">Arts, crafts, music, and physical education. Integrates local cultural expressions including traditional music, dance, and visual arts.</p>
+        <div class="tags" style="margin-top:12px;">
+          <span class="tag">Dessin & Arts plastiques</span>
+          <span class="tag">Chant & Musique</span>
+          <span class="tag">Éducation Physique</span>
+          <span class="tag">Artisanat local</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:24px;">
+      <h3>📊 Primary Subject Weighting (CEP Preparation)</h3>
+      <div class="chart-wrap">
+        <canvas id="primarySubjectsChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECONDARY CURRICULUM -->
+<section id="secondary">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Secondary Education</div>
+      <h2>Lower Secondary: Collège Curriculum (6ème–3ème)</h2>
+      <p>The collège curriculum builds on primary foundations, introducing specialized subjects and preparing students for the BEPC examination. All subjects are taught in French.</p>
+    </div>
+    <div class="card">
+      <table class="subject-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>French Name</th>
+            <th>Level Introduced</th>
+            <th>Relative Importance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>French Language</strong></td>
+            <td>Français</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:90px;"></div><span>Core</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>Mathematics</strong></td>
+            <td>Mathématiques</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:90px;"></div><span>Core</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>English</strong></td>
+            <td>Anglais (LV1)</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:75px;"></div><span>Core</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>History-Geography</strong></td>
+            <td>Histoire-Géographie</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:70px;"></div><span>Core</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>Life & Earth Sciences</strong></td>
+            <td>SVT</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:65px;"></div><span>Core</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>Physical Sciences</strong></td>
+            <td>Sciences Physiques</td>
+            <td>4ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:65px;"></div><span>Core</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>Civic Education</strong></td>
+            <td>Éducation Civique</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:45px;"></div><span>Supplementary</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>Physical Education</strong></td>
+            <td>EPS</td>
+            <td>6ème</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:40px;"></div><span>Supplementary</span></div></td>
+          </tr>
+          <tr>
+            <td><strong>Technology / Computing</strong></td>
+            <td>Technologie / Informatique</td>
+            <td>4ème (expanding)</td>
+            <td><div class="coeff-bar"><div class="bar" style="width:35px; background:#e67e22;"></div><span>Emerging</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:24px;">
+      <h3>📊 Secondary Subject Hours Distribution (Estimated Weekly Hours)</h3>
+      <div class="chart-wrap">
+        <canvas id="secondaryChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAC SERIES -->
+<section id="bac">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Baccalauréat</div>
+      <h2>Upper Secondary: BAC Series & Subject Coefficients</h2>
+      <p>In the Lycée, students choose a specialized track (Série) that determines their subject focus and exam coefficients. This shapes their university pathway and career direction.</p>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('serie-a1')">Série A1</button>
+      <button class="tab-btn" onclick="showTab('serie-a2')">Série A2</button>
+      <button class="tab-btn" onclick="showTab('serie-b')">Série B</button>
+      <button class="tab-btn" onclick="showTab('serie-c')">Série C</button>
+      <button class="tab-btn" onclick="showTab('serie-d')">Série D</button>
+      <button class="tab-btn" onclick="showTab('serie-g')">Séries G</button>
+    </div>
+
+    <div id="serie-a1" class="tab-panel active">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Série A1 — Lettres & Langues</h3>
+          <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">Focus on French literature, philosophy, and modern languages. Leads to humanities, law, and social sciences at university.</p>
+          <table class="subject-table">
+            <thead><tr><th>Subject</th><th>Coefficient</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>Français</td><td><strong>5</strong></td><td>4h</td></tr>
+              <tr><td>Philosophie</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Histoire-Géographie</td><td><strong>3</strong></td><td>4h</td></tr>
+              <tr><td>Langue vivante 1 (Anglais)</td><td><strong>3</strong></td><td>3h</td></tr>
+              <tr><td>Langue vivante 2</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>Mathématiques</td><td><strong>2</strong></td><td>1h30</td></tr>
+              <tr><td>SVT</td><td><strong>2</strong></td><td>1h30</td></tr>
+              <tr><td>EPS</td><td><strong>1</strong></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>📊 A1 Subject Coefficient Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="a1Chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="serie-a2" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Série A2 — Histoire-Géographie</h3>
+          <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">Focus on history, geography, and social sciences. Leads to geography, urban planning, and social sciences at university.</p>
+          <table class="subject-table">
+            <thead><tr><th>Subject</th><th>Coefficient</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>Histoire-Géographie</td><td><strong>5</strong></td><td>4h</td></tr>
+              <tr><td>Français</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Philosophie</td><td><strong>3</strong></td><td>4h</td></tr>
+              <tr><td>Langue vivante 1</td><td><strong>3</strong></td><td>3h</td></tr>
+              <tr><td>Langue vivante 2</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>Mathématiques</td><td><strong>2</strong></td><td>1h30</td></tr>
+              <tr><td>SVT</td><td><strong>2</strong></td><td>1h30</td></tr>
+              <tr><td>EPS</td><td><strong>1</strong></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>📊 A2 Subject Coefficient Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="a2Chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="serie-b" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Série B — Économie & Sciences Sociales</h3>
+          <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">Focus on economics, social sciences, and history. Leads to economics, management, and business studies.</p>
+          <table class="subject-table">
+            <thead><tr><th>Subject</th><th>Coefficient</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>Économie</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Histoire-Géographie</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Français</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Philosophie</td><td><strong>3</strong></td><td>4h</td></tr>
+              <tr><td>Langue vivante 1</td><td><strong>2</strong></td><td>3h</td></tr>
+              <tr><td>Mathématiques</td><td><strong>2</strong></td><td>1h30</td></tr>
+              <tr><td>SVT</td><td><strong>2</strong></td><td>1h30</td></tr>
+              <tr><td>EPS</td><td><strong>1</strong></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>📊 B Series Coefficient Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="bChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="serie-c" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Série C — Mathématiques & Sciences Physiques</h3>
+          <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">The elite science track. Heavy focus on mathematics and physics. Leads to engineering, medicine, and exact sciences.</p>
+          <table class="subject-table">
+            <thead><tr><th>Subject</th><th>Coefficient</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>Mathématiques</td><td><strong>6</strong></td><td>4h</td></tr>
+              <tr><td>Sciences Physiques</td><td><strong>5</strong></td><td>4h</td></tr>
+              <tr><td>Français</td><td><strong>2</strong></td><td>4h</td></tr>
+              <tr><td>Anglais</td><td><strong>2</strong></td><td>3h</td></tr>
+              <tr><td>SVT</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>Histoire-Géographie</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>Philosophie</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>EPS</td><td><strong>1</strong></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>📊 C Series Coefficient Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="cChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="serie-d" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Série D — Sciences de la Vie et de la Terre</h3>
+          <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">Focus on biology, life sciences, and earth sciences. Leads to medicine, agronomy, environmental sciences, and pharmacy.</p>
+          <table class="subject-table">
+            <thead><tr><th>Subject</th><th>Coefficient</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>SVT</td><td><strong>5</strong></td><td>3h</td></tr>
+              <tr><td>Mathématiques</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Sciences Physiques</td><td><strong>4</strong></td><td>4h</td></tr>
+              <tr><td>Français</td><td><strong>2</strong></td><td>4h</td></tr>
+              <tr><td>Anglais</td><td><strong>2</strong></td><td>3h</td></tr>
+              <tr><td>Histoire-Géographie</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>Philosophie</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>EPS</td><td><strong>1</strong></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>📊 D Series Coefficient Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="dChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="serie-g" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Séries G — Gestion & Commerce</h3>
+          <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">Technical and vocational tracks in management, accounting, and secretarial studies. G1 = Secretarial, G2 = Accounting, G3 = Commerce.</p>
+          <table class="subject-table">
+            <thead><tr><th>Subject</th><th>Coeff (G2)</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>Étude de Cas</td><td><strong>6</strong></td><td>5h</td></tr>
+              <tr><td>Économie</td><td><strong>3</strong></td><td>3h</td></tr>
+              <tr><td>Mathématiques Appliquées</td><td><strong>3</strong></td><td>3h</td></tr>
+              <tr><td>Français</td><td><strong>3</strong></td><td>3h</td></tr>
+              <tr><td>Droit</td><td><strong>2</strong></td><td>2h</td></tr>
+              <tr><td>Anglais</td><td><strong>2</strong></td><td>3h</td></tr>
+              <tr><td>EPS</td><td><strong>1</strong></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>📊 G2 Series Coefficient Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="gChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAM STATS -->
+<section id="exams">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Examination Results</div>
+      <h2>National Exam Performance: 2023–2025</h2>
+      <p>Benin has seen a remarkable improvement in national exam pass rates, reflecting the impact of curriculum reforms, structured pedagogy, and digital governance tools like EducMaster.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>📈 BAC Pass Rate Trend (2023–2025)</h3>
+        <div class="chart-wrap">
+          <canvas id="bacTrendChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📊 2025 Exam Results Comparison</h3>
+        <div class="chart-wrap">
+          <canvas id="examCompareChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="stat-grid" style="margin-top:24px;">
+      <div class="stat-card">
+        <div class="icon">📋</div>
+        <div class="value green">128,893</div>
+        <div class="label">BEPC 2025 Candidates</div>
+        <div class="sublabel">+3.1% vs 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">✅</div>
+        <div class="value green">239,180</div>
+        <div class="label">CEP 2025 Admis</div>
+        <div class="sublabel">89.81% pass rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">📊</div>
+        <div class="value yellow">+16.09%</div>
+        <div class="label">BAC Rate Increase</div>
+        <div class="sublabel">56.93% → 73.02% (2024→2025)</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🌐</div>
+        <div class="value green">eresultats.bj</div>
+        <div class="label">Official Results Platform</div>
+        <div class="sublabel">Real-time national exam results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICIAL EXAM PAPERS -->
+<section id="papers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Official Past Papers</div>
+      <h2>Official Past Exam Papers — CEP · BEPC · BAC</h2>
+      <p>Verified, publicly accessible past exam papers from official Beninese government sources and trusted repositories. These are the exact papers your AI tutor should train on and serve to students.</p>
+    </div>
+
+    <!-- SOURCE NOTE -->
+    <div style="background:#e8f5e9; border-left:4px solid #008751; border-radius:0 12px 12px 0; padding:16px 20px; margin-bottom:32px; font-size:0.9rem;">
+      <strong>📌 Source Verification:</strong> All papers below are sourced from <strong>epreuvesetcorriges.com</strong> (free official repository), <strong>touteslesepreuves.com</strong> (244 BAC 2025 papers), <strong>Scribd</strong> (scanned official papers), and <strong>media.eduactions.bj</strong> (government media). Papers marked <span style="background:#e8f5e9;border:1px solid #008751;border-radius:12px;padding:2px 10px;font-size:0.78rem;font-weight:700;color:#008751;">FREE</span> are freely downloadable.
+    </div>
+
+    <!-- CEP PAPERS -->
+    <div style="margin-bottom:40px;">
+      <div style="background:linear-gradient(135deg,#008751,#00a86b);color:white;padding:20px 24px;border-radius:16px 16px 0 0;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:2rem;">🌱</span>
+        <div>
+          <div style="font-size:1.2rem;font-weight:800;">CEP — Certificat d'Études Primaires</div>
+          <div style="font-size:0.85rem;opacity:0.85;">Primary School Exit Exam · Subjects: Maths, Français, EST, Éducation Sociale · 45+ papers available</div>
+        </div>
+        <span style="margin-left:auto;background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:0.8rem;font-weight:700;">45+ papers</span>
+      </div>
+      <div style="background:#fff;border:1px solid #e0e8f0;border-top:none;border-radius:0 0 16px 16px;padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #008751;transition:all 0.2s;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#008751;letter-spacing:0.5px;margin-bottom:6px;">CEP 2024 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Mathématiques — CEP 2024</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Statistiques, calculs de volumes, représentations géométriques à l'échelle avec symétries et diagonales.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/cep/41842-mathematiques-cep-2024-epreuve-officielle-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#008751;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #008751;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#008751;letter-spacing:0.5px;margin-bottom:6px;">CEP 2024 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Éducation Scientifique & Technologique — CEP 2024</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Nutrition et maladies (marasme, béribéri, rachitisme), aliments riches en glucides/protides/lipides, montages électriques.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/cep/41843-education-scientifique-et-technologique-cep-2024-epreuve-officielle-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#008751;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #008751;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#008751;letter-spacing:0.5px;margin-bottom:6px;">CEP 2024 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Expression Écrite — CEP 2024</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Rédaction d'un article de journal sur les dangers du commerce de l'essence frelatée « Kpayo ». Exercice de dessin (pot de fleurs).</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/cep/41844-expression-ecrite-cep-2024-epreuve-officielle-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#008751;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #008751;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#008751;letter-spacing:0.5px;margin-bottom:6px;">CEP 2024 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Compréhension de l'Écrit — CEP 2024</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Texte narratif « Le voleur pris au piège » — compréhension, grammaire, expression écrite. Identification des personnages et événements.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/cep/41845-comprehension-de-l-ecrit-cep-2024-epreuve-officielle-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#008751;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #008751;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#008751;letter-spacing:0.5px;margin-bottom:6px;">CEP 2024 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Éducation Sociale — CEP 2024</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Rôle du gouvernement, histoire (colonisation, indépendance), départements portant des noms de cours d'eau, organisations internationales.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/cep/41846-education-sociale-cep-2024-epreuve-officielle-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#008751;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #008751;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#008751;letter-spacing:0.5px;margin-bottom:6px;">CEP 2019–2023 Archive</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Browse All CEP Papers (2019–2024)</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Full archive of CEP official papers across all subjects and years. 45+ papers freely accessible. Ideal for multi-year training data.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">45+ Papers</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/cep" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#008751;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 Browse Full Archive</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- BEPC PAPERS -->
+    <div style="margin-bottom:40px;">
+      <div style="background:linear-gradient(135deg,#1a3a5c,#2980b9);color:white;padding:20px 24px;border-radius:16px 16px 0 0;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:2rem;">📘</span>
+        <div>
+          <div style="font-size:1.2rem;font-weight:800;">BEPC — Brevet d'Études du Premier Cycle</div>
+          <div style="font-size:0.85rem;opacity:0.85;">Lower Secondary Exit Exam · Subjects: Maths, Français, SVT, PCT, HG, Anglais · 262+ papers available</div>
+        </div>
+        <span style="margin-left:auto;background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:0.8rem;font-weight:700;">262+ papers</span>
+      </div>
+      <div style="background:#fff;border:1px solid #e0e8f0;border-top:none;border-radius:0 0 16px 16px;padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #1a5276;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#1a5276;letter-spacing:0.5px;margin-bottom:6px;">BEPC 2025 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Recueil Complet — Toutes Matières BEPC 2025</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Toutes les épreuves officielles du BEPC 2025 regroupées en un seul document. Idéal pour réviser chaque matière et préparer le BEPC 2026.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">All Subjects</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/bepc/41319-recueil-complet-des-epreuves-bepc-2025-pour-une-preparation-efficace-au-bepc-2026" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a5276;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #1a5276;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#1a5276;letter-spacing:0.5px;margin-bottom:6px;">BEPC 2025 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Mathématiques — BEPC 2025 — Bénin</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Microcrédit, statistiques et périmètre géométrique. Exercices de géométrie (triangles, cercles), polynômes et équations, calculs de volumes.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/bepc" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a5276;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #1a5276;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#1a5276;letter-spacing:0.5px;margin-bottom:6px;">BEPC 2025 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">SVT — Sciences de la Vie et de la Terre — BEPC 2025</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Épreuve officielle de SVT avec corrigé-type officiel publié par le MESTFP. Couvre biologie cellulaire, écologie et physiologie humaine.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">+ Corrigé Officiel</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/bepc" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a5276;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #1a5276;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#1a5276;letter-spacing:0.5px;margin-bottom:6px;">BEPC 2025 — Session Normale</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">PCT — Physique-Chimie-Technologie — BEPC 2025</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Carbure de calcium, levage mécanique et détecteur électrique. Épreuve officielle de la session normale 2025 avec corrigé-type.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/bepc" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a5276;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #1a5276;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#1a5276;letter-spacing:0.5px;margin-bottom:6px;">BEPC 2024 — Corrigés Officiels</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Corrigés-Types Officiels BEPC 2024 — Multiple Subjects</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Corrigés-types officiels publiés par le MESTFP après la session juin 2024. Inclut Maths, SVT, PCT, Français, HG. Source: media.eduactions.bj</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official Gov</span>
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official Corrigés</span>
+            </div>
+            <a href="https://media.eduactions.bj/examen-du-bepc-session-2024-les-corriges-types-de-quelques-epreuves/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a5276;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 View Official Corrigés</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #1a5276;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#1a5276;letter-spacing:0.5px;margin-bottom:6px;">BEPC 2019–2024 Archive</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Browse All BEPC Papers (2019–2025)</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Full archive of 262+ BEPC official papers across all subjects and years. Freely accessible. Essential training data for your AI tutor.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">262+ Papers</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/bepc" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a5276;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 Browse Full Archive</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- BAC PAPERS -->
+    <div style="margin-bottom:40px;">
+      <div style="background:linear-gradient(135deg,#4a235a,#9b59b6);color:white;padding:20px 24px;border-radius:16px 16px 0 0;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:2rem;">📙</span>
+        <div>
+          <div style="font-size:1.2rem;font-weight:800;">BAC — Baccalauréat (All Series A1, A2, B, C, D, F, G)</div>
+          <div style="font-size:0.85rem;opacity:0.85;">Upper Secondary Exit Exam · Organized by Office du Baccalauréat du Bénin · 455+ papers available</div>
+        </div>
+        <span style="margin-left:auto;background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:0.8rem;font-weight:700;">455+ papers</span>
+      </div>
+      <div style="background:#fff;border:1px solid #e0e8f0;border-top:none;border-radius:0 0 16px 16px;padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #9b59b6;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#9b59b6;letter-spacing:0.5px;margin-bottom:6px;">BAC 2025 — Session Normale — Série C</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Mathématiques — BAC 2025 — Série C</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Contexte: rénovation de la statue du roi Emanwolè. Polynôme complexe, géométrie analytique spatiale, étude de fonction logarithmique, reconnaissance d'une ellipse.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#f3e5f5;color:#6c3483;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Série C</span>
+            </div>
+            <a href="https://epreuvesetcorriges.com/categories/benin/examens/bac/39829-epreuve-de-mathematiques-baccalaureat-2025-serie-c-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#9b59b6;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #9b59b6;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#9b59b6;letter-spacing:0.5px;margin-bottom:6px;">BAC 2025 — Session Normale — Séries C, D</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Anglais LV1 + Corrigé Officiel — BAC 2025 — Séries C, D</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Thème: Gender Based Violence (GBV). Réaction à des textes et production de supports multimédia. Corrigé officiel inclus (8 pages).</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">+ Corrigé Officiel</span>
+            </div>
+            <a href="https://www.scribd.com/document/902862177/Epreuve-Et-Corrige-Officiel-Baccalaureat-2025-Anglais-Series-C-D-Benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#9b59b6;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 View on Scribd</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #9b59b6;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#9b59b6;letter-spacing:0.5px;margin-bottom:6px;">BAC 2025 — Session Normale — Série D</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">PCT — Physique-Chimie-Technologie — BAC 2025 — Série D</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Épreuve et corrigé officiels. Chimie organique, mécanique et électricité. Conforme au programme Terminale D. Source: touteslesepreuves.com</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">400 FCFA</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">+ Corrigé</span>
+            </div>
+            <a href="https://touteslesepreuves.com/examens/23717-epreuve-et-corrige-officiel-baccalaureat-2025-pct-serie-d-benin.html" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#9b59b6;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">⬇ Download Paper</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #9b59b6;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#9b59b6;letter-spacing:0.5px;margin-bottom:6px;">BAC 2024 — Session Normale — Séries C, D</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Anglais LV1 — BAC 2024 — Séries C, D — Bénin</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Thème: Karaoke (origines japonaises, pratique culturelle). Réaction à des textes, production de supports multimédia. 4 pages. Source: Scribd.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">Official</span>
+            </div>
+            <a href="https://fr.scribd.com/document/879385133/epreuve-danglais-bac-2024-series-cd-benin" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#9b59b6;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 View on Scribd</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #9b59b6;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#9b59b6;letter-spacing:0.5px;margin-bottom:6px;">BAC 2024 — Session Normale — Toutes Séries</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">Français + Corrigé — BAC 2024 — Séries A, B, C, D</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Épreuve officielle de français + corrigé. Commentaire de texte et dissertation littéraire. Source: Scribd / epreuvesetcorriges.com.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">PDF</span>
+              <span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">+ Corrigé</span>
+            </div>
+            <a href="https://www.scribd.com/document/904634421/Epreuve-Bac-2024-Francais" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#9b59b6;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 View on Scribd</a>
+          </div>
+
+          <div style="background:#f4f7fb;border-radius:12px;padding:18px;border-left:4px solid #9b59b6;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:#9b59b6;letter-spacing:0.5px;margin-bottom:6px;">BAC 2025 — Full Collection</div>
+            <div style="font-size:0.92rem;font-weight:700;color:#0d1b2a;margin-bottom:6px;">244 BAC 2025 Papers — All Series, All Subjects</div>
+            <div style="font-size:0.8rem;color:#5a6a7a;margin-bottom:12px;">Complete collection of 244 BAC 2025 papers (session normale + remplacement) covering all series A1, A2, B, C, D, F, G. Organized by subject and series.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              <span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">100–400 FCFA each</span>
+              <span style="background:#e3f2fd;color:#0066cc;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">244 Papers</span>
+            </div>
+            <a href="https://touteslesepreuves.com/1116-bac-2025" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#9b59b6;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">🔗 Browse All 244 Papers</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCES TABLE -->
+    <div class="card">
+      <h3>📚 Official Exam Paper Sources — Verified & Accessible</h3>
+      <table class="subject-table" style="margin-top:16px;">
+        <thead><tr><th>Source</th><th>URL</th><th>CEP</th><th>BEPC</th><th>BAC</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Épreuves et Corrigés</strong></td><td>epreuvesetcorriges.com</td><td>✅ 45+</td><td>✅ 262+</td><td>✅ 455+</td><td><span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span></td></tr>
+          <tr><td><strong>Toutes les Épreuves</strong></td><td>touteslesepreuves.com</td><td>✅</td><td>✅</td><td>✅ 244 (2025)</td><td><span style="background:#fff8e1;color:#c89a00;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">100–400 FCFA</span></td></tr>
+          <tr><td><strong>Scribd (Official Scans)</strong></td><td>scribd.com</td><td>—</td><td>✅</td><td>✅</td><td><span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE (view)</span></td></tr>
+          <tr><td><strong>Educ'Action Media (Gov)</strong></td><td>media.eduactions.bj</td><td>✅</td><td>✅ corrigés</td><td>✅</td><td><span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span></td></tr>
+          <tr><td><strong>eRésultats (Official Gov)</strong></td><td>eresultats.bj/papers</td><td>⏳</td><td>⏳</td><td>⏳</td><td>Coming soon</td></tr>
+          <tr><td><strong>Office du Baccalauréat</strong></td><td>officedubacbenin.bj</td><td>—</td><td>—</td><td>✅ series list</td><td><span style="background:#e8f5e9;color:#008751;border-radius:12px;padding:2px 10px;font-size:0.75rem;font-weight:700;">FREE</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- REFORMS TIMELINE -->
+<section id="reforms">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Education Reforms</div>
+      <h2>Key Reforms & Government Initiatives</h2>
+      <p>Benin's education system has undergone significant transformation under successive government programs, with the PAG 2021–2026 representing the most ambitious reform agenda to date.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="year">1990s</div>
+            <h4>Competency-Based Approach (APC) Introduced</h4>
+            <p>Benin piloted the APC framework in experimental classes, shifting from rote learning to competency development. Full rollout followed in the 2000s.</p>
+          </div>
+          <div class="tl-item">
+            <div class="year">2013</div>
+            <h4>Primary Curriculum Streamlining</h4>
+            <p>Curriculum reform consolidated primary subjects into six core areas: French, Mathematics, Science & Technology, Social Studies, Art, and Physical Education.</p>
+          </div>
+          <div class="tl-item">
+            <div class="year">2018</div>
+            <h4>EducMaster Platform Launch</h4>
+            <p>Digital school management platform deployed across all public and private secondary schools. Manages student records, teacher attendance, timetables, and transfers.</p>
+          </div>
+          <div class="tl-item">
+            <div class="year">2019</div>
+            <h4>Digital Classrooms in Primary Schools</h4>
+            <p>12 connected digital classrooms launched in primary schools. Foundational literacy reform begins with GPE and World Bank support.</p>
+          </div>
+          <div class="tl-item">
+            <div class="year">2021</div>
+            <h4>PAG 2021–2026 Launched</h4>
+            <p>Government Action Programme with 26 education projects totaling hundreds of billions of FCFA. Includes 30 agricultural technical lycées, 6 scientific lycées, and 2 teacher training schools.</p>
+          </div>
+          <div class="tl-item">
+            <div class="year">2022–23</div>
+            <h4>Structured Pedagogy Reform Implemented</h4>
+            <p>Decodable textbooks (phonic approach) deployed in Grade 1–2. National assessment shows Grade 2 performance improved from 17.43% (2016) to 31.19% (2023).</p>
+          </div>
+          <div class="tl-item">
+            <div class="year">2025</div>
+            <h4>Agence Béninoise de Télé-Enseignement Created</h4>
+            <p>New agency established to promote equitable access to quality education through distance learning and modernize pedagogical practices nationwide.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>💰 PAG 2021–2026 Education Investment (FCFA Billions)</h3>
+        <div class="chart-wrap tall">
+          <canvas id="pagChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL TRANSFORMATION -->
+<section id="digital">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Digital Education</div>
+      <h2>Digital Transformation of Benin's Education System</h2>
+      <p>Benin's National AI and Big Data Strategy (SNIAM 2023–2027) and PAG digital education projects are reshaping how teaching, learning, and school governance are conducted.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card" style="border-top:4px solid var(--green);">
+        <h3>🖥️ EducMaster Platform</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">The central digital nervous system of Benin's secondary education. Mandatory for all schools.</p>
+        <div class="tags">
+          <span class="tag">Student Records</span>
+          <span class="tag">Teacher Tracking</span>
+          <span class="tag">Timetables</span>
+          <span class="tag">Transfers</span>
+          <span class="tag">Grade Uploads</span>
+          <span class="tag">Parent Access</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid #0066cc;">
+        <h3>📱 eRésultats Platform</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">Official platform for real-time national exam results (CEP, BEPC, BAC). Accessible at eresultats.bj.</p>
+        <div class="tags">
+          <span class="tag">CEP Results</span>
+          <span class="tag">BEPC Results</span>
+          <span class="tag">BAC Results</span>
+          <span class="tag">Real-time</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid #e67e22;">
+        <h3>🏫 Classes Numériques</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">Connected digital classrooms with internet access and autonomous energy deployed in primary schools across Benin.</p>
+        <div class="tags">
+          <span class="tag">Internet Connected</span>
+          <span class="tag">Solar Powered</span>
+          <span class="tag">Primary Focus</span>
+          <span class="tag">UNICEF Supported</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid #9b59b6;">
+        <h3>🤖 AI & Big Data Strategy</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">SNIAM 2023–2027: Benin's national AI strategy explicitly includes education as a key sector for AI deployment and data-driven governance.</p>
+        <div class="tags">
+          <span class="tag">SNIAM 2023–2027</span>
+          <span class="tag">Education AI</span>
+          <span class="tag">Data Governance</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid #e91e63;">
+        <h3>📡 Télé-Enseignement Agency</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">Created in December 2025 to promote equitable access to quality education and modernize pedagogical practices through distance learning.</p>
+        <div class="tags">
+          <span class="tag">Distance Learning</span>
+          <span class="tag">Equity Focus</span>
+          <span class="tag">2025 Launch</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid #00bcd4;">
+        <h3>🌐 Sèmè City</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:12px;">350 billion FCFA innovation hub combining education, research, and entrepreneurship. A flagship project for 21st-century skills development.</p>
+        <div class="tags">
+          <span class="tag">Innovation Hub</span>
+          <span class="tag">350B FCFA</span>
+          <span class="tag">STEM Focus</span>
+          <span class="tag">Entrepreneurship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURAL CONTEXT -->
+<section id="culture">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Cultural & Linguistic Context</div>
+      <h2>The Local Character System: Culture, Language & Identity</h2>
+      <p>To build a truly Beninese AI tutor, understanding the cultural and linguistic fabric is essential. Benin is a nation of extraordinary cultural richness — home to the ancient Kingdom of Dahomey, the birthplace of Vodun, and a mosaic of over 50 indigenous languages.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🗣️ Language Landscape</h3>
+        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:16px;">French is the sole official language of instruction, but students arrive in school speaking their mother tongue. This creates a critical language bridge challenge.</p>
+        <div class="chart-wrap">
+          <canvas id="languageChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🏛️ Cultural Pillars in Education</h3>
+        <div style="display:flex; flex-direction:column; gap:16px; margin-top:8px;">
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="font-size:2rem;">👑</span>
+            <div>
+              <strong>Kingdom of Dahomey</strong>
+              <p style="color:var(--muted); font-size:0.85rem; margin-top:4px;">The pre-colonial Dahomey Kingdom (1600–1904) is central to Beninese identity. History curriculum covers the Fon people, the Dahomey Amazons (Agojie), and the slave trade's impact.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="font-size:2rem;">🌿</span>
+            <div>
+              <strong>Vodun (Voodoo) Heritage</strong>
+              <p style="color:var(--muted); font-size:0.85rem; margin-top:4px;">Benin is the birthplace of Vodun, practiced by millions. January 10th is the National Vodun Day (public holiday). Cultural education acknowledges this spiritual heritage.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="font-size:2rem;">🗺️</span>
+            <div>
+              <strong>Regional Diversity</strong>
+              <p style="color:var(--muted); font-size:0.85rem; margin-top:4px;">12 departments, each with distinct cultural practices. The south (Fon, Goun) differs significantly from the north (Bariba, Dendi, Fulani). AI tutors must be culturally sensitive to this diversity.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="font-size:2rem;">🤝</span>
+            <div>
+              <strong>Community-Centered Learning</strong>
+              <p style="color:var(--muted); font-size:0.85rem; margin-top:4px;">Beninese pedagogy values community, respect for elders, and collective problem-solving. The AI tutor should reflect these values in its interaction design.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:24px; background: linear-gradient(135deg, #0d1b2a, #1a3a5c); color:#fff;">
+      <h3 style="color:#FCD116;">🌍 Key National Languages (Alphabetization Program)</h3>
+      <p style="opacity:0.8; font-size:0.9rem; margin-bottom:16px;">While French dominates formal education, Benin's ELAN program (École et Langues Nationales en Afrique) and adult literacy programs use 6 official national languages. An AI tutor should ideally support bilingual interactions.</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:12px;">
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:8px;">🔤</div>
+          <strong>Fon (Fɔngbè)</strong>
+          <p style="font-size:0.78rem; opacity:0.7; margin-top:4px;">South Benin, ~40% speakers</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:8px;">🔤</div>
+          <strong>Yoruba</strong>
+          <p style="font-size:0.78rem; opacity:0.7; margin-top:4px;">Southeast, shared with Nigeria</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:8px;">🔤</div>
+          <strong>Bariba (Batonum)</strong>
+          <p style="font-size:0.78rem; opacity:0.7; margin-top:4px;">North Benin, Borgou region</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:8px;">🔤</div>
+          <strong>Dendi</strong>
+          <p style="font-size:0.78rem; opacity:0.7; margin-top:4px;">North Benin, Niger River area</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:8px;">🔤</div>
+          <strong>Ditamari</strong>
+          <p style="font-size:0.78rem; opacity:0.7; margin-top:4px;">Atacora region, northwest</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:8px;">🔤</div>
+          <strong>Aja</strong>
+          <p style="font-size:0.78rem; opacity:0.7; margin-top:4px;">Mono/Couffo region, south</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TUTOR BLUEPRINT -->
+<section id="ai-tutor">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">AI Tutor Blueprint</div>
+      <h2>Building the First Intelligent Beninese Tutor</h2>
+      <p>Based on the full curriculum research, here is the strategic blueprint for an AI tutor that is deeply aligned with Benin's national education system, cultural identity, and government vision.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-icon">📚</div>
+        <h4>Curriculum Alignment Engine</h4>
+        <p>Train on the full APC competency framework from CI to Terminale. Map every topic to the official INFRE curriculum documents and BAC series requirements.</p>
+        <span class="pill">APC Framework</span>
+        <span class="pill">INFRE Aligned</span>
+        <span class="pill">All Series</span>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🎯</div>
+        <h4>Competency-Based Assessment</h4>
+        <p>Assess students on competencies, not just facts. Mirror the APC evaluation model with situational problems, practical exercises, and progressive skill-building.</p>
+        <span class="pill">Situational Problems</span>
+        <span class="pill">Adaptive Testing</span>
+        <span class="pill">Progress Tracking</span>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🗣️</div>
+        <h4>Bilingual Interaction Design</h4>
+        <p>Primary interface in French (official language), with support for Fon, Yoruba, and other national languages for explanations and cultural context.</p>
+        <span class="pill">French Primary</span>
+        <span class="pill">Fon Support</span>
+        <span class="pill">Yoruba Support</span>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🏛️</div>
+        <h4>Cultural Intelligence Layer</h4>
+        <p>Embed Beninese history (Dahomey Kingdom), Vodun cultural context, regional diversity, and community values into explanations and examples.</p>
+        <span class="pill">Dahomey History</span>
+        <span class="pill">Local Examples</span>
+        <span class="pill">Cultural Respect</span>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">📊</div>
+        <h4>EducMaster Integration</h4>
+        <p>Align with EducMaster data structures to enable seamless school-level integration, teacher dashboards, and parent progress reports.</p>
+        <span class="pill">School Integration</span>
+        <span class="pill">Teacher Tools</span>
+        <span class="pill">Parent Reports</span>
+      </div>
+      <div class="ai-card">
+        <div class="ai-icon">🔬</div>
+        <h4>Exam Preparation Engine</h4>
+        <p>Dedicated CEP, BEPC, and BAC preparation modules with past papers, coefficient-weighted practice, and series-specific coaching.</p>
+        <span class="pill">CEP Prep</span>
+        <span class="pill">BEPC Prep</span>
+        <span class="pill">BAC Prep</span>
+        <span class="pill">All Series</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:32px;">
+      <h3>🗺️ AI Tutor Coverage Map: Curriculum Depth by Level</h3>
+      <div class="chart-wrap">
+        <canvas id="coverageChart"></canvas>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <h3>🔑 Key Institutions to Partner With</h3>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-top:12px;">
+        <div style="background:var(--light-bg); border-radius:12px; padding:16px;">
+          <strong>INFRE</strong>
+          <p style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Institut National pour la Formation et la Recherche en Éducation — the curriculum authority. Source of all official syllabi and teacher training materials.</p>
+        </div>
+        <div style="background:var(--light-bg); border-radius:12px; padding:16px;">
+          <strong>Office du Baccalauréat</strong>
+          <p style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Manages all BAC examinations. Source of official exam formats, past papers, and series-specific requirements.</p>
+        </div>
+        <div style="background:var(--light-bg); border-radius:12px; padding:16px;">
+          <strong>MEMP / MESTFP</strong>
+          <p style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Ministries of Primary and Secondary Education. Official policy direction and curriculum approval authority.</p>
+        </div>
+        <div style="background:var(--light-bg); border-radius:12px; padding:16px;">
+          <strong>Sèmè City</strong>
+          <p style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Innovation hub for education technology. Natural partner for piloting and scaling the AI tutor platform.</p>
+        </div>
+        <div style="background:var(--light-bg); border-radius:12px; padding:16px;">
+          <strong>Direction du Numérique</strong>
+          <p style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Ministry of Digital Affairs. Oversees EducMaster and digital education infrastructure. Key for API integration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Benin Republic Education Curriculum Intelligence Brief</strong><br/>
+  Researched and compiled by Manus AI · March 2026<br/>
+  Sources: INFRE Bénin · Office du Baccalauréat · UNESCO IICBA · World Bank · Global Partnership for Education · PAG 2021–2026 · beninrevele.bj · beninwebtv.bj
+  <div class="footer-flags">
+    <span style="background:var(--green);"></span>
+    <span style="background:var(--green);"></span>
+    <span style="background:var(--yellow);"></span>
+    <span style="background:var(--yellow);"></span>
+    <span style="background:var(--red);"></span>
+    <span style="background:var(--red);"></span>
+  </div>
+</footer>
+
+<script>
+// ── CHART DEFAULTS ──
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#5a6a7a';
+
+const GREEN = '#008751';
+const YELLOW = '#FCD116';
+const RED = '#E8112D';
+const BLUE = '#0066cc';
+const ORANGE = '#e67e22';
+const PURPLE = '#9b59b6';
+const DARK = '#0d1b2a';
+
+// ── ENROLLMENT CHART ──
+new Chart(document.getElementById('enrollmentChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Pre-Primary', 'Primary (Net)', 'Lower Secondary', 'Upper Secondary (M)', 'Upper Secondary (F)', 'Tertiary (M)', 'Tertiary (F)'],
+    datasets: [{
+      label: 'Enrollment Rate (%)',
+      data: [18, 97, 37, 52, 43, 15, 8],
+      backgroundColor: [ORANGE, GREEN, BLUE, GREEN, YELLOW, PURPLE, RED],
+      borderRadius: 8,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { max: 110, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } },
+      x: { ticks: { maxRotation: 30 }, grid: { display: false } }
+    }
+  }
+});
+
+// ── PASS RATE TREND ──
+new Chart(document.getElementById('passRateChart'), {
+  type: 'line',
+  data: {
+    labels: ['2023', '2024', '2025'],
+    datasets: [
+      { label: 'CEP', data: [88.5, 89.67, 89.81], borderColor: GREEN, backgroundColor: GREEN+'22', tension: 0.4, fill: true, pointRadius: 6 },
+      { label: 'BEPC', data: [70.1, 73.74, 77.25], borderColor: BLUE, backgroundColor: BLUE+'22', tension: 0.4, fill: true, pointRadius: 6 },
+      { label: 'BAC', data: [63.08, 56.93, 73.02], borderColor: RED, backgroundColor: RED+'22', tension: 0.4, fill: true, pointRadius: 6 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      y: { min: 40, max: 100, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── COMPLETION CHART ──
+new Chart(document.getElementById('completionChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Primary (Boys)', 'Primary (Girls)', 'Lower Secondary (Boys)', 'Lower Secondary (Girls)'],
+    datasets: [
+      { label: 'Completion Rate (%)', data: [77, 70, 39, 35], backgroundColor: [GREEN, YELLOW, BLUE, ORANGE], borderRadius: 8 }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { max: 100, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// ── PRIMARY SUBJECTS CHART ──
+new Chart(document.getElementById('primarySubjectsChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Français', 'Mathématiques', 'Sciences & Technologie', 'Éducation Sociale/Civique', 'Arts & EPS'],
+    datasets: [{
+      data: [30, 28, 18, 14, 10],
+      backgroundColor: [GREEN, BLUE, ORANGE, PURPLE, RED],
+      borderWidth: 3, borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'right' } }
+  }
+});
+
+// ── SECONDARY CHART ──
+new Chart(document.getElementById('secondaryChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Français', 'Maths', 'Anglais', 'Histoire-Géo', 'SVT', 'Sc. Physiques', 'Éd. Civique', 'EPS', 'Informatique'],
+    datasets: [{
+      label: 'Weekly Hours (est.)',
+      data: [5, 5, 4, 3, 3, 3, 1, 2, 1],
+      backgroundColor: [GREEN, BLUE, ORANGE, PURPLE, RED, '#00bcd4', '#ff9800', '#e91e63', '#607d8b'],
+      borderRadius: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { ticks: { stepSize: 1 }, grid: { color: '#f0f0f0' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── BAC SERIES CHARTS ──
+function makeSeriesChart(id, labels, data, colors) {
+  new Chart(document.getElementById(id), {
+    type: 'polarArea',
+    data: {
+      labels: labels,
+      datasets: [{ data: data, backgroundColor: colors.map(c => c + 'cc'), borderColor: colors, borderWidth: 2 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } }
+    }
+  });
+}
+
+makeSeriesChart('a1Chart',
+  ['Français (5)', 'Philosophie (4)', 'Hist-Géo (3)', 'LV1 (3)', 'LV2 (2)', 'Maths (2)', 'SVT (2)', 'EPS (1)'],
+  [5, 4, 3, 3, 2, 2, 2, 1],
+  [GREEN, BLUE, ORANGE, PURPLE, RED, '#00bcd4', '#ff9800', '#607d8b']
+);
+makeSeriesChart('a2Chart',
+  ['Hist-Géo (5)', 'Français (4)', 'Philosophie (3)', 'LV1 (3)', 'LV2 (2)', 'Maths (2)', 'SVT (2)', 'EPS (1)'],
+  [5, 4, 3, 3, 2, 2, 2, 1],
+  [ORANGE, GREEN, BLUE, PURPLE, RED, '#00bcd4', '#ff9800', '#607d8b']
+);
+makeSeriesChart('bChart',
+  ['Économie (4)', 'Hist-Géo (4)', 'Français (4)', 'Philosophie (3)', 'LV1 (2)', 'Maths (2)', 'SVT (2)', 'EPS (1)'],
+  [4, 4, 4, 3, 2, 2, 2, 1],
+  [ORANGE, PURPLE, GREEN, BLUE, RED, '#00bcd4', '#ff9800', '#607d8b']
+);
+makeSeriesChart('cChart',
+  ['Maths (6)', 'Sc. Physiques (5)', 'Français (2)', 'Anglais (2)', 'SVT (2)', 'Hist-Géo (2)', 'Philosophie (2)', 'EPS (1)'],
+  [6, 5, 2, 2, 2, 2, 2, 1],
+  [BLUE, RED, GREEN, ORANGE, PURPLE, '#00bcd4', '#ff9800', '#607d8b']
+);
+makeSeriesChart('dChart',
+  ['SVT (5)', 'Maths (4)', 'Sc. Physiques (4)', 'Français (2)', 'Anglais (2)', 'Hist-Géo (2)', 'Philosophie (2)', 'EPS (1)'],
+  [5, 4, 4, 2, 2, 2, 2, 1],
+  [GREEN, BLUE, RED, ORANGE, PURPLE, '#00bcd4', '#ff9800', '#607d8b']
+);
+makeSeriesChart('gChart',
+  ['Étude de Cas (6)', 'Économie (3)', 'Maths App. (3)', 'Français (3)', 'Droit (2)', 'Anglais (2)', 'EPS (1)'],
+  [6, 3, 3, 3, 2, 2, 1],
+  [BLUE, ORANGE, GREEN, PURPLE, RED, '#00bcd4', '#607d8b']
+);
+
+// ── BAC TREND CHART ──
+new Chart(document.getElementById('bacTrendChart'), {
+  type: 'line',
+  data: {
+    labels: ['2021', '2022', '2023', '2024', '2025'],
+    datasets: [{
+      label: 'BAC Pass Rate (%)',
+      data: [58.5, 61.2, 63.08, 56.93, 73.02],
+      borderColor: GREEN,
+      backgroundColor: GREEN + '22',
+      tension: 0.4, fill: true, pointRadius: 7,
+      pointBackgroundColor: [GREEN, GREEN, GREEN, RED, GREEN]
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      annotation: { annotations: {} }
+    },
+    scales: {
+      y: { min: 40, max: 85, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── EXAM COMPARE CHART ──
+new Chart(document.getElementById('examCompareChart'), {
+  type: 'bar',
+  data: {
+    labels: ['CEP 2024', 'CEP 2025', 'BEPC 2024', 'BEPC 2025', 'BAC 2024', 'BAC 2025'],
+    datasets: [{
+      label: 'Pass Rate (%)',
+      data: [89.67, 89.81, 73.74, 77.25, 56.93, 73.02],
+      backgroundColor: [GREEN+'99', GREEN, BLUE+'99', BLUE, RED+'99', GREEN],
+      borderRadius: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { min: 40, max: 100, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── PAG INVESTMENT CHART ──
+new Chart(document.getElementById('pagChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Sèmè City', '30 Lycées Agricoles', 'Centres Universitaires',
+      '17 Lycées Techniques', '6 Lycées Scientifiques',
+      'VMS Sciences', 'Recherche (PARI)',
+      'Salles de Classe Primaire', 'Qualité Primaire',
+      'DEFI-Pro', 'Salles Collèges', 'ProDES'
+    ],
+    datasets: [{
+      label: 'Investment (Billions FCFA)',
+      data: [350, 336, 146, 85, 45, 47, 30, 64, 15, 14, 28, 15],
+      backgroundColor: [
+        GREEN, ORANGE, BLUE, PURPLE, RED,
+        '#00bcd4', '#ff9800', GREEN, BLUE,
+        ORANGE, PURPLE, RED
+      ],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { callback: v => v + 'B' }, grid: { color: '#f0f0f0' } },
+      y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+
+// ── LANGUAGE CHART ──
+new Chart(document.getElementById('languageChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Fon / Goun (South)', 'Yoruba (Southeast)', 'Bariba (North)', 'Dendi (North)', 'Ditamari (NW)', 'Aja (South)', 'Other (50+ languages)'],
+    datasets: [{
+      data: [40, 12, 10, 6, 5, 5, 22],
+      backgroundColor: [GREEN, BLUE, ORANGE, PURPLE, RED, '#00bcd4', '#9e9e9e'],
+      borderWidth: 3, borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } }
+  }
+});
+
+// ── COVERAGE CHART ──
+new Chart(document.getElementById('coverageChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Primary (CI-CM2)', 'Lower Secondary (6e-3e)', 'Upper Secondary A-Series', 'Upper Secondary C/D (Sciences)', 'Technical/Vocational (E/F/G)', 'Exam Prep (CEP/BEPC/BAC)', 'Cultural Context', 'Digital Literacy'],
+    datasets: [
+      {
+        label: 'Recommended AI Tutor Coverage',
+        data: [95, 90, 85, 85, 70, 95, 80, 75],
+        borderColor: GREEN, backgroundColor: GREEN + '33', pointBackgroundColor: GREEN, pointRadius: 5
+      },
+      {
+        label: 'Current Research Depth',
+        data: [88, 85, 90, 88, 75, 92, 78, 70],
+        borderColor: BLUE, backgroundColor: BLUE + '22', pointBackgroundColor: BLUE, pointRadius: 5
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { stepSize: 25, callback: v => v + '%' },
+        grid: { color: '#e0e8f0' },
+        pointLabels: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// ── TAB SYSTEM ──
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── STICKY NAV ACTIVE STATE ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sticky-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
