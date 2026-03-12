@@ -5,14 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Le Mentor Béninois - Système de Formation aux Examens Nationaux</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
   <div id="root"></div>
 
+  <!-- React & ReactDOM CDN -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <script type="text/babel" src="app.jsx"></script>
+  <!-- Services (loaded before App.jsx) -->
+  <script type="text/babel" src="src/services/identityService.js"></script>
+  <script type="text/babel" src="src/services/dbService.js"></script>
+  
+  <!-- Expose services globally -->
+  <script type="text/babel">
+    // Make services available globally for the React app
+    window.identityService = {
+      generateOrGetStudentId: function() {
+        let studentId = localStorage.getItem('mentorBeninois_student_id');
+        if (!studentId) {
+          studentId = crypto.randomUUID();
+          localStorage.setItem('mentorBeninois_student_id', studentId);
+        }
+        return studentId;
+      },
+      saveStudentProfile: function(name, school, city, targetLevel) {
+        const profile = {
+          name,
+          school,
+          city,
+          targetLevel,
+          registeredAt: new Date().toISOString()
+        };
+        localStorage.setItem('mentorBeninois_student_profile', JSON.stringify(profile));
+        return profile;
+      },
+      getStudentProfile: function() {
+        const profileStr = localStorage.getItem('mentorBeninois_student_profile');
+        if (!profileStr) return null;
+        try {
+          return JSON.parse(profileStr);
+        } catch (e) {
+          return null;
+        }
+      },
+      isStudentRegistered: function() {
+        return this.getStudentProfile() !== null;
+      },
+      getStudentId: function() {
+        return localStorage.getItem('mentorBeninois_student_id');
+      },
+      clearStudentProfile: function() {
+        localStorage.removeItem('mentorBeninois_student_profile');
+        localStorage.removeItem('mentorBeninois_student_id');
+      }
+    };
+
+    const API_BASE_URL = 'https://iabeninois-api.iafacilebenin.workers.dev';
+    
+    window.dbService = {
+      registerStudent: async function(id, name, school, city, targetLevel) {
+        try {
+          const response = await fetch(`${API_BASE_URL}/student/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, name, school, city, targetLevel })
+          });
+          if (!response.ok) throw new Error(`Registration failed: ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error('Erreur enregistrement:', error);
+          return { success: false, error: error.message };
+        }
+      },
+      logSession: async function(studentId) {
+        try {
+          const deviceHint = navigator.userAgent || 'unknown';
+          const response = await fetch(`${API_BASE_URL}/student/session`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ studentId, deviceHint })
+          });
+          if (!response.ok) throw new Error(`Session log failed: ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error('Erreur session:', error);
+          return { success: false, error: error.message };
+        }
+      },
+      saveGrade: async function(studentId, exerciseId, level, subject, score, hintsUsed, studentAnswer, aiFeedback) {
+        try {
+          const numericScore = Number(score);
+          const response = await fetch(`${API_BASE_URL}/grade/save`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              studentId, exerciseId, level, subject,
+              score: numericScore, hintsUsed, studentAnswer, aiFeedback
+            })
+          });
+          if (!response.ok) throw new Error(`Save grade failed: ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error('Erreur sauvegarde note:', error);
+          return { success: false, error: error.message };
+        }
+      },
+      getStudentProgress: async function(studentId) {
+        try {
+          const response = await fetch(`${API_BASE_URL}/student/${studentId}/progress`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+          });
+          if (!response.ok) throw new Error(`Get progress failed: ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error('Erreur progression:', error);
+          return { success: false, grades: [], error: error.message };
+        }
+      }
+    };
+  </script>
+
+  <!-- Main Application -->
+  <script type="text/babel" src="src/App.jsx"></script>
 </body>
 </html>

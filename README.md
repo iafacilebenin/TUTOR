@@ -1,221 +1,192 @@
-# LE MENTOR BÉNINOIS - LMS
+# Le Mentor Béninois 🎓
 
-## Description
+**Système de Formation aux Examens Nationaux - République du Bénin**
 
-Système de Formation aux Examens Nationaux de la République du Bénin (CEP, BEPC, BAC)
+Un tuteur IA intelligent pour accompagner les élèves béninois dans leur préparation aux examens CEP, BEPC et BAC.
 
-Application LMS (Learning Management System) avec méthode socratique et système de notation 0-20 conforme au système éducatif béninois.
+## 🌟 Fonctionnalités
 
-## Fonctionnalités
+- **Exercices interactifs** : Pratique guidée pour CEP, BEPC et BAC
+- **Correction IA** : Feedback intelligent et personnalisé sur 20 points
+- **Carnet de notes** : Suivi complet de la progression
+- **Méthodologie** : Guides pour la dissertation, le commentaire composé, et les problèmes de mathématiques
+- **Système d'identité** : Profil élève persistant avec synchronisation cloud
 
-### ✅ Implémentées
-- **Carnet de Notes** : Système de notation 0-20 avec appréciations officielles
-- **Méthode Socratique** : Jamais de réponse directe, système de "coups de pouce" avec pénalités
-- **Exercices par niveau** : CEP, BEPC, BAC avec exercices authentiques
-- **Tableau de bord** : Statistiques et progression par niveau
-- **Méthodologie** : Guide complet pour dissertations, commentaires composés, problèmes
-- **Persistance** : LocalStorage pour sauvegarder la progression
-- **Évaluation automatique** : Analyse de la méthodologie et de la structure
+## 📁 Architecture du Projet
 
-### 🎯 Persona du Mentor
+```
+TUTOR/
+├── index.html              # Page principale (CDN React)
+├── styles.css              # Styles CSS
+├── favicon.png             # Icône
+│
+├── src/
+│   ├── App.jsx             # Application React principale
+│   ├── services/
+│   │   ├── identityService.js   # Gestion identité élève (localStorage)
+│   │   └── dbService.js         # Communication API serveur
+│   └── hooks/
+│       └── useStudentIdentity.js # Hook React pour l'identité
+│
+├── worker/
+│   └── index.js            # Cloudflare Worker (API + D1)
+│
+├── schema/
+│   └── d1_schema.sql       # Schéma base de données D1
+│
+└── README.md
+```
 
-**Ton** : Sérieux, autoritaire, exigeant (comme un vrai professeur béninois)
-**Langue** : Français standard du Bénin
-**Philosophie** : "Revenons à nos moutons. Le temps presse."
+## 🚀 Déploiement
 
-### 📊 Système de Notation (0-20)
+### Frontend (GitHub Pages ou Cloudflare Pages)
 
-- **16-20** : Très Bien (Excellent)
-- **14-15** : Bien
-- **12-13** : Assez Bien
-- **10-11** : Passable
-- **08-09** : Insuffisant
-- **00-07** : Médiocre
-
-## Installation & Déploiement
-
-### Option 1 : Déploiement Local (Développement)
-
-1. Ouvrir le fichier `index.html` dans un navigateur moderne
-2. Accepter le chargement des scripts CDN (React, ReactDOM, Babel)
-
-**Note** : Nécessite une connexion internet pour charger React depuis unpkg.com
-
-### Option 2 : Déploiement Netlify/Cloudflare (Production)
-
-#### A. Netlify
-
-1. Créer un compte sur [netlify.com](https://netlify.com)
-2. Glisser-déposer le dossier `mentor-beninois-lms` dans Netlify Drop
-3. Le site sera immédiatement en ligne avec HTTPS
-
-#### B. Cloudflare Pages
-
-1. Créer un compte sur [pages.cloudflare.com](https://pages.cloudflare.com)
-2. Connecter votre repository GitHub ou glisser-déposer les fichiers
-3. Configuration :
-   - Build command : (aucune)
-   - Build output directory : `/`
-   - Pas de framework nécessaire
-
-### Option 3 : Serveur Local (Python)
+Le frontend est une application React côté client utilisant les CDN. Il suffit de servir les fichiers statiques.
 
 ```bash
-cd mentor-beninois-lms
-python3 -m http.server 8000
+# Déploiement sur GitHub Pages
+git push origin main
+# Puis activer GitHub Pages dans les paramètres du repo
 ```
 
-Ouvrir : http://localhost:8000
+### Backend (Cloudflare Worker avec D1)
 
-### Option 4 : Version Optimisée (Sans CDN)
+#### 1. Créer la base de données D1
 
-Pour une version hors-ligne complète, il faudrait :
-1. Télécharger React en local
-2. Transpiler JSX en JS avec Babel CLI
-3. Bundler avec Webpack/Rollup
+```bash
+# Installer Wrangler CLI
+npm install -g wrangler
 
-## Structure des Fichiers
+# Se connecter à Cloudflare
+wrangler login
 
-```
-mentor-beninois-lms/
-├── index.html       # Point d'entrée HTML
-├── styles.css       # Styles (esthétique scolaire béninoise)
-├── app.jsx          # Application React complète
-└── README.md        # Ce fichier
-```
+# Créer la base de données D1
+wrangler d1 create mentor-beninois-db
 
-## Architecture Technique
-
-### Stack
-- **React 18** (via CDN unpkg.com)
-- **Vanilla CSS** (design system avec variables CSS)
-- **LocalStorage API** (persistance des données)
-- **Babel Standalone** (transpilation JSX côté client)
-
-### Composants Principaux
-
-1. **App** : Composant racine avec gestion d'état
-2. **AppHeader** : En-tête avec infos élève et moyenne
-3. **Navigation** : Menu 4 onglets (Dashboard, Exercices, Carnet, Méthodologie)
-4. **Dashboard** : Statistiques et progression
-5. **ExercisesList** : Grille d'exercices filtrables par niveau
-6. **ExerciseModal** : Interface de travail avec système de hints
-7. **Gradebook** : Tableau des notes style carnet scolaire
-8. **Methodology** : Documentation complète méthodologie béninoise
-
-### Logique d'Évaluation
-
-La fonction `evaluateAnswer()` analyse :
-- Longueur de la réponse
-- Présence des étapes méthodologiques attendues
-- Nombre d'indices utilisés (pénalités)
-
-**Note** : Pour version production, intégrer NLP (Natural Language Processing) pour analyse sémantique plus poussée.
-
-## Base de Données d'Exercices
-
-### Structure
-
-```javascript
-EXERCISES_DATABASE = {
-  CEP: [],    // Exercices niveau CEP
-  BEPC: [],   // Exercices niveau BEPC
-  BAC: []     // Exercices niveau BAC
-}
+# Exécuter le schéma SQL
+wrangler d1 execute mentor-beninois-db --file=./schema/d1_schema.sql
 ```
 
-### Format d'un Exercice
+#### 2. Configurer wrangler.toml
 
-```javascript
+Créer un fichier `wrangler.toml` dans le dossier `worker/` :
+
+```toml
+name = "iabeninois-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mentor-beninois-db"
+database_id = "VOTRE_DATABASE_ID"  # Obtenu après wrangler d1 create
+
+[vars]
+# Variables d'environnement (à définir dans le dashboard Cloudflare)
+# ROUTELLM_API_KEY = "..."
+# HF_API = "..."
+```
+
+#### 3. Déployer le Worker
+
+```bash
+cd worker
+wrangler deploy
+```
+
+## 📊 API Routes
+
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `GET` | `/` | Health check |
+| `POST` | `/` | Correction IA d'un exercice |
+| `POST` | `/student/register` | Enregistrer un nouvel élève |
+| `POST` | `/student/session` | Logger une session |
+| `POST` | `/grade/save` | Sauvegarder une note |
+| `GET` | `/student/:id/progress` | Récupérer la progression |
+
+### Exemples d'appels API
+
+**Enregistrer un élève :**
+```json
+POST /student/register
 {
-  id: 'unique-id',
-  level: 'CEP|BEPC|BAC',
-  subject: 'Matière',
-  title: 'Titre court',
-  question: 'Énoncé complet',
-  hints: ['Indice 1', 'Indice 2', 'Indice 3'],
-  expectedSteps: ['Étape 1', 'Étape 2'],
-  correctAnswer: 'Réponse attendue'
+  "id": "uuid-eleve",
+  "name": "KOSSOU Jean-Baptiste",
+  "school": "CEG Gbégamey",
+  "city": "Cotonou",
+  "targetLevel": "BEPC"
 }
 ```
 
-### Ajouter des Exercices
-
-Éditer `app.jsx`, section `EXERCISES_DATABASE`, et ajouter des objets suivant le format ci-dessus.
-
-## Personnalisation
-
-### Couleurs (Drapeau Béninois)
-
-Variables CSS dans `styles.css` :
-
-```css
---color-primary: #1a472a;    /* Vert */
---color-secondary: #fcd116;   /* Jaune */
---color-accent: #e8112d;      /* Rouge */
+**Sauvegarder une note :**
+```json
+POST /grade/save
+{
+  "studentId": "uuid-eleve",
+  "exerciseId": "bepc-math-1",
+  "level": "BEPC",
+  "subject": "Mathématiques",
+  "score": 15.5,
+  "hintsUsed": 1,
+  "studentAnswer": "...",
+  "aiFeedback": "..."
+}
 ```
 
-### Grading Logic
+## 🗄️ Schéma Base de Données
 
-Modifier la fonction `evaluateAnswer()` dans `app.jsx` pour ajuster :
-- Critères d'évaluation
-- Sévérité des pénalités
-- Feedback automatique
+### Table `students`
+- `id` (TEXT, PRIMARY KEY) - UUID généré côté client
+- `name` (TEXT) - Nom complet
+- `school` (TEXT) - École
+- `city` (TEXT) - Ville
+- `target_level` (TEXT) - CEP, BEPC, ou BAC
+- `created_at` (TEXT) - Date de création
+- `last_seen_at` (TEXT) - Dernière connexion
 
-### Tone of Voice
+### Table `exercise_attempts`
+- `id` (INTEGER, PRIMARY KEY AUTOINCREMENT)
+- `student_id` (TEXT) - Référence élève
+- `exercise_id` (TEXT) - ID exercice
+- `level` (TEXT) - Niveau
+- `subject` (TEXT) - Matière
+- `score` (REAL) - Note sur 20
+- `hints_used` (INTEGER) - Indices utilisés
+- `student_answer` (TEXT) - Réponse
+- `ai_feedback` (TEXT) - Feedback IA
+- `attempted_at` (TEXT) - Date
 
-Modifier les strings de feedback dans :
-- `getAppreciation()`
-- `evaluateAnswer()`
+### Table `student_sessions`
+- `id` (INTEGER, PRIMARY KEY AUTOINCREMENT)
+- `student_id` (TEXT) - Référence élève
+- `started_at` (TEXT) - Début session
+- `device_hint` (TEXT) - User-Agent
 
-## Limitations & Améliorations Futures
+## 🔧 Variables d'Environnement
 
-### Limitations Actuelles
-- Évaluation basique (longueur + keywords)
-- Pas d'IA pour analyse sémantique
-- Pas de backend (données en LocalStorage seulement)
-- Dépendance CDN pour React
+Configurer dans le dashboard Cloudflare Workers :
 
-### Roadmap
-- [ ] Intégration Claude API pour évaluation IA
-- [ ] Backend Node.js + MongoDB
-- [ ] Authentification multi-utilisateurs
-- [ ] Export PDF du Carnet de Notes
-- [ ] Mode hors-ligne complet (PWA)
-- [ ] Version mobile native (React Native)
-- [ ] Exercices collaboratifs (peer review)
-- [ ] Système de badges et récompenses
+- `ROUTELLM_API_KEY` - Clé API RouteLLM/Abacus
+- `HF_API` - Clé API Hugging Face (optionnel)
 
-## Support Navigateurs
+## 📱 Utilisation
 
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ⚠️ Internet Explorer : Non supporté
+1. **Premier accès** : L'élève remplit un formulaire rapide (nom, école, ville, niveau visé)
+2. **Auto-login** : Les sessions suivantes reconnaissent automatiquement l'élève
+3. **Exercices** : Choisir un exercice, répondre, obtenir une correction IA
+4. **Carnet de notes** : Consulter l'historique et la progression
 
-## Performance
+## 🛡️ Confidentialité
 
-### Optimisations Implémentées
-- CSS Variables pour thème cohérent
-- LocalStorage pour éviter appels serveur
-- Composants React purs (useCallback, useMemo implicites)
+- Les données sont stockées localement (localStorage) et sur Cloudflare D1
+- UUID anonyme pour identifier les élèves
+- Pas de données personnelles sensibles collectées
 
-### Recommandations Réseau
-- Fonctionne avec connexions 3G/4G au Bénin
-- CDN unpkg.com généralement rapide en Afrique de l'Ouest
-- Pour déploiement école : héberger React en local
+## 📄 Licence
 
-## Licence
-
-Projet éducatif - Libre d'utilisation pour écoles béninoises.
-
-## Contact & Contribution
-
-Pour ajouter des exercices authentiques ou améliorer l'algorithme d'évaluation, contactez le développeur.
+Ce projet est développé pour l'éducation au Bénin.
 
 ---
 
-**Devise du Mentor Béninois** : "Revenons à nos moutons. Le temps presse."
-
-🇧🇯 Fait pour les élèves de la République du Bénin.
+**IA Facile Bénin** - Rendre l'IA accessible à tous 🇧🇯
