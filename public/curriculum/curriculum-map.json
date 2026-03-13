@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "country": "Benin",
+  "grading_scale": {
+    "min": 0,
+    "max": 20
+  },
+  "levels": [
+    {
+      "level": "BEPC",
+      "subjects": [
+        {
+          "subject_id": "bepc_svt",
+          "name": "Sciences de la Vie et de la Terre",
+          "available_papers": [
+            {
+              "year": 2025,
+              "session": "normale",
+              "path": "/curriculum/bepc/svt/2025/session_normale/metadata.json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

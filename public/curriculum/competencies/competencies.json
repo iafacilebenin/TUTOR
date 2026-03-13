@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "competencies": [
+    {
+      "competency_id": "svt_absorption_01",
+      "level": "BEPC",
+      "subject_id": "bepc_svt",
+      "name": "Absorption intestinale: voies sanguine et chylifère",
+      "tags": ["nutrition", "villosite", "sang", "lymphe"]
+    },
+    {
+      "competency_id": "svt_repro_pma_01",
+      "level": "BEPC",
+      "subject_id": "bepc_svt",
+      "name": "Infertilité et choix d'une PMA (FIVETE / IA) à partir de documents",
+      "tags": ["reproduction", "fertilite", "pma", "fivete", "insemination"]
+    },
+    {
+      "competency_id": "svt_docs_01",
+      "level": "BEPC",
+      "subject_id": "bepc_svt",
+      "name": "Exploitation de documents scientifiques (comparer, conclure, justifier)",
+      "tags": ["methodologie", "documents", "justification", "comparaison"]
+    }
+  ]
+}

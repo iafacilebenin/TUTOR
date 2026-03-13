@@ -1,0 +1,15 @@
+{
+  "schema_version": "v1",
+  "level": "BEPC",
+  "subject_id": "bepc_svt",
+  "year": 2025,
+  "session": "normale",
+  "duration_minutes": 120,
+  "coefficient": 2,
+  "exam_competencies": {
+    "disciplinaires": ["N1", "N2"],
+    "transversales": ["N1", "N2", "N8"]
+  },
+  "exercises_path": "/curriculum/bepc/svt/2025/session_normale/exercises.json",
+  "sources_path": "/curriculum/bepc/svt/2025/session_normale/sources.json"
+}

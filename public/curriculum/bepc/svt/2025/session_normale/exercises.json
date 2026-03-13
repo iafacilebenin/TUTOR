@@ -1,0 +1,81 @@
+{
+  "schema_version": "v1",
+  "paper": {
+    "level": "BEPC",
+    "subject_id": "bepc_svt",
+    "year": 2025,
+    "session": "normale"
+  },
+  "exercises": [
+    {
+      "id": "bepc_svt_2025_normale_pma_couple_b",
+      "source_id": "bepc_svt_2025_sujet_normale",
+      "competency_ids": ["svt_repro_pma_01", "svt_docs_01"],
+      "title": "Infertilité du couple B et choix de la PMA adaptée",
+      "type": "document_based_problem",
+      "difficulty": 3,
+      "rubric_total": 12,
+      "prompt": {
+        "context": "Exploite les informations fournies par les documents pour expliquer l'incapacité du couple B à avoir d'enfants et apprécier l'aide à la procréation qui lui est adaptée.",
+        "tasks": [
+          "Comparer l'appareil génital de Mme B à celui d'une femme normale, et l'échantillon de spermatozoïdes de M. B à celui d'un homme normal, pour préciser la cause de la stérilité.",
+          "Proposer et justifier la méthode de procréation médicalement assistée (PMA) adaptée (FIVETE ou IA).",
+          "Expliquer l'origine de la stérilité du couple B et apprécier le bien-fondé de la PMA choisie."
+        ],
+        "provided_documents_summary": [
+          "Document 1: schémas d'interprétation de l'appareil génital (Mme B vs femme normale) + croquis de spermatozoïdes (M. B vs homme normal).",
+          "Document 2: définitions de la FIVETE et de l'insémination artificielle."
+        ]
+      },
+      "expected_elements": {
+        "key_points": [
+          "Mettre en évidence une obstruction/sténose cervicale (obstruction du passage du col de l'utérus) chez Mme B.",
+          "Conclure que les spermatozoïdes de M. B sont normaux (comparaison tête + flagelle).",
+          "Infertilité d'origine féminine liée à l'obstruction des voies génitales.",
+          "Choisir une PMA qui contourne l'obstruction (FIVETE indiquée) et justifier.",
+          "Expliquer que la FIVETE permet fécondation en laboratoire puis transfert d'embryon dans l'utérus."
+        ]
+      },
+      "rubric": {
+        "extraction_et_comparaison": 4,
+        "diagnostic_cause_infertilite": 2,
+        "choix_pma_et_justification": 3,
+        "explication_et_appreciation": 3
+      },
+      "official_correction_reference": {
+        "source_id": "bepc_svt_2025_corrige_officiel",
+        "notes": "La grille précise: infertilité féminine (obstruction col utérin), PMA mieux indiquée: FIVETE (IA possible selon techniques)."
+      }
+    },
+    {
+      "id": "bepc_svt_absorption_villosite_voies",
+      "source_id": "bepc_svt_2025_corrige_officiel",
+      "competency_ids": ["svt_absorption_01", "svt_docs_01"],
+      "title": "Absorption intestinale: voies sanguine et chylifère",
+      "type": "structured_essay_with_diagram",
+      "difficulty": 2,
+      "rubric_total": 6,
+      "prompt": {
+        "problem": "Comment les nutriments contenus dans le chyle intestinal parviennent-ils aux cellules de l'organisme ?",
+        "expected_plan": [
+          "Les deux voies d'absorption intestinale et les organes empruntés",
+          "Transport et distribution des nutriments aux cellules",
+          "Schéma légendé d'une villosité intestinale"
+        ]
+      },
+      "expected_elements": {
+        "key_points": [
+          "Voie sanguine: glucose, acides aminés, eau, sels minéraux, vitamines hydrosolubles.",
+          "Voie chylifère: acides gras, glycérols, vitamines liposolubles.",
+          "Transport/distribution via la circulation (sang; accepter lymphe + plasma si cohérent).",
+          "Schéma d'une villosité montrant les deux voies (capillaires sanguins + vaisseau chylifère) avec légendes/titre."
+        ]
+      },
+      "rubric": {
+        "voies_absorption_et_nutriments": 3,
+        "transport_et_distribution": 1,
+        "schema_qualite_legendes": 2
+      }
+    }
+  ]
+}
