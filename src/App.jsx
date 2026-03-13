@@ -114,8 +114,8 @@ const App = () => {
 
   if (!studentName) {
     return (
-      <div className="welcome-screen" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: 'var(--color-bg-main)'}}>
-        <div className="welcome-card" style={{background: 'white', padding: '3rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', textAlign: 'center', maxWidth: '500px'}}>
+      <div className="welcome-screen" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: 'linear-gradient(135deg, #008751 0%, #FCD116 50%, #E8112D 100%)'}}>
+        <div className="welcome-card" style={{background: 'rgba(255, 255, 255, 0.95)', padding: '3rem', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.3)', textAlign: 'center', maxWidth: '500px', backdropFilter: 'blur(10px)'}}>
           <h1 style={{color: 'var(--color-primary)', marginBottom: '1rem'}}>Bienvenue au Mentor Béninois</h1>
           <p style={{marginBottom: '2rem', color: '#555', lineHeight: '1.6'}}>Système d'évaluation adaptatif basé sur les grilles officielles du MENRS.</p>
           <input
