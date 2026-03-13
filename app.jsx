@@ -362,36 +362,58 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
     });
 
     try {
-      const response = await fetch("https://iabeninois-api.iafacilebenin.workers.dev", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          exercise: exercise,
-          studentAnswer: answer,
-          hintsUsed: hintsRevealed,
-          mode: "student"
-        })
-      });
+     const response = await fetch("https://iabeninois-api.iafacilebenin.workers.dev", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    messages: [
+      {
+        role: "system",
+        content: `Tu es un correcteur strict pour les examens nationaux du Bénin (CEP, BEPC, BAC). 
+Tu dois corriger la réponse de l'élève et retourner UNIQUEMENT un JSON valide avec ce format exact:
+{"score": <nombre entre 0 et 20>, "feedback": "<​commentaire détaillé>"}
+Aucun texte avant ou après le JSON.`
+      },
+      {
+        role: "user",
+        content: `Matière: ${exercise.subject}
+Niveau: ${exercise.level}
+Exercice: ${exercise.question}
+Réponse attendue: ${exercise.correctAnswer}
+Réponse de l'élève: ${answer}
+Indices utilisés: ${hintsRevealed} (pénalité: -${hintsRevealed * 2} points)`
+      }
+    ]
+  })
+});
 
-    const aiResult = await response.json();
+const aiResult = await response.json();
 
-      setFeedback({
-        score: aiResult.score || 0,
-        feedback:
-          aiResult.feedback ||
-          aiResult.feedback_detaille ||
-          "Analyse terminée.",
-        methodology: aiResult.methodology || `${aiResult.score}/20`
-      });
-    } catch (error) {
-      setFeedback({
-        score: 0,
-        feedback: "❌ Erreur de connexion. Vérifie ton internet.",
-        methodology: "N/A"
-      });
-    }
-  };
+// Parse the AI reply which contains JSON
+let score = 0;
+let feedbackText = "Analyse terminée.";
+try {
+  const parsed = JSON.parse(aiResult.reply);
+  score = Number(parsed.score) || 0;
+  feedbackText = parsed.feedback || "Correction effectuée.";
+} catch {
+  const scoreMatch = (aiResult.reply || "").match(/(\d+)\/20|"score"\s*:\s*(\d+)/);
+  score = scoreMatch ? parseInt(scoreMatch[1] || scoreMatch[2]) : 10;
+  feedbackText = aiResult.reply || "Correction effectuée.";
+}
 
+setFeedback({
+  score: score,
+  feedback: feedbackText,
+  methodology: `${score}/20`
+});
+   } catch (error) {
+  setFeedback({
+    score: 0,
+    feedback: "❌ Erreur de connexion. Vérifie ton internet.",
+    methodology: "N/A"
+  });
+}
   const handleSaveAndClose = () => {
     if (feedback) {
       onSubmit({
