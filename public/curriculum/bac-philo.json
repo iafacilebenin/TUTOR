@@ -1,0 +1,13 @@
+{
+  "level": "BAC",
+  "subject": "Philosophie",
+  "exercises": [
+    {
+      "id": "bac-philo-1",
+      "title": "La Technique",
+      "question": "Sujet : 'La technique libère-t-elle l'homme ou l'asservit-elle ?' Rédige un plan détaillé.",
+      "hints": ["Thèse : Libération", "Antithèse : Asservissement", "Synthèse : Maîtrise"],
+      "correctAnswer": "Plan dialectique structuré"
+    }
+  ]
+}
