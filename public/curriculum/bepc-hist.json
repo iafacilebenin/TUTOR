@@ -1,0 +1,13 @@
+{
+  "level": "BEPC",
+  "subject": "Histoire-Géo",
+  "exercises": [
+    {
+      "id": "bepc-hist-1",
+      "title": "Histoire du Bénin",
+      "question": "En quelle année le Dahomey (actuel Bénin) a-t-il accédé à l'indépendance ?",
+      "hints": ["C'était en août.", "Le premier président était Hubert Maga."],
+      "correctAnswer": "1960"
+    }
+  ]
+}
