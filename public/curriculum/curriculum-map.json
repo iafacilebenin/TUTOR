@@ -1,25 +1,28 @@
 {
-  "schema_version": "v1",
-  "country": "Benin",
-  "grading_scale": {
-    "min": 0,
-    "max": 20
-  },
   "levels": [
     {
-      "level": "BEPC",
+      "id": "CEP",
+      "name": "Certificat d'Études Primaires",
       "subjects": [
-        {
-          "subject_id": "bepc_svt",
-          "name": "Sciences de la Vie et de la Terre",
-          "available_papers": [
-            {
-              "year": 2025,
-              "session": "normale",
-              "path": "/curriculum/bepc/svt/2025/session_normale/metadata.json"
-            }
-          ]
-        }
+        { "id": "math", "name": "Mathématiques", "path": "/curriculum/cep-math.json" },
+        { "id": "fr", "name": "Français", "path": "/curriculum/cep-fr.json" }
+      ]
+    },
+    {
+      "id": "BEPC",
+      "name": "Brevet d'Études du Premier Cycle",
+      "subjects": [
+        { "id": "pc", "name": "Physique-Chimie", "path": "/curriculum/bepc-pc.json" },
+        { "id": "hist-geo", "name": "Histoire-Géo", "path": "/curriculum/bepc-hist.json" },
+        { "id": "svt", "name": "SVT", "path": "/curriculum/bepc-svt.json" }
+      ]
+    },
+    {
+      "id": "BAC",
+      "name": "Baccalauréat",
+      "subjects": [
+        { "id": "philo", "name": "Philosophie", "path": "/curriculum/bac-philo.json" },
+        { "id": "math", "name": "Mathématiques", "path": "/curriculum/bac-math.json" }
       ]
     }
   ]
