@@ -4,14 +4,16 @@
       "id": "CEP",
       "name": "Certificat d'Études Primaires",
       "subjects": [
-        { "id": "math", "name": "Mathématiques", "path": "/curriculum/cep-math.json" }
+        { "id": "math", "name": "Mathématiques", "path": "/curriculum/cep-math.json" },
+        { "id": "fr", "name": "Français", "path": "/curriculum/cep-fr.json" }
       ]
     },
     {
       "id": "BEPC",
       "name": "Brevet d'Études du Premier Cycle",
       "subjects": [
-        { "id": "pc", "name": "Physique-Chimie", "path": "/curriculum/bepc-pc.json" }
+        { "id": "pc", "name": "Physique-Chimie", "path": "/curriculum/bepc-pc.json" },
+        { "id": "hist-geo", "name": "Histoire-Géo", "path": "/curriculum/bepc-hist.json" }
       ]
     },
     {
