@@ -39,44 +39,39 @@ const App = () => {
   }, []);
 
   // Save persistence
-  useEffect(() => {
-    if (studentName) localStorage.setItem('mentorBeninois_studentName', studentName);
-    if (deviceId) localStorage.setItem('mentorBeninois_deviceId', deviceId);
-    localStorage.setItem('mentorBeninois_grades', JSON.stringify(grades));
-  }, [studentName, grades, deviceId]);
+ useEffect(() => {
+  const loadCurriculum = async () => {
+    try {
+      const mapRes = await fetch('/curriculum/curriculum-map.json');
+      const mapData = await mapRes.json();
+      let loadedExercises = [];
 
-// Dynamic Curriculum Loader Engine (Simplified for new Map)
-  useEffect(() => {
-    const loadCurriculum = async () => {
-      try {
-        const mapRes = await fetch('/curriculum/curriculum-map.json');
-        const mapData = await mapRes.json();
-        let loadedExercises = [];
+      for (const level of mapData.levels) {
+        for (const subject of level.subjects) {
+          if (subject.path) {
+            const exRes = await fetch(subject.path);
+            const exData = await exRes.json();
 
-        // Loop through levels and subjects using the new simple 'path'
-        for (const level of mapData.levels) {
-          for (const subject of level.subjects) {
-            if (subject.path) {
-              const exRes = await fetch(subject.path);
-              const exData = await exRes.json();
-              
-              // Enrich exercises with metadata for the UI
-              const enriched = exData.exercises.map(ex => ({
-                ...ex,
-                level: level.id,
-                subject_name: subject.name
-              }));
-              loadedExercises = [...loadedExercises, ...enriched];
-            }
+            const enriched = exData.exercises.map(ex => ({
+              ...ex,
+              level: level.id,
+              subject_name: subject.name,
+              year: exData.year || "2025",
+              points: ex.points || 5,
+              difficulty: ex.difficulty || "Moyen"
+            }));
+
+            loadedExercises = [...loadedExercises, ...enriched];
           }
         }
-        setExercisesDB(loadedExercises);
-      } catch (error) {
-        console.error("Failed to load curriculum:", error);
       }
-    };
-    loadCurriculum();
-  }, []);
+      setExercisesDB(loadedExercises); // ✅ inside try
+    } catch (error) {
+      console.error("Failed to load curriculum:", error);
+    }
+  };
+  loadCurriculum();
+}, []);
 
   const handleRegister = async (name) => {
       setIsRegistering(true);
