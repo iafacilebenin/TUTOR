@@ -45,50 +45,36 @@ const App = () => {
     localStorage.setItem('mentorBeninois_grades', JSON.stringify(grades));
   }, [studentName, grades, deviceId]);
 
-  // Dynamic Curriculum Loader Engine (Phase A MoE-grade)
+// Dynamic Curriculum Loader Engine (Simplified for new Map)
   useEffect(() => {
     const loadCurriculum = async () => {
       try {
-        // 1. Load the map
         const mapRes = await fetch('/curriculum/curriculum-map.json');
         const mapData = await mapRes.json();
-
         let loadedExercises = [];
 
-        // 2. Iterate through levels, subjects, and papers to fetch exercises
+        // Loop through levels and subjects using the new simple 'path'
         for (const level of mapData.levels) {
           for (const subject of level.subjects) {
-            for (const paper of subject.available_papers) {
-              const metaRes = await fetch(paper.path);
-              const metaData = await metaRes.json();
-
-              const exRes = await fetch(metaData.exercises_path);
+            if (subject.path) {
+              const exRes = await fetch(subject.path);
               const exData = await exRes.json();
-
-              // Inject metadata into the exercises so the UI knows where they came from
-              const enrichedExercises = exData.exercises.map(ex => ({
-                  ...ex,
-                  _meta: {
-                      level: metaData.level,
-                      subject_id: subject.subject_id,
-                      subject_name: subject.name,
-                      year: metaData.year,
-                      session: metaData.session
-                  }
+              
+              // Enrich exercises with metadata for the UI
+              const enriched = exData.exercises.map(ex => ({
+                ...ex,
+                level: level.id,
+                subject_name: subject.name
               }));
-
-              loadedExercises = [...loadedExercises, ...enrichedExercises];
+              loadedExercises = [...loadedExercises, ...enriched];
             }
           }
         }
-
         setExercisesDB(loadedExercises);
-
       } catch (error) {
-        console.error("Failed to load curriculum from static files:", error);
+        console.error("Failed to load curriculum:", error);
       }
     };
-
     loadCurriculum();
   }, []);
 
