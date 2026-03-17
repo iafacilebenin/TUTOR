@@ -4,25 +4,21 @@
       "id": "CEP",
       "name": "Certificat d'Études Primaires",
       "subjects": [
-        { "id": "math", "name": "Mathématiques", "path": "/curriculum/cep-math.json" },
-        { "id": "fr", "name": "Français", "path": "/curriculum/cep-fr.json" }
+        { "id": "math", "name": "Mathématiques", "path": "/curriculum/cep-math.json" }
       ]
     },
     {
       "id": "BEPC",
       "name": "Brevet d'Études du Premier Cycle",
       "subjects": [
-        { "id": "pc", "name": "Physique-Chimie", "path": "/curriculum/bepc-pc.json" },
-        { "id": "hist-geo", "name": "Histoire-Géo", "path": "/curriculum/bepc-hist.json" },
-        { "id": "svt", "name": "SVT", "path": "/curriculum/bepc-svt.json" }
+        { "id": "pc", "name": "Physique-Chimie", "path": "/curriculum/bepc-pc.json" }
       ]
     },
     {
       "id": "BAC",
       "name": "Baccalauréat",
       "subjects": [
-        { "id": "philo", "name": "Philosophie", "path": "/curriculum/bac-philo.json" },
-        { "id": "math", "name": "Mathématiques", "path": "/curriculum/bac-math.json" }
+        { "id": "philo", "name": "Philosophie", "path": "/curriculum/bac-philo.json" }
       ]
     }
   ]
