@@ -22,24 +22,20 @@ const App = () => {
   const [exercisesDB, setExercisesDB] = useState([]);
   const [isRegistering, setIsRegistering] = useState(false);
 
-  // Load persistence
-  useEffect(() => {
-    const savedName = localStorage.getItem('mentorBeninois_studentName');
-    const savedGrades = localStorage.getItem('mentorBeninois_grades');
-    const savedDeviceId = localStorage.getItem('mentorBeninois_deviceId');
+// Load persistence
+useEffect(() => {
+  ...
+}, []);
 
-    if (savedName) setStudentName(savedName);
-    if (savedGrades) setGrades(JSON.parse(savedGrades));
+// Save persistence
+useEffect(() => {
+  if (studentName) localStorage.setItem('mentorBeninois_studentName', studentName);
+  if (deviceId) localStorage.setItem('mentorBeninois_deviceId', deviceId);
+  localStorage.setItem('mentorBeninois_grades', JSON.stringify(grades));
+}, [studentName, grades, deviceId]);
 
-    if (savedDeviceId) {
-        setDeviceId(savedDeviceId);
-    } else {
-        setDeviceId(getDeviceId());
-    }
-  }, []);
-
-  // Save persistence
- useEffect(() => {
+// Load curriculum
+useEffect(() => {
   const loadCurriculum = async () => {
     try {
       const mapRes = await fetch('/curriculum/curriculum-map.json');
@@ -65,14 +61,14 @@ const App = () => {
           }
         }
       }
-      setExercisesDB(loadedExercises); // ✅ inside try
+      setExercisesDB(loadedExercises);
     } catch (error) {
       console.error("Failed to load curriculum:", error);
     }
   };
   loadCurriculum();
 }, []);
-
+  
   const handleRegister = async (name) => {
       setIsRegistering(true);
       try {
