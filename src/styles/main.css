@@ -4,20 +4,21 @@
    ======================================== */
 
 :root {
-  /* Palette Scolaire Béninoise */
-  --color-primary: #1a472a; /* Vert foncé (drapeau béninois) */
-  --color-secondary: #fcd116; /* Jaune (drapeau béninois) */
-  --color-accent: #e8112d; /* Rouge (drapeau béninois) */
+  /* Palette Artistique et Immersive Béninoise */
+  --color-primary: #008751; /* Vert du drapeau béninois (vif) */
+  --color-secondary: #FCD116; /* Jaune or du drapeau béninois */
+  --color-accent: #E8112D; /* Rouge du drapeau béninois */
 
-  --color-bg-main: #f5f5f0; /* Papier légèrement jauni */
+  /* Explicit Fallbacks requested */
+  --color-bg-main: #f0f4f8; /* Refined blue/grey as requested by user initially, but adapting for an artistic feel */
   --color-bg-card: #ffffff;
-  --color-bg-header: #2d5016;
-  --color-background: #f5f5f0; /* Fallback from older code */
+  --color-bg-header: #005f38; /* Vert forêt profond, plus élégant */
+  --color-background: #f0f4f8;
 
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #4a4a4a;
-  --color-text-muted: #7a7a7a;
-  --color-text: #1a1a1a; /* Fallback from older code */
+  --color-text-primary: #2c3e50; /* Refined dark slate for better readability and modern feel */
+  --color-text-secondary: #596a7a;
+  --color-text-muted: #8a9ba8;
+  --color-text: #2c3e50;
 
   --color-border: #d4d4d0;
   --color-border-dark: #8a8a80;
