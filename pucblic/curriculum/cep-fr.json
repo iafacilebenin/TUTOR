@@ -1,0 +1,13 @@
+{
+  "level": "CEP",
+  "subject": "Français",
+  "exercises": [
+    {
+      "id": "cep-fr-1",
+      "title": "Grammaire - Le Sujet",
+      "question": "Dans la phrase 'Le petit écolier béninois étudie sa leçon', quel est le groupe nominal sujet ?",
+      "hints": ["Qui est-ce qui étudie ?", "Le sujet est souvent au début."],
+      "correctAnswer": "Le petit écolier béninois"
+    }
+  ]
+}
