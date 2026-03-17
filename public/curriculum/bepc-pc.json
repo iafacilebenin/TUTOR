@@ -1,0 +1,13 @@
+{
+  "level": "BEPC",
+  "subject": "Physique-Chimie",
+  "exercises": [
+    {
+      "id": "bepc-phys-1",
+      "title": "Loi d'Ohm",
+      "question": "Un circuit comporte une pile de 12V et une résistance R. L'intensité est de 0,4A. Calcule R.",
+      "hints": ["Utilise U = R x I", "R = U / I"],
+      "correctAnswer": "30 Ω"
+    }
+  ]
+}
