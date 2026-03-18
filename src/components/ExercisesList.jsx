@@ -25,7 +25,9 @@ const ExercisesList = ({ exercises, grades, onSelectExercise }) => {
 
       {allEx.length === 0 ? (
           <div style={{padding: '2rem', textAlign: 'center', color: '#666', fontStyle: 'italic'}}>
-              Chargement du curriculum... (Assurez-vous d'avoir accès au réseau)
+              {exercises.length === 0
+                ? "Chargement du curriculum... (Assurez-vous d'avoir accès au réseau)"
+                : "Bientôt disponible — de nouveaux exercices seront ajoutés prochainement pour ce niveau."}
           </div>
       ) : (
           <div className="exercises-grid">

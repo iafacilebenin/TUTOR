@@ -63,6 +63,11 @@ useEffect(() => {
                 (ex.rubric
                   ? Object.values(ex.rubric).reduce((sum, pts) => sum + pts, 0)
                   : (ex.points || 20));
+              // Calculate rubric_total from rubric items if available
+              const rubricTotal = ex.rubric
+                ? ex.rubric.reduce((sum, r) => sum + (r.points || 0), 0)
+                : (ex.points || 20);
+
               return {
                 ...ex,
                 _meta: {
