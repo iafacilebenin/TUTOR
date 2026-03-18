@@ -71,9 +71,11 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
   const handleSaveAndClose = () => {
     if (feedback && feedback.score !== '...') {
       // Scale the score to be out of 20 for global tracking
-      const rawScore = Number(feedback.score);
-      const rubricTotal = exercise.rubric_total || 20;
-      const scaledScore = Math.round((rawScore / rubricTotal) * 20 * 10) / 10;
+      const rawScore = Number(feedback.score) || 0;
+      const rubricTotal = Number(exercise.rubric_total) || 20;
+      const scaledScore = rubricTotal > 0
+        ? Math.round((rawScore / rubricTotal) * 20 * 10) / 10
+        : 0;
 
       onSubmit({
         exerciseId: exercise.id,
@@ -125,6 +127,7 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
 
           <div className="question-section">
             <div className="question-label">Consigne de l'exercice</div>
+            {/* Support AI-generated prompt structure */}
             {exercise.prompt?.context && <p className="question-text"><em>{exercise.prompt.context}</em></p>}
             {exercise.prompt?.problem && <p className="question-text"><strong>{exercise.prompt.problem}</strong></p>}
             {exercise.prompt?.tasks && (
@@ -139,6 +142,10 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
                         {exercise.prompt.provided_documents_summary.map((doc, i) => <li key={i}>{doc}</li>)}
                     </ul>
                  </div>
+            )}
+            {/* Fallback: support static JSON exercises with simple "question" field */}
+            {!exercise.prompt?.problem && exercise.question && (
+                <p className="question-text"><strong>{exercise.question}</strong></p>
             )}
           </div>
 
