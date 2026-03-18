@@ -10,10 +10,11 @@
   --color-accent: #E8112D; /* Rouge du drapeau béninois */
 
   /* Explicit Fallbacks requested */
-  --color-bg-main: #f0f4f8; /* Refined blue/grey as requested by user initially, but adapting for an artistic feel */
-  --color-bg-card: #ffffff;
-  --color-bg-header: #005f38; /* Vert forêt profond, plus élégant */
-  --color-background: #f0f4f8;
+  --color-bg-main: #0a3320; /* Dark forest green for page background */
+  --color-bg-card: #FFFBEB; /* Warm ambient amber for cards */
+  --color-bg-tint: #d4eadc; /* Light green tint for inner sections within cards */
+  --color-bg-header: #003d18; /* Deeper forest green for header */
+  --color-background: #0a3320;
 
   --color-text-primary: #2c3e50; /* Refined dark slate for better readability and modern feel */
   --color-text-secondary: #596a7a;
@@ -158,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
    NAVIGATION
    ======================================== */
 .main-nav {
-  background: white;
+  background: var(--color-bg-card);
   border-bottom: 2px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   position: sticky;
@@ -190,14 +191,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-tab:hover {
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
   color: var(--color-primary);
 }
 
 .nav-tab.active {
   color: var(--color-primary);
   border-bottom-color: var(--color-secondary);
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
 }
 
 /* ========================================
@@ -223,7 +224,7 @@ h1, h2, h3, h4, h5, h6 {
    CARNET DE NOTES (GRADEBOOK)
    ======================================== */
 .gradebook-container {
-  background: white;
+  background: var(--color-bg-card);
   border: 2px solid var(--color-border-dark);
   border-radius: 4px;
   box-shadow: var(--shadow-md);
@@ -246,7 +247,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grades-table th {
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
   padding: var(--space-md);
   text-align: left;
   font-weight: 700;
@@ -262,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grades-table tr:hover {
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
 }
 
 .grade-badge {
@@ -307,7 +308,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exercise-card {
-  background: white;
+  background: var(--color-bg-card);
   border: 2px solid var(--color-border);
   border-radius: 4px;
   padding: var(--space-lg);
@@ -373,7 +374,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-content {
-  background: white;
+  background: var(--color-bg-card);
   border: 3px solid var(--color-primary);
   border-radius: 4px;
   max-width: 900px;
@@ -420,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .question-section {
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
   border-left: 4px solid var(--color-primary);
   padding: var(--space-lg);
   margin-bottom: var(--space-lg);
@@ -478,7 +479,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hint-item {
   padding: var(--space-md);
-  background: white;
+  background: var(--color-bg-card);
   border-left: 3px solid #f59e0b;
   margin-bottom: var(--space-sm);
 }
@@ -629,7 +630,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline {
-  background: white;
+  background: var(--color-bg-card);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
 }
@@ -684,7 +685,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .progress-chart {
-  background: white;
+  background: var(--color-bg-card);
   border: 2px solid var(--color-border);
   border-radius: 4px;
   padding: var(--space-lg);
@@ -711,7 +712,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .progress-bar {
   height: 24px;
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
   border: 2px solid var(--color-border);
   border-radius: 4px;
   overflow: hidden;
@@ -734,7 +735,7 @@ h1, h2, h3, h4, h5, h6 {
    MÉTHODOLOGIE SECTION
    ======================================== */
 .methodology-content {
-  background: white;
+  background: var(--color-bg-card);
   border: 2px solid var(--color-border);
   border-radius: 4px;
   padding: var(--space-xl);
@@ -764,7 +765,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .methodology-example {
-  background: var(--color-bg-main);
+  background: var(--color-bg-tint);
   border-left: 4px solid var(--color-accent);
   padding: var(--space-md);
   margin: var(--space-md) 0;
