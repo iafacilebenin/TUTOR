@@ -1,13 +1,28 @@
 {
   "level": "CEP",
   "subject": "Mathématiques",
+  "year": 2025,
   "exercises": [
     {
       "id": "cep-math-1",
       "title": "Problème de proportionnalité",
-      "question": "Maman Adjara vend des tomates au marché Dantokpa. Elle achète 50 kg de tomates à 200 FCFA le kg. Elle revend le kg à 350 FCFA. Calcule son bénéfice total.",
+      "prompt": {
+        "problem": "Maman Adjara vend des tomates au marché Dantokpa. Elle achète 50 kg de tomates à 200 FCFA le kg. Elle revend le kg à 350 FCFA. Calcule son bénéfice total."
+      },
       "hints": ["Calcule le prix d'achat total.", "Calcule le prix de vente total.", "Bénéfice = Vente - Achat."],
-      "correctAnswer": "7500 FCFA"
+      "expected_elements": {
+        "prix_achat": "50 × 200 = 10 000 FCFA",
+        "prix_vente": "50 × 350 = 17 500 FCFA",
+        "benefice": "17 500 − 10 000 = 7 500 FCFA"
+      },
+      "rubric": {
+        "calcul_achat": 2,
+        "calcul_vente": 2,
+        "calcul_benefice": 2,
+        "unite_et_presentation": 1
+      },
+      "rubric_total": 7,
+      "difficulty": "Facile"
     }
   ]
 }

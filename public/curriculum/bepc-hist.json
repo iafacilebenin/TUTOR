@@ -1,13 +1,34 @@
 {
   "level": "BEPC",
   "subject": "Histoire-Géo",
+  "year": 2025,
   "exercises": [
     {
       "id": "bepc-hist-1",
       "title": "Histoire du Bénin",
-      "question": "En quelle année le Dahomey (actuel Bénin) a-t-il accédé à l'indépendance ?",
-      "hints": ["C'était en août.", "Le premier président était Hubert Maga."],
-      "correctAnswer": "1960"
+      "prompt": {
+        "context": "L'Afrique francophone a connu une vague d'indépendances au XXe siècle.",
+        "problem": "En quelle année le Dahomey (actuel Bénin) a-t-il accédé à l'indépendance ? Cite le premier président et explique le contexte historique en quelques phrases.",
+        "tasks": [
+          "Indique l'année d'indépendance.",
+          "Cite le nom du premier président.",
+          "Explique brièvement le contexte de la décolonisation en Afrique."
+        ]
+      },
+      "hints": ["L'indépendance a eu lieu en août.", "Le premier président était Hubert Maga."],
+      "expected_elements": {
+        "annee": "1960",
+        "president": "Hubert Maga",
+        "contexte": "Vague de décolonisation de l'Afrique subsaharienne francophone après la Seconde Guerre mondiale."
+      },
+      "rubric": {
+        "annee_correcte": 2,
+        "president": 2,
+        "contexte_historique": 4,
+        "qualite_redaction": 2
+      },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
     }
   ]
 }

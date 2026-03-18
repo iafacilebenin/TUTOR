@@ -1,13 +1,35 @@
 {
   "level": "BAC",
   "subject": "Philosophie",
+  "year": 2025,
   "exercises": [
     {
       "id": "bac-philo-1",
       "title": "La Technique",
-      "question": "Sujet : 'La technique libère-t-elle l'homme ou l'asservit-elle ?' Rédige un plan détaillé.",
-      "hints": ["Thèse : Libération", "Antithèse : Asservissement", "Synthèse : Maîtrise"],
-      "correctAnswer": "Plan dialectique structuré"
+      "prompt": {
+        "context": "La technique occupe une place centrale dans la civilisation moderne et soulève des questions fondamentales sur la condition humaine.",
+        "problem": "Sujet : 'La technique libère-t-elle l'homme ou l'asservit-elle ?' Rédige un plan détaillé en trois parties avec des arguments et des exemples.",
+        "tasks": [
+          "Présente et justifie une thèse affirmant que la technique libère l'homme.",
+          "Présente et justifie une antithèse montrant que la technique asservit l'homme.",
+          "Propose une synthèse dépassant cette opposition."
+        ]
+      },
+      "hints": ["Thèse : Libération (médecine, gain de temps, abolition des distances)", "Antithèse : Asservissement (aliénation au travail, dépendance aux outils)", "Synthèse : La maîtrise éthique de la technique"],
+      "expected_elements": {
+        "these": "La technique libère l'homme en le soulageant des contraintes naturelles.",
+        "antithese": "La technique peut asservir lorsqu'elle devient une fin en soi.",
+        "synthese": "C'est l'usage éthique et réfléchi de la technique qui détermine si elle libère ou asservit."
+      },
+      "rubric": {
+        "these_argumentee": 4,
+        "antithese_argumentee": 4,
+        "synthese": 4,
+        "qualite_redaction": 3,
+        "exemples_pertinents": 2
+      },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
     }
   ]
 }

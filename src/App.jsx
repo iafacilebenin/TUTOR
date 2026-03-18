@@ -24,7 +24,17 @@ const App = () => {
 
 // Load persistence
 useEffect(() => {
-  ...
+  const savedName = localStorage.getItem('mentorBeninois_studentName');
+  const savedDeviceId = localStorage.getItem('mentorBeninois_deviceId');
+  const savedGrades = localStorage.getItem('mentorBeninois_grades');
+
+  if (savedName) setStudentName(savedName);
+  if (savedGrades) {
+    try { setGrades(JSON.parse(savedGrades)); } catch (e) { console.error('Failed to parse grades', e); }
+  }
+
+  const id = savedDeviceId || getDeviceId();
+  setDeviceId(id);
 }, []);
 
 // Save persistence

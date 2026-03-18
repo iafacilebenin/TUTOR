@@ -1,13 +1,25 @@
 {
   "level": "CEP",
   "subject": "Français",
+  "year": 2025,
   "exercises": [
     {
       "id": "cep-fr-1",
       "title": "Grammaire - Le Sujet",
-      "question": "Dans la phrase 'Le petit écolier béninois étudie sa leçon', quel est le groupe nominal sujet ?",
+      "prompt": {
+        "problem": "Dans la phrase 'Le petit écolier béninois étudie sa leçon', quel est le groupe nominal sujet ? Explique comment tu l'as identifié."
+      },
       "hints": ["Qui est-ce qui étudie ?", "Le sujet est souvent au début."],
-      "correctAnswer": "Le petit écolier béninois"
+      "expected_elements": {
+        "sujet": "Le petit écolier béninois",
+        "methode": "Poser la question 'Qui est-ce qui + verbe ?'"
+      },
+      "rubric": {
+        "identification_sujet": 3,
+        "explication_methode": 2
+      },
+      "rubric_total": 5,
+      "difficulty": "Facile"
     }
   ]
 }
