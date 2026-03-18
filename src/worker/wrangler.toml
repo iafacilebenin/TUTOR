@@ -1,0 +1,28 @@
+name = "iabeninois-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Cloudflare AI binding ──────────────────────────────────────────────────
+[ai]
+binding = "AI"
+
+# ── D1 Database binding ────────────────────────────────────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "mentor-beninois-db"
+database_id   = "YOUR_D1_DATABASE_ID"   # replace after: wrangler d1 create mentor-beninois-db
+
+# ── KV Namespace for rate limiting ─────────────────────────────────────────
+[[kv_namespaces]]
+binding = "RATE_LIMITER"
+id      = "YOUR_KV_NAMESPACE_ID"        # replace after: wrangler kv:namespace create RATE_LIMITER
+
+# ── Environment variables ──────────────────────────────────────────────────
+[vars]
+ENVIRONMENT        = "production"
+RATE_LIMIT_PER_DAY = "10"
+
+# ── Local development overrides ────────────────────────────────────────────
+[env.development]
+vars = { ENVIRONMENT = "development", RATE_LIMIT_PER_DAY = "100" }

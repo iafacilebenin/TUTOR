@@ -5,21 +5,143 @@
   "exercises": [
     {
       "id": "cep-fr-1",
-      "title": "Grammaire - Le Sujet",
+      "title": "Grammaire — Identification du sujet",
       "prompt": {
-        "problem": "Dans la phrase 'Le petit écolier béninois étudie sa leçon', quel est le groupe nominal sujet ? Explique comment tu l'as identifié."
+        "problem": "Dans la phrase 'Le petit écolier béninois étudie sa leçon avec sérieux', identifie le groupe nominal sujet et explique ta méthode.",
+        "tasks": ["Identifie le groupe nominal sujet.", "Explique comment tu l'as trouvé."]
       },
-      "hints": ["Qui est-ce qui étudie ?", "Le sujet est souvent au début."],
-      "expected_elements": {
-        "sujet": "Le petit écolier béninois",
-        "methode": "Poser la question 'Qui est-ce qui + verbe ?'"
-      },
-      "rubric": {
-        "identification_sujet": 3,
-        "explication_methode": 2
-      },
+      "hints": ["Pose la question : Qui est-ce qui étudie ?", "Le sujet est souvent avant le verbe."],
+      "expected_elements": { "sujet": "Le petit écolier béninois", "methode": "Répondre à : Qui est-ce qui + verbe ?" },
+      "rubric": { "identification": 3, "methode_expliquee": 2 },
       "rubric_total": 5,
       "difficulty": "Facile"
+    },
+    {
+      "id": "cep-fr-2",
+      "title": "Conjugaison — Présent de l'indicatif",
+      "prompt": {
+        "problem": "Conjugue le verbe 'travailler' à toutes les personnes du présent de l'indicatif.",
+        "tasks": ["Écris les six formes conjuguées.", "Souligne le radical et entoure la terminaison."]
+      },
+      "hints": ["Travailler est un verbe du 1er groupe.", "Radical : travaill-"],
+      "expected_elements": { "conjugaison": "je travaille, tu travailles, il/elle travaille, nous travaillons, vous travaillez, ils/elles travaillent" },
+      "rubric": { "formes_correctes": 4, "radical_terminaison": 1 },
+      "rubric_total": 5,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "cep-fr-3",
+      "title": "Orthographe — Accord du participe passé",
+      "prompt": {
+        "problem": "Accorde correctement le participe passé dans chaque phrase et justifie : 1) Les élèves ont (appris) leur leçon. 2) La leçon que les élèves ont (appris).",
+        "tasks": ["Accorde le participe passé.", "Justifie chaque accord."]
+      },
+      "hints": ["Avec 'avoir', le participe s'accorde avec le COD si celui-ci est placé avant.", "Cherche le COD avant ou après le verbe."],
+      "expected_elements": { "phrase1": "appris (pas d'accord : COD après)", "phrase2": "apprise (accord avec 'la leçon', féminin singulier)" },
+      "rubric": { "accord_phrase1": 2, "accord_phrase2": 2, "justification": 1 },
+      "rubric_total": 5,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "cep-fr-4",
+      "title": "Vocabulaire — Synonymes et antonymes",
+      "prompt": {
+        "problem": "Pour chaque mot, donne un synonyme et un antonyme : 1) courageux  2) rapide  3) grand.",
+        "tasks": ["Donne un synonyme pour chaque mot.", "Donne un antonyme pour chaque mot."]
+      },
+      "hints": ["Un synonyme a le même sens.", "Un antonyme a le sens contraire."],
+      "expected_elements": { "courageux": "syn: brave / ant: lâche", "rapide": "syn: vif / ant: lent", "grand": "syn: immense / ant: petit" },
+      "rubric": { "synonymes": 3, "antonymes": 3 },
+      "rubric_total": 6,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "cep-fr-5",
+      "title": "Production écrite — Description d'un lieu",
+      "prompt": {
+        "context": "Tu dois décrire un lieu que tu connais bien.",
+        "problem": "En 8 à 10 lignes, décris le marché de ton quartier en utilisant des adjectifs qualificatifs et des comparaisons.",
+        "tasks": ["Introduis le lieu.", "Décris les couleurs, les sons, les odeurs.", "Utilise au moins 5 adjectifs qualificatifs.", "Conclure avec ton ressenti."]
+      },
+      "hints": ["Utilise tes cinq sens pour décrire.", "Commence par une phrase d'introduction."],
+      "expected_elements": { "structure": "Introduction + Description sensorielle + Conclusion", "adjectifs": "au moins 5 adjectifs qualificatifs", "longueur": "8 à 10 lignes" },
+      "rubric": { "structure": 3, "adjectifs": 2, "orthographe": 2, "coherence": 2, "longueur": 1 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-fr-6",
+      "title": "Lecture — Compréhension de texte",
+      "prompt": {
+        "context": "Texte : 'Chaque matin, Amavi se lève tôt pour aller chercher de l'eau au puits avant d'aller à l'école. Elle marche deux kilomètres sous le soleil levant. Malgré la fatigue, elle n'a jamais manqué un seul jour de classe.'",
+        "problem": "Réponds aux questions suivantes sur le texte.",
+        "tasks": ["Que fait Amavi chaque matin avant l'école ?", "Quelle distance parcourt-elle ?", "Quel trait de caractère ce texte montre-t-il chez Amavi ?"]
+      },
+      "hints": ["Relis chaque ligne attentivement.", "Le trait de caractère est dans la dernière phrase."],
+      "expected_elements": { "Q1": "Elle va chercher de l'eau au puits.", "Q2": "Deux kilomètres.", "Q3": "La persévérance / le courage." },
+      "rubric": { "Q1": 2, "Q2": 2, "Q3": 3 },
+      "rubric_total": 7,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "cep-fr-7",
+      "title": "Grammaire — Types et formes de phrases",
+      "prompt": {
+        "problem": "Transforme chaque phrase selon l'indication : 1) 'Il fait ses devoirs.' → forme négative  2) 'Tu viens demain.' → forme interrogative  3) 'Viens ici !' → forme affirmative déclarative.",
+        "tasks": ["Effectue chaque transformation.", "Identifie le type de chaque phrase transformée."]
+      },
+      "hints": ["Forme négative : ne ... pas.", "Interrogative : inversion sujet-verbe ou Est-ce que..."],
+      "expected_elements": { "neg": "Il ne fait pas ses devoirs.", "interro": "Viens-tu demain ? / Est-ce que tu viens demain ?", "affirm": "Tu viens ici." },
+      "rubric": { "transformation1": 2, "transformation2": 2, "transformation3": 2 },
+      "rubric_total": 6,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-fr-8",
+      "title": "Dictée préparée — Texte sur le Bénin",
+      "prompt": {
+        "context": "Extrait : 'Le Bénin est un pays d'Afrique de l'Ouest. Sa capitale politique est Porto-Novo et sa capitale économique est Cotonou. Les Béninois sont réputés pour leur hospitalité et leur amour de l'éducation.'",
+        "problem": "Écris ce texte sous dictée en faisant attention aux accords, aux majuscules et à la ponctuation.",
+        "tasks": ["Recopie le texte sans erreur.", "Justifie les majuscules utilisées."]
+      },
+      "hints": ["Les noms propres (pays, villes) prennent une majuscule.", "Vérifie les accords des adjectifs."],
+      "expected_elements": { "majuscules": "Bénin, Afrique, Porto-Novo, Cotonou, Béninois", "accords": "réputés (masc. plur.), leur hospitalité" },
+      "rubric": { "orthographe": 4, "majuscules": 2, "ponctuation": 2 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-fr-9",
+      "title": "Rédaction — Lettre à un ami",
+      "prompt": {
+        "context": "Tu as passé des vacances à la plage de Grand-Popo.",
+        "problem": "Écris une lettre de 10 lignes à ton ami(e) pour lui raconter tes vacances. Respecte la présentation d'une lettre.",
+        "tasks": ["Écris la date et le lieu en haut à droite.", "Commence par une formule de salutation.", "Raconte 2 activités que tu as faites.", "Termine par une formule de politesse."]
+      },
+      "hints": ["Une lettre comporte : lieu/date, salutation, corps, formule finale.", "Utilise le passé composé pour raconter."],
+      "expected_elements": { "presentation": "En-tête (lieu, date), salutation, corps, formule finale", "temps": "Passé composé", "activites": "Au moins 2 activités décrites" },
+      "rubric": { "presentation": 3, "contenu": 3, "temps_verbaux": 2, "orthographe": 2 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-fr-10",
+      "title": "Grammaire — Analyse d'une phrase",
+      "prompt": {
+        "problem": "Analyse complètement la phrase : 'Le jeune instituteur béninois explique clairement sa leçon aux élèves attentifs.'",
+        "tasks": ["Identifie le sujet.", "Identifie le verbe.", "Identifie les compléments (COD, COI, CC).", "Donne la nature de chaque mot souligné."]
+      },
+      "hints": ["Sujet : Qui est-ce qui explique ?", "COD : Qu'est-ce qu'il explique ? COI : À qui ?"],
+      "expected_elements": {
+        "sujet": "Le jeune instituteur béninois",
+        "verbe": "explique",
+        "COD": "sa leçon",
+        "COI": "aux élèves attentifs",
+        "CC": "clairement (manière)"
+      },
+      "rubric": { "sujet": 2, "verbe": 1, "COD": 2, "COI": 2, "CC": 1, "nature_mots": 2 },
+      "rubric_total": 10,
+      "difficulty": "Difficile"
     }
   ]
 }

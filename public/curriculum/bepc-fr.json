@@ -1,0 +1,142 @@
+{
+  "level": "BEPC",
+  "subject": "Français",
+  "year": 2025,
+  "exercises": [
+    {
+      "id": "bepc-fr-1",
+      "title": "Commentaire de texte — Extrait littéraire",
+      "prompt": {
+        "context": "Texte : 'L'Afrique est un continent immense, meurtri par des siècles d'exploitation, mais riche d'une jeunesse déterminée à bâtir son propre avenir. Dans chaque village béninois, des enfants rêvent d'une vie meilleure et portent en eux l'espoir de demain.'",
+        "problem": "Rédigez un commentaire de ce texte en analysant le thème principal, les procédés stylistiques et le message de l'auteur.",
+        "tasks": ["Identifiez le thème principal.", "Relevez 2 figures de style et expliquez leur effet.", "Reformulez le message de l'auteur en vos propres mots."]
+      },
+      "hints": ["Cherchez une métaphore ou une personnification.", "Le thème peut être l'espoir ou la résilience africaine."],
+      "expected_elements": { "theme": "L'espoir et la résilience africaine / la jeunesse comme moteur de développement", "figures": "Personnification de l'Afrique ('meurtri'), métaphore des enfants porteurs d'espoir", "message": "Malgré un passé difficile, la jeunesse africaine représente la promesse d'un avenir meilleur" },
+      "rubric": { "theme": 3, "figures_style": 4, "message": 3 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-fr-2",
+      "title": "Grammaire — Subordonnées relatives",
+      "prompt": {
+        "problem": "Transformez chaque paire de phrases en une seule phrase avec une proposition subordonnée relative : 1) J'ai vu un garçon. Ce garçon court vite.  2) Voici un livre. Ce livre m'a beaucoup appris.",
+        "tasks": ["Formez la phrase relative pour chaque exemple.", "Identifiez le pronom relatif utilisé et son antécédent."]
+      },
+      "hints": ["Le pronom relatif remplace le nom répété.", "Qui : sujet. Que : COD. Dont : complément de nom."],
+      "expected_elements": { "phrase1": "J'ai vu un garçon qui court vite. (qui = sujet)", "phrase2": "Voici un livre qui m'a beaucoup appris / que j'ai beaucoup apprécié." },
+      "rubric": { "transformation1": 3, "transformation2": 3, "identification_pronom": 2, "antecedent": 2 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-fr-3",
+      "title": "Expression écrite — La dissertation",
+      "prompt": {
+        "context": "Sujet de dissertation",
+        "problem": "'L'éducation est l'arme la plus puissante pour changer le monde' (Nelson Mandela). Discutez cette affirmation.",
+        "tasks": ["Rédigez une introduction avec la problématique.", "Développez une thèse avec 2 arguments.", "Développez une antithèse avec 1 argument.", "Rédigez une conclusion-synthèse."]
+      },
+      "hints": ["Commencez par une accroche (citation, fait d'actualité).", "Thèse : l'éducation peut transformer les sociétés. Antithèse : d'autres facteurs sont aussi essentiels."],
+      "expected_elements": { "structure": "Introduction (accroche + problématique + annonce du plan) / Développement (thèse + antithèse) / Conclusion", "these": "L'éducation développe l'esprit critique, réduit la pauvreté, favorise la démocratie", "antithese": "Sans ressources économiques, politiques justes ou paix, l'éducation seule est insuffisante", "conclusion": "Synthèse nuancée + ouverture" },
+      "rubric": { "introduction": 3, "these": 3, "antithese": 2, "conclusion": 2 },
+      "rubric_total": 10,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-fr-4",
+      "title": "Conjugaison — Le subjonctif présent",
+      "prompt": {
+        "problem": "Conjuguez les verbes entre parenthèses au subjonctif présent : 1) Il faut que tu (finir) tes devoirs. 2) Je veux que nous (aller) à l'école. 3) Il est important que vous (être) ponctuels.",
+        "tasks": ["Conjuguez chaque verbe au subjonctif présent.", "Justifiez l'emploi du subjonctif dans chaque cas."]
+      },
+      "hints": ["Le subjonctif est employé après 'il faut que', 'je veux que', 'il est important que'.", "Radical du subjonctif : 3ème personne du pluriel présent indicatif (sans -ent)."],
+      "expected_elements": { "finir": "que tu finisses", "aller": "que nous allions", "etre": "que vous soyez" },
+      "rubric": { "finisses": 2, "allions": 2, "soyez": 2, "justification": 4 },
+      "rubric_total": 10,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-fr-5",
+      "title": "Lecture — Analyse d'un poème",
+      "prompt": {
+        "context": "Extrait de poème inspiré de la littérature béninoise : 'Ô terre de mes ancêtres, / berceau de ma mémoire, / tes rivières chantent encore / les épopées de ta gloire.'",
+        "problem": "Analysez ce poème : relevez la structure, identifiez les thèmes et les figures de style.",
+        "tasks": ["Identifiez la structure (strophe, vers, rimes).", "Dégagez le thème principal.", "Relevez 2 figures de style et expliquez leur effet."]
+      },
+      "hints": ["Cherchez les rimes (fin de vers).", "Apostrophe ('Ô terre'), personnification..."],
+      "expected_elements": { "structure": "1 quatrain, vers libres, rimes croisées ou embrassées", "theme": "Attachement à la terre ancestrale, fierté de l'histoire africaine", "figures": "Apostrophe ('Ô terre'), personnification ('rivières chantent'), métaphore ('berceau de ma mémoire')" },
+      "rubric": { "structure": 3, "theme": 3, "figures_style": 4 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-fr-6",
+      "title": "Grammaire — Voix active et passive",
+      "prompt": {
+        "problem": "Transformez chaque phrase de la voix active à la voix passive, et inversement : 1) Le directeur convoque les élèves. (→ passive) 2) Le roman a été écrit par un auteur béninois. (→ active)",
+        "tasks": ["Transformez la phrase 1 à la voix passive.", "Transformez la phrase 2 à la voix active.", "Identifiez le complément d'agent dans la phrase passive."]
+      },
+      "hints": ["Voix passive : sujet + être (conjugué) + participe passé + par + complément d'agent.", "Le sujet de l'active devient complément d'agent (par...) au passif."],
+      "expected_elements": { "phrase1_passive": "Les élèves sont convoqués par le directeur.", "phrase2_active": "Un auteur béninois a écrit le roman.", "complement_agent": "'par le directeur' et 'par un auteur béninois'" },
+      "rubric": { "transformation1": 4, "transformation2": 4, "complement_agent": 2 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-fr-7",
+      "title": "Expression écrite — Le compte rendu",
+      "prompt": {
+        "context": "Tu as assisté à une conférence sur le droit à l'éducation des filles au Bénin.",
+        "problem": "Rédigez un compte rendu de 15 lignes de cette conférence fictive. Présentez l'objectif, les principaux points abordés et la conclusion.",
+        "tasks": ["Présentez le cadre de la conférence (lieu, date, thème).", "Résumez 3 points importants abordés.", "Rédigez une conclusion sur les recommandations faites."]
+      },
+      "hints": ["Un compte rendu est objectif et structuré.", "Utilisez le présent ou le passé composé."],
+      "expected_elements": { "cadre": "Lieu, date, thème clairement énoncés", "points": "Au moins 3 idées développées (scolarisation, obstacles, solutions)", "conclusion": "Recommandations claires et ouverture" },
+      "rubric": { "cadre": 2, "points_abordes": 5, "conclusion": 2, "style_objectif": 1 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-fr-8",
+      "title": "Grammaire — Les propositions subordonnées conjonctives",
+      "prompt": {
+        "problem": "Classez chaque proposition subordonnée soulignée selon sa nature (sujet, COD, circonstancielle) : 1) 'Je sais [que tu travailles bien].' 2) '[Parce qu'il pleut], il reste à la maison.' 3) '[Qu'il réussisse] est mon souhait.'",
+        "tasks": ["Identifiez la nature de chaque subordonnée.", "Justifiez votre réponse pour chacune."]
+      },
+      "hints": ["Subordonnée COD : complète le verbe (que...). Sujet : peut être remplacée par 'cela'. Circonstancielle : répond à Pourquoi? Quand? Comment?"],
+      "expected_elements": { "phrase1": "Subordonnée conjonctive COD (complète 'sais')", "phrase2": "Subordonnée circonstancielle de cause (répond à 'pourquoi ?')", "phrase3": "Subordonnée conjonctive sujet (= 'Cela est mon souhait')" },
+      "rubric": { "classification1": 3, "classification2": 3, "classification3": 3, "justification": 1 },
+      "rubric_total": 10,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-fr-9",
+      "title": "Expression écrite — La lettre de motivation",
+      "prompt": {
+        "context": "Tu postules pour une bourse d'études au lycée technique de Cotonou.",
+        "problem": "Rédigez une lettre de motivation de 15 lignes. Présentez votre profil, vos motivations et vos objectifs.",
+        "tasks": ["Respectez la mise en page d'une lettre formelle.", "Présentez-vous et exposez votre parcours.", "Argumentez vos motivations pour cette bourse.", "Terminez par une formule de politesse complète."]
+      },
+      "hints": ["Commencez par 'Madame, Monsieur,' ou 'À l'attention de...'", "Structurez en 3 paragraphes : présentation, motivations, conclusion."],
+      "expected_elements": { "presentation": "En-tête, lieu, date, objet de la lettre", "profil": "Parcours scolaire, résultats, activités", "motivations": "Raisons précises, projet professionnel", "politesse": "Formule complète de politesse" },
+      "rubric": { "mise_en_page": 2, "profil": 3, "motivations": 3, "politesse": 2 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-fr-10",
+      "title": "Vocabulaire — Les champs lexicaux",
+      "prompt": {
+        "problem": "1) Relevez le champ lexical de l'eau dans le texte : 'La pluie tombait sur le fleuve en grosses gouttes. Les vagues brisaient le calme du lac et les rivières débordaient.' 2) Trouvez 5 mots appartenant au champ lexical de l'école.",
+        "tasks": ["Relevez tous les mots du champ lexical de l'eau.", "Donnez 5 mots du champ lexical de l'école."]
+      },
+      "hints": ["Un champ lexical regroupe les mots liés à un même thème.", "Cherchez noms, verbes et adjectifs."],
+      "expected_elements": { "eau": "pluie, fleuve, gouttes, vagues, lac, rivières, débordaient", "ecole": "cahier, craie, tableau, maître, élève, cour, cartable, leçon, dictée, récréation (toute réponse valide)" },
+      "rubric": { "champ_eau": 5, "champ_ecole": 5 },
+      "rubric_total": 10,
+      "difficulty": "Facile"
+    }
+  ]
+}

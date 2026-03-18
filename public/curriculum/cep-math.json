@@ -5,24 +5,140 @@
   "exercises": [
     {
       "id": "cep-math-1",
-      "title": "Problème de proportionnalité",
+      "title": "Problème de proportionnalité — Bénéfice commercial",
       "prompt": {
-        "problem": "Maman Adjara vend des tomates au marché Dantokpa. Elle achète 50 kg de tomates à 200 FCFA le kg. Elle revend le kg à 350 FCFA. Calcule son bénéfice total."
+        "context": "Maman Adjara vend des tomates au marché Dantokpa.",
+        "problem": "Elle achète 50 kg de tomates à 200 FCFA le kg et revend le kg à 350 FCFA. Calcule son bénéfice total.",
+        "tasks": ["Calcule le prix d'achat total.", "Calcule le prix de vente total.", "Déduis le bénéfice."]
       },
-      "hints": ["Calcule le prix d'achat total.", "Calcule le prix de vente total.", "Bénéfice = Vente - Achat."],
-      "expected_elements": {
-        "prix_achat": "50 × 200 = 10 000 FCFA",
-        "prix_vente": "50 × 350 = 17 500 FCFA",
-        "benefice": "17 500 − 10 000 = 7 500 FCFA"
-      },
-      "rubric": {
-        "calcul_achat": 2,
-        "calcul_vente": 2,
-        "calcul_benefice": 2,
-        "unite_et_presentation": 1
-      },
+      "hints": ["Prix achat = quantité × prix unitaire.", "Bénéfice = vente − achat."],
+      "expected_elements": { "prix_achat": "10 000 FCFA", "prix_vente": "17 500 FCFA", "benefice": "7 500 FCFA" },
+      "rubric": { "calcul_achat": 2, "calcul_vente": 2, "benefice": 2, "unite": 1 },
       "rubric_total": 7,
       "difficulty": "Facile"
+    },
+    {
+      "id": "cep-math-2",
+      "title": "Numération — Décomposition d'un nombre",
+      "prompt": {
+        "problem": "Décompose le nombre 4 375 en utilisant les unités, dizaines, centaines et milliers.",
+        "tasks": ["Écris la décomposition additive.", "Écris la décomposition multiplicative."]
+      },
+      "hints": ["Commence par identifier le chiffre des milliers.", "4 375 = 4×1000 + ..."],
+      "expected_elements": { "decomposition": "4×1000 + 3×100 + 7×10 + 5×1" },
+      "rubric": { "decomposition_additive": 3, "decomposition_multiplicative": 3, "presentation": 1 },
+      "rubric_total": 7,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "cep-math-3",
+      "title": "Mesure — Conversion d'unités de longueur",
+      "prompt": {
+        "context": "Koffi mesure des parcelles de terrain.",
+        "problem": "Exprime 3 km 4 hm 5 dam en mètres, puis en centimètres.",
+        "tasks": ["Convertis en mètres.", "Convertis en centimètres."]
+      },
+      "hints": ["1 km = 1 000 m", "1 m = 100 cm"],
+      "expected_elements": { "en_metres": "3 450 m", "en_centimetres": "345 000 cm" },
+      "rubric": { "conversion_metres": 3, "conversion_centimetres": 3, "demarche": 1 },
+      "rubric_total": 7,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "cep-math-4",
+      "title": "Géométrie — Périmètre et aire d'un rectangle",
+      "prompt": {
+        "context": "La cour de l'école de Kérékou mesure 25 m de long et 15 m de large.",
+        "problem": "Calcule le périmètre et l'aire de cette cour.",
+        "tasks": ["Calcule le périmètre.", "Calcule l'aire.", "Indique les unités."]
+      },
+      "hints": ["P = 2 × (L + l)", "A = L × l"],
+      "expected_elements": { "perimetre": "80 m", "aire": "375 m²" },
+      "rubric": { "perimetre": 3, "aire": 3, "unites": 1 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-math-5",
+      "title": "Fractions — Addition de fractions",
+      "prompt": {
+        "problem": "Calcule : 1/3 + 1/4. Donne le résultat sous forme de fraction irréductible.",
+        "tasks": ["Trouve le dénominateur commun.", "Effectue l'addition.", "Simplifie si possible."]
+      },
+      "hints": ["Le PPCM de 3 et 4 est 12.", "1/3 = 4/12 et 1/4 = 3/12."],
+      "expected_elements": { "resultat": "7/12" },
+      "rubric": { "denominateur_commun": 2, "addition": 3, "simplification": 2 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-math-6",
+      "title": "Problème — Partage proportionnel",
+      "prompt": {
+        "context": "Trois frères héritent d'un champ de 6 hectares.",
+        "problem": "Le champ est partagé proportionnellement à leur âge : Kofi 12 ans, Ama 8 ans, Esi 4 ans. Quelle surface reçoit chacun ?",
+        "tasks": ["Calcule la somme des âges.", "Calcule la part unitaire.", "Calcule la part de chaque frère."]
+      },
+      "hints": ["Somme des âges = 12 + 8 + 4.", "Part de Kofi = (12/24) × 6 ha."],
+      "expected_elements": { "kofi": "3 ha", "ama": "2 ha", "esi": "1 ha" },
+      "rubric": { "somme_ages": 1, "part_unitaire": 2, "parts_calcul": 3, "unite": 1 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-math-7",
+      "title": "Calcul — Multiplication posée",
+      "prompt": {
+        "problem": "Effectue la multiplication posée : 347 × 28. Montre toutes les étapes.",
+        "tasks": ["Pose l'opération.", "Effectue les produits partiels.", "Additionne les résultats."]
+      },
+      "hints": ["Commence par multiplier par les unités (8).", "Puis multiplie par les dizaines (20)."],
+      "expected_elements": { "resultat": "9 716" },
+      "rubric": { "produit_unites": 2, "produit_dizaines": 2, "addition_partielle": 2, "resultat_final": 1 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-math-8",
+      "title": "Problème — Prix de revient et marge",
+      "prompt": {
+        "context": "Un commerçant de Cotonou achète 120 articles à 450 FCFA l'unité.",
+        "problem": "Il revend chaque article à 600 FCFA. Calcule son bénéfice total et son taux de bénéfice.",
+        "tasks": ["Calcule le prix de revient total.", "Calcule la recette totale.", "Calcule le bénéfice total.", "Calcule le taux de bénéfice (bénéfice / achat × 100)."]
+      },
+      "hints": ["Prix revient = 120 × 450.", "Taux = (bénéfice / prix_achat) × 100."],
+      "expected_elements": { "prix_achat": "54 000 FCFA", "recette": "72 000 FCFA", "benefice": "18 000 FCFA", "taux": "33,3 %" },
+      "rubric": { "prix_achat": 2, "recette": 2, "benefice": 2, "taux": 2 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "cep-math-9",
+      "title": "Géométrie — Volume d'un pavé droit",
+      "prompt": {
+        "context": "Un réservoir d'eau a la forme d'un pavé droit.",
+        "problem": "Il mesure 2 m de long, 1,5 m de large et 1 m de haut. Calcule son volume en m³ puis en litres.",
+        "tasks": ["Calcule le volume en m³.", "Convertis en litres (1 m³ = 1 000 L)."]
+      },
+      "hints": ["V = L × l × h", "1 m³ = 1 000 litres"],
+      "expected_elements": { "volume_m3": "3 m³", "volume_litres": "3 000 L" },
+      "rubric": { "formule": 2, "calcul_m3": 3, "conversion_litres": 2 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "cep-math-10",
+      "title": "Problème — Intérêt simple",
+      "prompt": {
+        "context": "Mme Hounkpé place 150 000 FCFA à la banque.",
+        "problem": "Le taux d'intérêt annuel est de 6 %. Calcule les intérêts produits après 3 ans et le capital final.",
+        "tasks": ["Calcule l'intérêt annuel.", "Calcule l'intérêt sur 3 ans.", "Calcule le capital final."]
+      },
+      "hints": ["Intérêt annuel = Capital × taux / 100.", "Capital final = Capital + intérêts totaux."],
+      "expected_elements": { "interet_annuel": "9 000 FCFA", "interet_3ans": "27 000 FCFA", "capital_final": "177 000 FCFA" },
+      "rubric": { "interet_annuel": 2, "interet_3ans": 2, "capital_final": 2, "demarche": 2 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
     }
   ]
 }

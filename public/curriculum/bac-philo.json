@@ -5,29 +5,134 @@
   "exercises": [
     {
       "id": "bac-philo-1",
-      "title": "La Technique",
+      "title": "Dissertation — La technique libère-t-elle l'homme ?",
       "prompt": {
-        "context": "La technique occupe une place centrale dans la civilisation moderne et soulève des questions fondamentales sur la condition humaine.",
-        "problem": "Sujet : 'La technique libère-t-elle l'homme ou l'asservit-elle ?' Rédige un plan détaillé en trois parties avec des arguments et des exemples.",
-        "tasks": [
-          "Présente et justifie une thèse affirmant que la technique libère l'homme.",
-          "Présente et justifie une antithèse montrant que la technique asservit l'homme.",
-          "Propose une synthèse dépassant cette opposition."
-        ]
+        "context": "La technique occupe une place centrale dans la civilisation moderne.",
+        "problem": "'La technique libère-t-elle l'homme ou l'asservit-elle ?' Rédigez une dissertation philosophique structurée.",
+        "tasks": ["Rédigez une introduction avec problématique et annonce du plan.", "Développez une thèse : la technique comme libératrice.", "Développez une antithèse : la technique comme source d'asservissement.", "Proposez une synthèse dépassant cette opposition.", "Rédigez une conclusion."]
       },
-      "hints": ["Thèse : Libération (médecine, gain de temps, abolition des distances)", "Antithèse : Asservissement (aliénation au travail, dépendance aux outils)", "Synthèse : La maîtrise éthique de la technique"],
-      "expected_elements": {
-        "these": "La technique libère l'homme en le soulageant des contraintes naturelles.",
-        "antithese": "La technique peut asservir lorsqu'elle devient une fin en soi.",
-        "synthese": "C'est l'usage éthique et réfléchi de la technique qui détermine si elle libère ou asservit."
+      "hints": ["Thèse : médecine, gain de temps, abolition des distances.", "Antithèse : aliénation au travail, dépendance numérique.", "Synthèse : maîtrise éthique de la technique."],
+      "expected_elements": { "these": "La technique libère l'homme des contraintes naturelles et du travail physique.", "antithese": "La technique peut créer de nouvelles servitudes (dépendance, aliénation, chômage).", "synthese": "La liberté par la technique dépend de la capacité humaine à la maîtriser éthiquement." },
+      "rubric": { "introduction": 3, "these": 4, "antithese": 4, "synthese": 3, "conclusion": 2, "redaction": 1 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-2",
+      "title": "Explication de texte — Descartes et la raison",
+      "prompt": {
+        "context": "Extrait fictif inspiré du Discours de la Méthode : 'Le bon sens est la chose du monde la mieux partagée. Car chacun pense en être si bien pourvu, que ceux même qui sont les plus difficiles à contenter en toute autre chose n'ont point coutume d'en désirer plus qu'ils en ont.'",
+        "problem": "Expliquez ce texte de Descartes : quel est l'argument central ? Est-il convaincant ?",
+        "tasks": ["Présentez l'idée principale du texte.", "Expliquez la thèse de Descartes sur le bon sens.", "Discutez : cette égalité du bon sens est-elle réelle ou illusoire ?"]
       },
-      "rubric": {
-        "these_argumentee": 4,
-        "antithese_argumentee": 4,
-        "synthese": 4,
-        "qualite_redaction": 3,
-        "exemples_pertinents": 2
+      "hints": ["Le 'bon sens' = la raison pour Descartes.", "Attention : Descartes dit que tout le monde croit avoir de la raison, pas que tout le monde l'utilise bien."],
+      "expected_elements": { "idee_principale": "Descartes affirme que la raison est universellement partagée entre les hommes.", "these": "L'égalité naturelle de la raison justifie l'importance de la méthode (comment bien l'utiliser).", "discussion": "Critique possible : les capacités cognitives varient; Descartes parle d'une potentialité, non d'un usage effectif." },
+      "rubric": { "idee_principale": 4, "explication_these": 5, "discussion_critique": 5, "redaction": 3 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-3",
+      "title": "Dissertation — Liberté et déterminisme",
+      "prompt": {
+        "problem": "'Sommes-nous vraiment libres ou notre vie est-elle déterminée à l'avance ?' Discutez cette question en mobilisant des arguments philosophiques.",
+        "tasks": ["Définissez la liberté et le déterminisme.", "Développez l'argument déterministe.", "Développez l'argument en faveur du libre arbitre.", "Proposez une position nuancée."]
       },
+      "hints": ["Déterminisme : Spinoza, les lois de la nature.", "Libre arbitre : Sartre ('l'existence précède l'essence')."],
+      "expected_elements": { "definitions": "Liberté = capacité d'agir selon sa propre volonté; Déterminisme = tout effet a une cause nécessaire.", "determinisme": "Spinoza : la liberté n'est que l'ignorance des causes qui nous déterminent.", "libre_arbitre": "Sartre : l'homme est condamné à être libre, il se définit par ses choix.", "nuance": "Compatibilisme : on peut être libre dans le cadre de lois causales (Kant, Mill)." },
+      "rubric": { "definitions": 3, "determinisme": 4, "libre_arbitre": 4, "nuance": 4, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-4",
+      "title": "Dissertation — L'État est-il nécessaire ?",
+      "prompt": {
+        "problem": "'L'État est-il une nécessité ou un mal nécessaire ?' Développez une réflexion philosophique sur ce sujet.",
+        "tasks": ["Montrez pourquoi l'État est nécessaire à la vie sociale.", "Discutez les limites et les dangers de l'État.", "Proposez une vision équilibrée du rôle de l'État."]
+      },
+      "hints": ["Hobbes : sans État, c'est la guerre de tous contre tous.", "Anarchisme : l'État opprime les libertés individuelles."],
+      "expected_elements": { "necessite": "Hobbes : l'État garantit la paix et la sécurité; Rousseau : le contrat social organise la liberté collective.", "limites": "Tocqueville : tyrannie de la majorité; Marx : l'État comme instrument de la classe dominante.", "equilibre": "État de droit qui protège les droits fondamentaux tout en respectant les libertés individuelles." },
+      "rubric": { "necessite": 5, "limites": 5, "equilibre": 4, "exemples": 2, "redaction": 1 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-5",
+      "title": "Dissertation — Le bonheur est-il accessible à tous ?",
+      "prompt": {
+        "problem": "Le bonheur est-il une quête universelle accessible à tous, ou une utopie réservée à quelques-uns ? Développez votre argumentation.",
+        "tasks": ["Définissez le bonheur selon différentes philosophies.", "Argumentez que le bonheur est accessible.", "Argumentez que le bonheur reste difficile ou inégalement accessible.", "Concluez en proposant votre vision personnelle argumentée."]
+      },
+      "hints": ["Épicure : le bonheur = plaisirs simples + absence de douleur.", "Schopenhauer : le bonheur est impossible (désir toujours renouvelé)."],
+      "expected_elements": { "definitions": "Épicure (ataraxie), Aristote (eudaimonia/vertu), Kant (bonheur vs devoir)", "accessible": "Stoïcisme : le bonheur dépend de notre attitude intérieure, donc accessible à tous.", "inaccessible": "Schopenhauer : le désir est inépuisable; inégalités sociales limitent l'accès au bonheur.", "conclusion": "Position personnelle nuancée et argumentée." },
+      "rubric": { "definitions": 4, "these_accessible": 4, "antithese": 4, "conclusion_personnelle": 3, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-6",
+      "title": "Dissertation — Art et vérité",
+      "prompt": {
+        "problem": "'L'art peut-il exprimer des vérités que la science ne peut pas atteindre ?' Analysez cette question.",
+        "tasks": ["Définissez vérité artistique et vérité scientifique.", "Montrez ce que l'art exprime que la science ne peut pas.", "Montrez les limites de la vérité artistique.", "Proposez une synthèse."]
+      },
+      "hints": ["La vérité scientifique est objective, vérifiable, universelle.", "L'art exprime des vérités subjectives, émotionnelles, culturelles."],
+      "expected_elements": { "definitions": "Vérité scientifique : universelle, démontrée, reproductible. Vérité artistique : subjective, interprétative, symbolique.", "art_depasse": "L'art exprime l'expérience humaine intérieure, les émotions, le sens de la vie (Tolstoï, Heidegger).", "limites_art": "L'art peut manipuler, embellir, déformer la réalité.", "synthese": "Art et science sont complémentaires dans la quête de la vérité." },
+      "rubric": { "definitions": 3, "apport_art": 5, "limites": 4, "synthese": 3, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-7",
+      "title": "Explication de texte — Platon et la justice",
+      "prompt": {
+        "context": "Extrait inspiré de La République de Platon : 'La justice, c'est que chacun fasse ce qui lui convient selon sa nature. Elle réside dans l'harmonie entre les trois parties de l'âme : la raison doit gouverner, le courage doit exécuter, et les désirs doivent obéir.'",
+        "problem": "Expliquez la conception de la justice chez Platon telle que décrite dans cet extrait.",
+        "tasks": ["Présentez les trois parties de l'âme selon Platon.", "Expliquez ce que signifie la justice pour Platon.", "Discutez : cette vision est-elle applicable dans une société moderne ?"]
+      },
+      "hints": ["Les trois parties : logos (raison), thymos (cœur/courage), epithumia (désirs).", "La justice sociale = reflet de la justice individuelle."],
+      "expected_elements": { "parties_ame": "Raison (philosophes), Courage (guerriers), Désirs (artisans)", "justice_platon": "Justice = chaque partie accomplit sa fonction propre; harmonie = justice", "critique": "Vision hiérarchique et aristocratique; difficile à concilier avec égalité démocratique moderne" },
+      "rubric": { "parties_ame": 5, "justice": 6, "discussion_moderne": 4, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-8",
+      "title": "Dissertation — Conscience et identité personnelle",
+      "prompt": {
+        "problem": "'Suis-je le même individu qu'hier ?' La conscience est-elle le fondement de l'identité personnelle ?",
+        "tasks": ["Définissez conscience et identité personnelle.", "Montrez que la conscience fonde l'identité.", "Discutez les limites (inconscient, changement, mémoire).", "Proposez une conclusion nuancée."]
+      },
+      "hints": ["Descartes : 'Je pense donc je suis' — la conscience comme certitude première.", "Locke : l'identité personnelle est fondée sur la mémoire continue."],
+      "expected_elements": { "definitions": "Conscience = connaissance réflexive de soi; identité = permanence du moi dans le temps.", "these": "Descartes, Locke : la conscience et la mémoire construisent une identité continue.", "limites": "Freud : l'inconscient échappe à la conscience; Hume : le moi n'est qu'un faisceau de perceptions changeantes.", "conclusion": "L'identité est à la fois continuité et changement; la conscience en est le fil conducteur fragile." },
+      "rubric": { "definitions": 3, "these": 5, "limites": 5, "conclusion": 2, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-9",
+      "title": "Dissertation — Travail et dignité humaine",
+      "prompt": {
+        "problem": "'Le travail est-il source d'épanouissement ou d'aliénation pour l'homme ?' Rédigez une dissertation philosophique.",
+        "tasks": ["Montrez que le travail est source d'épanouissement.", "Montrez que le travail peut aliéner l'homme.", "Proposez une synthèse : les conditions d'un travail humanisant."]
+      },
+      "hints": ["Hegel : le travail transforme la nature et développe la conscience de soi.", "Marx : le travail capitaliste aliène l'ouvrier de son produit."],
+      "expected_elements": { "epanouissement": "Hegel : le travail est médiation entre l'homme et la nature, source de reconnaissance. Aristote : l'artisan s'accomplit dans son œuvre.", "alienation": "Marx : aliénation dans le travail capitaliste (le travailleur ne possède pas le fruit de son travail). Taylor : taylorisme déshumanisant.", "synthese": "Un travail épanouissant nécessite autonomie, créativité et reconnaissance sociale." },
+      "rubric": { "epanouissement": 5, "alienation": 5, "synthese": 4, "exemples": 2, "redaction": 1 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-philo-10",
+      "title": "Dissertation — Morale et politique",
+      "prompt": {
+        "problem": "'La politique peut-elle et doit-elle être morale ?' Développez votre réflexion en vous appuyant sur des philosophes.",
+        "tasks": ["Définissez morale et politique.", "Montrez que la politique devrait obéir à des principes moraux.", "Montrez que la politique obéit à sa propre logique (efficacité, réalité).", "Proposez une conclusion sur les rapports entre éthique et politique."]
+      },
+      "hints": ["Machiavel : 'La fin justifie les moyens' — la politique a sa propre morale.", "Kant : l'impératif catégorique doit aussi s'appliquer aux dirigeants."],
+      "expected_elements": { "definitions": "Morale = règles du bien agir; Politique = art de gouverner la cité.", "politique_morale": "Kant : la politique doit se soumettre à la morale universelle. Rawls : justice comme équité.", "realisme_politique": "Machiavel : le prince doit être rusé et fort; Weber : éthique de responsabilité vs éthique de conviction.", "conclusion": "La politique idéale intègre l'éthique de responsabilité (résultats) et des principes moraux minimaux (droits humains)." },
+      "rubric": { "definitions": 2, "politique_morale": 5, "realisme": 5, "conclusion": 3, "redaction": 2 },
       "rubric_total": 17,
       "difficulty": "Difficile"
     }

@@ -1,0 +1,140 @@
+{
+  "level": "BAC",
+  "subject": "Mathématiques",
+  "year": 2025,
+  "exercises": [
+    {
+      "id": "bac-math-1",
+      "title": "Analyse — Étude d'une fonction",
+      "prompt": {
+        "problem": "Soit f(x) = x³ − 3x + 2. Étudiez cette fonction : domaine, dérivée, tableau de variations, extrema et représentation graphique.",
+        "tasks": ["Calculez f'(x).", "Résolvez f'(x) = 0.", "Dressez le tableau de variations.", "Calculez les extrema locaux."]
+      },
+      "hints": ["f'(x) = 3x² − 3 = 3(x² − 1) = 3(x−1)(x+1).", "Extrema en x = −1 (max local) et x = 1 (min local)."],
+      "expected_elements": { "derivee": "f'(x) = 3x² − 3", "zeros": "x = 1 et x = −1", "max_local": "f(−1) = 4", "min_local": "f(1) = 0" },
+      "rubric": { "derivee": 3, "zeros": 2, "tableau_variations": 3, "extrema": 3, "graphique": 2 },
+      "rubric_total": 13,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bac-math-2",
+      "title": "Probabilités — Loi binomiale",
+      "prompt": {
+        "context": "Un QCM comporte 10 questions avec 4 réponses possibles chacune. Un élève répond au hasard.",
+        "problem": "Calculez : 1) La probabilité d'avoir exactement 3 bonnes réponses. 2) L'espérance et l'écart-type du nombre de bonnes réponses.",
+        "tasks": ["Identifiez la loi (n, p).", "Calculez P(X = 3).", "Calculez E(X) et σ(X)."]
+      },
+      "hints": ["Loi binomiale B(10, 0,25).", "P(X=k) = C(n,k) × p^k × (1−p)^(n−k)."],
+      "expected_elements": { "loi": "B(10 ; 0,25)", "P_X3": "C(10,3) × 0,25³ × 0,75⁷ ≈ 0,2503", "esperance": "E(X) = 2,5", "ecart_type": "σ = √(10×0,25×0,75) ≈ 1,37" },
+      "rubric": { "identification_loi": 2, "P_X3": 5, "esperance": 3, "ecart_type": 3 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-3",
+      "title": "Algèbre — Nombres complexes",
+      "prompt": {
+        "problem": "Soit z₁ = 3 + 4i et z₂ = 1 − 2i. Calculez : z₁ + z₂, z₁ × z₂, z₁/z₂ et le module de z₁.",
+        "tasks": ["Calculez z₁ + z₂.", "Calculez z₁ × z₂.", "Calculez z₁/z₂ (multiplier par le conjugué de z₂).", "Calculez |z₁|."]
+      },
+      "hints": ["i² = −1.", "Conjugué de (a + bi) = (a − bi).", "|z| = √(a² + b²)."],
+      "expected_elements": { "somme": "4 + 2i", "produit": "3 − 6i + 4i − 8i² = 11 − 2i", "quotient": "(3+4i)(1+2i)/5 = −5+10i/5 = −1+2i", "module": "|z₁| = √(9+16) = 5" },
+      "rubric": { "somme": 2, "produit": 4, "quotient": 4, "module": 3 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-4",
+      "title": "Géométrie analytique — Droites et plans",
+      "prompt": {
+        "problem": "Dans le plan, on donne A(2; −1) et B(6; 3). Trouvez : l'équation de la droite AB, l'équation de la médiatrice de [AB] et la distance AB.",
+        "tasks": ["Calculez le coefficient directeur de AB.", "Trouvez l'équation de AB.", "Trouvez le milieu I de [AB] et l'équation de la médiatrice.", "Calculez AB."]
+      },
+      "hints": ["m = (y₂−y₁)/(x₂−x₁)", "La médiatrice est perpendiculaire à AB et passe par le milieu."],
+      "expected_elements": { "pente": "m = (3−(−1))/(6−2) = 1", "equation_AB": "y = x − 3", "milieu": "I(4; 1)", "mediatrice": "y = −x + 5", "distance": "AB = √32 = 4√2" },
+      "rubric": { "pente": 2, "equation_AB": 3, "mediatrice": 5, "distance": 3 },
+      "rubric_total": 13,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bac-math-5",
+      "title": "Analyse — Intégration",
+      "prompt": {
+        "problem": "Calculez les intégrales suivantes : 1) ∫₀² (x² + 1) dx  2) ∫₁³ (2x − 1) dx. Pour la 2ème, interprétez géométriquement le résultat.",
+        "tasks": ["Calculez l'intégrale 1.", "Calculez l'intégrale 2.", "Interprétez géométriquement l'intégrale 2."]
+      },
+      "hints": ["∫xⁿ dx = xⁿ⁺¹/(n+1) + C.", "L'intégrale d'une fonction positive = aire sous la courbe."],
+      "expected_elements": { "integrale1": "[x³/3 + x]₀² = 8/3 + 2 = 14/3", "integrale2": "[x² − x]₁³ = (9−3)−(1−1) = 6", "interpretation": "Aire du trapèze sous la courbe y = 2x−1 entre x=1 et x=3 = 6 unités²" },
+      "rubric": { "calcul1": 5, "calcul2": 5, "interpretation": 3 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-6",
+      "title": "Suites — Raisonnement par récurrence",
+      "prompt": {
+        "problem": "Soit la suite définie par u₁ = 1 et uₙ₊₁ = 2uₙ + 1. Calculez u₂, u₃, u₄. Conjecturer puis démontrer par récurrence que uₙ = 2ⁿ − 1.",
+        "tasks": ["Calculez u₂, u₃, u₄.", "Conjecturez la formule générale.", "Démontrez par récurrence."]
+      },
+      "hints": ["Initialisation : vérifiez pour n=1.", "Hérédité : supposez uₙ = 2ⁿ−1, montrez uₙ₊₁ = 2ⁿ⁺¹−1."],
+      "expected_elements": { "termes": "u₂=3, u₃=7, u₄=15", "formule": "uₙ = 2ⁿ − 1", "initialisation": "u₁ = 2¹−1 = 1 ✓", "heredite": "uₙ₊₁ = 2uₙ+1 = 2(2ⁿ−1)+1 = 2ⁿ⁺¹−1 ✓" },
+      "rubric": { "termes": 2, "conjecture": 2, "initialisation": 3, "heredite": 6 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-7",
+      "title": "Trigonométrie — Équations et formules",
+      "prompt": {
+        "problem": "1) Résoudre sur [0; 2π] : 2sin(x) − 1 = 0. 2) Calculez sin(75°) en utilisant sin(45° + 30°).",
+        "tasks": ["Résolvez l'équation trigonométrique.", "Donnez toutes les solutions sur [0; 2π].", "Utilisez la formule d'addition pour calculer sin(75°)."]
+      },
+      "hints": ["sin(x) = 1/2 → x = π/6 ou x = 5π/6 sur [0; 2π].", "sin(a+b) = sin(a)cos(b) + cos(a)sin(b)."],
+      "expected_elements": { "solutions": "x = π/6 et x = 5π/6", "sin75": "sin(45°+30°) = sin45°cos30° + cos45°sin30° = (√6+√2)/4" },
+      "rubric": { "equation_resolue": 5, "solutions_valides": 3, "sin75_formule": 3, "resultat_sin75": 2 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-8",
+      "title": "Statistiques — Loi normale",
+      "prompt": {
+        "context": "La taille des élèves d'un lycée suit une loi normale N(165 ; 8²) (moyenne 165 cm, écart-type 8 cm).",
+        "problem": "Calculez la probabilité qu'un élève choisi au hasard mesure : 1) entre 157 et 173 cm, 2) plus de 181 cm.",
+        "tasks": ["Centrez et réduisez les valeurs.", "Utilisez la table de la loi normale centrée réduite.", "Donnez les probabilités."]
+      },
+      "hints": ["Z = (X − μ) / σ", "P(157<X<173) = P(−1<Z<1) ≈ 0,6827", "P(X>181) = P(Z>2) ≈ 0,0228"],
+      "expected_elements": { "centrage1": "Z = (157−165)/8 = −1 et Z = (173−165)/8 = 1", "P1": "P(−1<Z<1) ≈ 68,27%", "centrage2": "Z = (181−165)/8 = 2", "P2": "P(Z>2) ≈ 2,28%" },
+      "rubric": { "centrage1": 3, "P1": 3, "centrage2": 3, "P2": 4 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-9",
+      "title": "Géométrie dans l'espace — Vecteurs et plans",
+      "prompt": {
+        "context": "Dans l'espace, on donne A(1;0;2), B(3;1;0) et C(0;2;1).",
+        "problem": "Trouvez le vecteur AB, le vecteur AC et calculez AB × AC (produit vectoriel). Déduisez l'équation du plan (ABC).",
+        "tasks": ["Calculez les vecteurs AB et AC.", "Calculez le produit vectoriel AB × AC.", "Trouvez l'équation du plan (ABC)."]
+      },
+      "hints": ["AB = B − A = (2;1;−2).", "Le produit vectoriel donne le vecteur normal au plan."],
+      "expected_elements": { "AB": "(2;1;−2)", "AC": "(−1;2;−1)", "produit_vectoriel": "(1×(−1)−(−2)×2 ; (−2)×(−1)−2×(−1) ; 2×2−1×(−1)) = (3;4;5)", "plan": "3(x−1)+4(y−0)+5(z−2) = 0 → 3x+4y+5z = 13" },
+      "rubric": { "vecteurs": 3, "produit_vectoriel": 5, "equation_plan": 5 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-math-10",
+      "title": "Analyse — Limites et continuité",
+      "prompt": {
+        "problem": "Calculez les limites suivantes : 1) lim(x→∞) (3x² − 2x + 1) / (x² + 5)  2) lim(x→0) sin(x)/x  3) Étudiez la continuité de f(x) = (x²−4)/(x−2) en x = 2.",
+        "tasks": ["Calculez la limite 1 (diviser par x²).", "Donnez la limite 2 (limite remarquable).", "Prolongez f par continuité en x = 2."]
+      },
+      "hints": ["Pour x→∞, divisez numérateur et dénominateur par x².", "lim sin(x)/x = 1 quand x→0 est une limite remarquable.", "Factorisez x²−4 = (x−2)(x+2)."],
+      "expected_elements": { "limite1": "lim = 3/1 = 3", "limite2": "lim sin(x)/x = 1", "factorisation": "f(x) = (x−2)(x+2)/(x−2) = x+2 pour x≠2", "prolongement": "On pose f(2) = 4, alors f est continue en 2." },
+      "rubric": { "limite1": 4, "limite2": 3, "factorisation": 3, "prolongement": 3 },
+      "rubric_total": 13,
+      "difficulty": "Difficile"
+    }
+  ]
+}

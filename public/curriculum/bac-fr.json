@@ -1,0 +1,142 @@
+{
+  "level": "BAC",
+  "subject": "Français",
+  "year": 2025,
+  "exercises": [
+    {
+      "id": "bac-fr-1",
+      "title": "Commentaire composé — Extrait de roman africain",
+      "prompt": {
+        "context": "Extrait inspiré de la littérature africaine : 'La ville s'éveillait lentement, comme une vieille femme qui reprend ses esprits après un long sommeil. Les marchands installaient leurs étals colorés, les enfants couraient vers l'école, et quelque part, dans une ruelle oubliée, un griot contait l'histoire des ancêtres.'",
+        "problem": "Rédigez un commentaire composé de cet extrait en analysant : le registre d'écriture, les procédés stylistiques et le message implicite de l'auteur.",
+        "tasks": ["Identifiez le registre d'écriture.", "Relevez et analysez 3 figures de style.", "Interprétez le message implicite de l'auteur."]
+      },
+      "hints": ["Cherchez une comparaison, une personnification, une métaphore.", "Le griot représente la mémoire collective africaine."],
+      "expected_elements": { "registre": "Registre lyrique et poétique; ton nostalgique et contemplatif", "figures": "Personnification de la ville, comparaison ('comme une vieille femme'), métaphore ('ruelle oubliée'), hypallage ('colorés')", "message": "L'Afrique moderne (ville, école) coexiste avec la tradition (griot), tension entre modernité et mémoire ancestrale" },
+      "rubric": { "registre": 3, "figures_style": 7, "message": 5, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-2",
+      "title": "Dissertation — 'La littérature est-elle un miroir de la société ?'",
+      "prompt": {
+        "problem": "Dissertez sur le sujet suivant : 'La littérature est-elle un miroir de la société ou une fenêtre sur un monde idéal ?'",
+        "tasks": ["Rédigez une introduction avec problématique et annonce du plan.", "Développez la thèse : la littérature comme miroir du réel.", "Développez l'antithèse : la littérature comme utopie.", "Rédigez une synthèse et une conclusion."]
+      },
+      "hints": ["Thèse : Zola, naturalisme, les réalités sociales dans la littérature.", "Antithèse : Hugo, romantisme, l'idéal et l'imaginaire."],
+      "expected_elements": { "these": "Réalisme et naturalisme (Zola, Balzac) : la littérature photographie la société, ses injustices et ses mœurs", "antithese": "Romantisme (Hugo), science-fiction (Verne) : la littérature projette des mondes possibles, utopiques ou dystopiques", "synthese": "La littérature est à la fois miroir déformant et fenêtre sur l'idéal : elle transforme le réel pour mieux le comprendre" },
+      "rubric": { "introduction": 3, "these": 5, "antithese": 4, "synthese": 3, "conclusion": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-3",
+      "title": "Grammaire avancée — La nominalisation",
+      "prompt": {
+        "problem": "Transformez les phrases verbales en phrases nominales (nominalisation) : 1) 'Le gouvernement construit des routes.' 2) 'Les élèves réussissent leurs examens.' 3) 'La pluie détruit les récoltes.'",
+        "tasks": ["Effectuez la nominalisation de chaque phrase.", "Identifiez le nom déverbal utilisé dans chaque cas.", "Justifiez les transformations grammaticales."]
+      },
+      "hints": ["Nominalisation : transformer le verbe en nom (construction → construire).", "Ex : 'La construction de routes par le gouvernement'."],
+      "expected_elements": { "phrase1": "La construction de routes par le gouvernement.", "phrase2": "La réussite des examens par les élèves.", "phrase3": "La destruction des récoltes par la pluie." },
+      "rubric": { "nominalisation1": 4, "nominalisation2": 4, "nominalisation3": 4, "justification": 5 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-4",
+      "title": "Analyse littéraire — Le roman béninois",
+      "prompt": {
+        "context": "La littérature béninoise contemporaine explore des thèmes comme l'identité, la tradition et la modernité.",
+        "problem": "En vous basant sur votre connaissance de la littérature africaine francophone, analysez comment les auteurs africains traitent le thème de l'identité culturelle face à la colonisation et à la mondialisation.",
+        "tasks": ["Définissez le thème de l'identité culturelle.", "Citez 2 auteurs africains et leurs œuvres.", "Analysez comment chacun traite ce thème.", "Proposez votre point de vue personnel."]
+      },
+      "hints": ["Auteurs : Ahmadou Kourouma, Chinua Achebe, Olympe Bhêly-Quenum (Bénin).", "Thèmes : aliénation culturelle, retour aux sources, métissage culturel."],
+      "expected_elements": { "definition": "Identité culturelle = ensemble des valeurs, traditions, langues et croyances qui définissent un groupe", "auteurs": "Kourouma (Les Soleils des Indépendances), Achebe (Things Fall Apart) ou Bhêly-Quenum", "analyse": "Tension entre tradition africaine et influences coloniales/modernes; quête d'une identité hybride ou authentique", "point_vue": "Réflexion personnelle argumentée" },
+      "rubric": { "definition": 3, "auteurs_oeuvres": 4, "analyse_themes": 6, "point_vue": 4 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-5",
+      "title": "Rhétorique — Les figures de style avancées",
+      "prompt": {
+        "problem": "Identifiez et expliquez la figure de style dans chaque extrait : 1) 'Paris est une fête.' (Hemingway) 2) 'Il ramassait les heures avec les mains d'un avare.' 3) 'Waterloo, Waterloo, Waterloo, morne plaine !' (Hugo) 4) 'Je vis, je meurs; je me brûle et me noie.' (Louise Labé)",
+        "tasks": ["Identifiez la figure de style de chaque extrait.", "Expliquez son effet sur le lecteur.", "Classez-les selon leur type (image, sonorité, construction)."]
+      },
+      "hints": ["Métaphore : comparaison sans 'comme'. Accumulation. Antithèse : opposition de termes."],
+      "expected_elements": { "extrait1": "Métaphore (Paris = une fête, sans outil comparatif) → ville vivante et joyeuse", "extrait2": "Comparaison / métaphore filée (mains d'avare) → avarice du temps qui passe", "extrait3": "Anaphore / épiphore ('Waterloo' répété) + épithète ('morne') → insistance sur la tristesse de la défaite", "extrait4": "Antithèse et oxymore ('je vis/je meurs', 'brûle/noie') → contradiction des sentiments amoureux" },
+      "rubric": { "figure1": 3, "figure2": 3, "figure3": 4, "figure4": 4, "classement": 3 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-6",
+      "title": "Rédaction — L'essai argumentatif",
+      "prompt": {
+        "problem": "Rédigez un essai argumentatif de 25 lignes sur le sujet : 'Les réseaux sociaux sont-ils bénéfiques ou nuisibles pour la jeunesse africaine ?'",
+        "tasks": ["Rédigez une introduction engageante.", "Développez 2 arguments pour les effets positifs.", "Développez 2 arguments pour les effets négatifs.", "Rédigez une conclusion avec votre prise de position."]
+      },
+      "hints": ["Positifs : accès à l'information, entrepreneuriat, liens sociaux.", "Négatifs : désinformation, addiction, cyberharcèlement."],
+      "expected_elements": { "positifs": "Accès démocratisé à l'éducation et aux opportunités, création d'entreprises numériques, lien social à travers la diaspora", "negatifs": "Désinformation, addiction aux écrans, dégradation de la concentration, cyberharcèlement, dépendance économique aux GAFAM", "conclusion": "Position nuancée : les réseaux sociaux sont des outils; leur impact dépend de l'éducation numérique et de l'usage réfléchi" },
+      "rubric": { "introduction": 3, "arguments_positifs": 5, "arguments_negatifs": 5, "conclusion": 2, "style": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-7",
+      "title": "Grammaire — Syntaxe des propositions complexes",
+      "prompt": {
+        "problem": "Analysez la syntaxe de la phrase complexe suivante et identifiez toutes les propositions : 'Bien que le chemin soit long et que la fatigue se fasse sentir, les marcheurs qui avaient quitté Cotonou à l'aube continuèrent leur route parce qu'ils savaient que la victoire appartenait à ceux qui ne renoncent jamais.'",
+        "tasks": ["Identifiez la proposition principale.", "Listez toutes les subordonnées.", "Classez chaque subordonnée (type, nature, fonction)."]
+      },
+      "hints": ["Principale : 'les marcheurs...continuèrent leur route'.", "Compter les verbes conjugués pour identifier les propositions."],
+      "expected_elements": { "principale": "'les marcheurs...continuèrent leur route'", "subordonnees": "1) 'Bien que le chemin soit long' (conc., circonstancielle de concession) 2) 'que la fatigue se fasse sentir' (conc. coordonnée) 3) 'qui avaient quitté Cotonou' (relative, épithète) 4) 'parce qu'ils savaient' (cause, circonstancielle) 5) 'que la victoire appartenait' (COD de savaient) 6) 'qui ne renoncent jamais' (relative, épithète)" },
+      "rubric": { "principale": 3, "identification_subordonnees": 6, "classement": 6, "precision": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-8",
+      "title": "Littérature — Le théâtre africain",
+      "prompt": {
+        "context": "Le théâtre est une forme d'expression ancienne en Afrique, mêlant tradition orale et formes modernes.",
+        "problem": "Comparez les fonctions du théâtre traditionnel africain (griots, masques) et du théâtre moderne africain francophone. Appuyez-vous sur des exemples précis.",
+        "tasks": ["Décrivez les fonctions du théâtre traditionnel africain.", "Présentez 2 caractéristiques du théâtre africain moderne.", "Comparez leurs rôles sociaux et culturels."]
+      },
+      "hints": ["Théâtre traditionnel : transmission, initiation, rituels.", "Théâtre moderne : Sony Labou Tansi (Congo), Werewere Liking (Cameroun)."],
+      "expected_elements": { "traditionnel": "Transmission du patrimoine oral, initiation, rites de passage, cohésion communautaire (griots, masques Gèlèdè au Bénin)", "moderne": "Critique sociale et politique, influence du théâtre occidental, langue française, questionnement identitaire", "comparaison": "Tradition : communautaire et sacré; Moderne : individuel et critique. Tous deux jouent un rôle de mémoire et de contestation sociale" },
+      "rubric": { "traditionnel": 5, "moderne": 5, "comparaison": 5, "exemples": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-9",
+      "title": "Analyse poétique — La Négritude",
+      "prompt": {
+        "context": "Extrait inspiré de la Négritude : 'Ma négritude n'est pas une pierre, sa surdité ruée contre la clameur du jour / ma négritude n'est pas une taie d'eau morte sur l'œil mort de la terre / ma négritude n'est ni une tour ni une cathédrale / elle plonge dans la chair rouge du sol / elle plonge dans la chair ardente du ciel'",
+        "problem": "Analysez cet extrait en dégageant les thèmes, les figures de style et le message du mouvement de la Négritude.",
+        "tasks": ["Présentez brièvement le mouvement de la Négritude.", "Dégagez 2 thèmes principaux de l'extrait.", "Analysez 3 figures de style.", "Expliquez le message global."]
+      },
+      "hints": ["Négritude : Aimé Césaire, Léopold Sédar Senghor, Léon-Gontran Damas.", "Le poème affirme une identité noire vivante, pas figée."],
+      "expected_elements": { "negritude": "Mouvement littéraire des années 1930 affirmant la fierté de l'identité et de la culture africaines/afro-descendantes", "themes": "Rejet de l'image négative de la négritude, célébration de la vitalité africaine, connexion à la terre", "figures": "Anaphore ('ma négritude n'est pas'), métaphores ('chair rouge du sol', 'chair ardente du ciel'), négations répétées pour redéfinir", "message": "La négritude n'est pas immobilité mais force vivante, enracinée dans la terre et le ciel africains" },
+      "rubric": { "presentation_negritude": 3, "themes": 4, "figures_style": 5, "message": 3, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-fr-10",
+      "title": "Production écrite — L'article de presse",
+      "prompt": {
+        "context": "Tu es journaliste pour un journal scolaire béninois.",
+        "problem": "Rédigez un article de presse de 20 lignes sur le thème : 'L'éducation des filles au Bénin : défis et progrès'. Respectez la structure d'un article de presse.",
+        "tasks": ["Rédigez un titre accrocheur et un chapeau.", "Développez 3 paragraphes (contexte, défis, progrès/solutions).", "Terminez par une citation ou une ouverture.", "Signez l'article avec un pseudo."]
+      },
+      "hints": ["Le chapeau résume l'essentiel en 2-3 lignes.", "Utilisez des données, des témoignages fictifs, des faits."],
+      "expected_elements": { "titre_chapeau": "Titre percutant + chapeau informatif résumant l'enjeu", "contexte": "Taux de scolarisation, disparités genre, objectifs ODD", "defis": "Mariages précoces, distances, travaux ménagers, pauvreté", "progres": "Programmes gouvernementaux, bourses, sensibilisation communautaire", "forme": "Style journalistique clair, vocabulaire précis, signature" },
+      "rubric": { "titre_chapeau": 3, "contexte": 3, "defis": 4, "progres": 4, "style_journalistique": 3 },
+      "rubric_total": 17,
+      "difficulty": "Difficile"
+    }
+  ]
+}

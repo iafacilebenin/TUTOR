@@ -1,0 +1,143 @@
+{
+  "level": "BEPC",
+  "subject": "SVT",
+  "year": 2025,
+  "exercises": [
+    {
+      "id": "bepc-svt-1",
+      "title": "Biologie cellulaire — La cellule",
+      "prompt": {
+        "context": "La cellule est l'unité de base du vivant.",
+        "problem": "Légendez un schéma de cellule animale en indiquant ses 4 constituants principaux. Comparez brièvement avec la cellule végétale.",
+        "tasks": ["Nommez les 4 constituants de la cellule animale.", "Indiquez 2 différences avec la cellule végétale."]
+      },
+      "hints": ["Pensez à la membrane, au noyau, au cytoplasme et aux mitochondries.", "La cellule végétale a une paroi et des chloroplastes."],
+      "expected_elements": { "constituants": "Membrane plasmique, noyau, cytoplasme, mitochondries", "differences": "Paroi cellulosique + chloroplastes dans la cellule végétale, vacuole centrale" },
+      "rubric": { "constituants": 4, "differences": 3, "schema": 1 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-svt-2",
+      "title": "Nutrition — La digestion",
+      "prompt": {
+        "context": "La digestion transforme les aliments en nutriments assimilables.",
+        "problem": "Décris le trajet d'un morceau de pain depuis la bouche jusqu'à l'intestin grêle en précisant les transformations chimiques subies.",
+        "tasks": ["Décris la digestion dans la bouche.", "Décris la digestion dans l'estomac.", "Décris la digestion dans l'intestin grêle."]
+      },
+      "hints": ["L'amylase salivaire transforme l'amidon en maltose.", "L'estomac produit du suc gastrique (acide)."],
+      "expected_elements": { "bouche": "Amylase salivaire → amidon transformé en maltose", "estomac": "Suc gastrique acide, protéases", "intestin": "Lipases, protéases, absorption par les villosités" },
+      "rubric": { "bouche": 3, "estomac": 2, "intestin": 3 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-svt-3",
+      "title": "Reproduction — La reproduction sexuée",
+      "prompt": {
+        "problem": "Expliquez le rôle de la méiose dans la reproduction sexuée. Comparez cellule diploïde et haploïde.",
+        "tasks": ["Définissez méiose.", "Expliquez pourquoi la méiose est nécessaire.", "Distinguez cellule diploïde (2n) et haploïde (n)."]
+      },
+      "hints": ["La méiose réduit le nombre de chromosomes de moitié.", "2n = diploïde (cellule ordinaire), n = haploïde (gamète)."],
+      "expected_elements": { "definition": "Division cellulaire qui réduit le nombre de chromosomes de 2n à n", "role": "Produire des gamètes (spermatozoïdes et ovules) pour éviter le doublement chromosomique à chaque génération", "distinction": "2n = cellule somatique; n = gamète" },
+      "rubric": { "definition": 2, "role": 3, "distinction": 2, "precision": 1 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-svt-4",
+      "title": "Écologie — Les chaînes alimentaires",
+      "prompt": {
+        "context": "Dans une savane béninoise, on observe : herbe, criquets, lézards, serpents, aigles.",
+        "problem": "Construis une chaîne alimentaire avec ces 5 organismes. Identifie les producteurs, consommateurs et décomposeurs. Explique la perte d'énergie à chaque niveau.",
+        "tasks": ["Construis la chaîne alimentaire.", "Identifie le type de chaque organisme.", "Explique le flux d'énergie."]
+      },
+      "hints": ["Les producteurs fabriquent leur propre nourriture (photosynthèse).", "L'énergie diminue à chaque maillon (10 % transmis)."],
+      "expected_elements": { "chaine": "Herbe → Criquets → Lézards → Serpents → Aigles", "roles": "Herbe: producteur; autres: consommateurs (1er, 2e, 3e, 4e ordre)", "energie": "Environ 10 % de l'énergie est transmise à chaque niveau" },
+      "rubric": { "chaine": 3, "roles": 3, "energie": 2 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-svt-5",
+      "title": "Corps humain — Le système nerveux",
+      "prompt": {
+        "problem": "Décris le trajet d'un message nerveux lors du réflexe de retrait de la main après avoir touché un objet chaud.",
+        "tasks": ["Identifie le récepteur.", "Décris le trajet du message nerveux sensitif.", "Décris le trajet du message nerveux moteur.", "Identifie l'effecteur."]
+      },
+      "hints": ["Récepteur → nerf sensitif → moelle épinière → nerf moteur → effecteur.", "Le centre nerveux ici est la moelle épinière (réflexe)."],
+      "expected_elements": { "recepteur": "Thermorécepteurs cutanés de la main", "voie_sensitive": "Nerf sensitif → corne postérieure moelle épinière", "voie_motrice": "Corne antérieure → nerf moteur → muscle fléchisseur", "effecteur": "Muscle du bras (fléchisseur)" },
+      "rubric": { "recepteur": 1, "voie_sensitive": 2, "voie_motrice": 2, "effecteur": 1, "schema_arc": 2 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-svt-6",
+      "title": "Génétique — Les lois de Mendel",
+      "prompt": {
+        "context": "Chez une plante, la fleur rouge (R) est dominante sur la fleur blanche (r).",
+        "problem": "Un plant de fleurs rouges homozygote (RR) est croisé avec un plant blanc (rr). Construis le tableau de croisement F1 et F2 et donne les phénotypes et génotypes.",
+        "tasks": ["Construis le tableau de Punnett pour F1.", "Déduis le phénotype de F1.", "Construis le tableau F1 × F1 pour obtenir F2.", "Donne les proportions phénotypiques de F2."]
+      },
+      "hints": ["F1 : tous Rr (hétérozygotes).", "F2 : 1 RR : 2 Rr : 1 rr → 3 rouges pour 1 blanche."],
+      "expected_elements": { "F1_genotype": "100% Rr", "F1_phenotype": "100% fleurs rouges", "F2_genotypes": "1/4 RR, 2/4 Rr, 1/4 rr", "F2_phenotypes": "3/4 rouges, 1/4 blanches" },
+      "rubric": { "F1": 3, "F2_genotype": 2, "F2_phenotype": 2, "tableau_punnett": 1 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-svt-7",
+      "title": "Microbiologie — Bactéries et virus",
+      "prompt": {
+        "problem": "Comparez une bactérie et un virus selon : la taille, la présence d'une cellule, le matériel génétique, et la capacité à se reproduire seuls.",
+        "tasks": ["Comparez la taille.", "Précisez si ce sont des cellules.", "Comparez le matériel génétique.", "Expliquez leur mode de reproduction."]
+      },
+      "hints": ["Les virus ne sont pas des cellules.", "Un virus nécessite une cellule hôte pour se reproduire."],
+      "expected_elements": { "taille": "Bactérie: 1-10 µm; Virus: 20-300 nm", "cellule": "Bactérie: oui (procaryote); Virus: non", "genetique": "Bactérie: ADN+ARN; Virus: ADN ou ARN", "reproduction": "Bactérie: binary fission autonome; Virus: réplication parasitaire" },
+      "rubric": { "taille": 2, "cellule": 2, "genetique": 2, "reproduction": 2 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-svt-8",
+      "title": "Santé — Les IST et la prévention",
+      "prompt": {
+        "context": "La santé sexuelle est une composante importante de la santé globale.",
+        "problem": "Citez 3 IST courantes au Bénin, leurs modes de transmission et les moyens de prévention.",
+        "tasks": ["Nommez 3 IST.", "Donnez le mode de transmission de chacune.", "Proposez des moyens de prévention adaptés."]
+      },
+      "hints": ["IST = Infections Sexuellement Transmissibles.", "Le préservatif est un moyen de prévention efficace."],
+      "expected_elements": { "IST": "VIH/SIDA, syphilis, gonorrhée (chlamydia accepté)", "transmission": "Rapports sexuels non protégés, sang contaminé, mère-enfant", "prevention": "Préservatif, fidélité, dépistage, abstinence, traitement précoce" },
+      "rubric": { "nomination_IST": 3, "transmission": 2, "prevention": 3 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-svt-9",
+      "title": "Botanique — La photosynthèse",
+      "prompt": {
+        "context": "Les plantes vertes produisent leur propre nourriture grâce à la lumière.",
+        "problem": "Écrivez l'équation bilan de la photosynthèse, identifiez les réactifs et produits, et expliquez l'importance de ce processus pour la vie sur Terre.",
+        "tasks": ["Écrivez l'équation de la photosynthèse.", "Identifiez les réactifs et les produits.", "Expliquez son rôle écologique."]
+      },
+      "hints": ["Réactifs : CO₂ et H₂O + lumière.", "Produits : glucose et O₂."],
+      "expected_elements": { "equation": "6CO₂ + 6H₂O + lumière → C₆H₁₂O₆ + 6O₂", "reactifs": "CO₂, H₂O, énergie lumineuse", "produits": "Glucose (C₆H₁₂O₆) et dioxygène", "role": "Produit l'O₂ atmosphérique et les matières organiques à la base des chaînes alimentaires" },
+      "rubric": { "equation": 3, "reactifs_produits": 2, "role_ecologique": 3 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-svt-10",
+      "title": "Anatomie — Le système circulatoire",
+      "prompt": {
+        "problem": "Décrivez le trajet du sang dans la circulation pulmonaire et la circulation générale. Distinguez sang oxygéné et sang désoxygéné.",
+        "tasks": ["Décrivez la petite circulation (cœur → poumons → cœur).", "Décrivez la grande circulation (cœur → organes → cœur).", "Indiquez où le sang est oxygéné et où il perd son oxygène."]
+      },
+      "hints": ["La petite circulation : ventricule droit → poumons → oreillette gauche.", "La grande circulation : ventricule gauche → organes → oreillette droite."],
+      "expected_elements": { "petite_circ": "VD → artère pulmonaire → poumons (oxygénation) → veines pulmonaires → OG", "grande_circ": "VG → aorte → organes (déoxygénation) → veines caves → OD", "sang": "Sang rouge oxygéné : côté gauche; Sang bleu désoxygéné : côté droit" },
+      "rubric": { "petite_circulation": 3, "grande_circulation": 3, "distinction_sang": 2 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    }
+  ]
+}
