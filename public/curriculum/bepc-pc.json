@@ -128,6 +128,61 @@
       "difficulty": "Difficile"
     },
     {
+      "id": "bepc-phys-11",
+      "title": "Chimie — Réaction de l'aluminium avec l'acide chlorhydrique (BEPC Blanc Diocésain Parakou 2025)",
+      "prompt": {
+        "context": "Un alliage commercial contient de l'aluminium (Al) et d'autres métaux inertes. Pour déterminer la qualité de cet alliage, un technicien fait réagir un échantillon de 5,4 g de cet alliage avec une solution d'acide chlorhydrique (HCl) en excès. Il recueille 4,48 L de dihydrogène (H₂) mesuré dans les conditions normales (1 mol de gaz = 22,4 L à T.N.).",
+        "problem": "Déterminez la composition massique de l'alliage et son taux de pureté en aluminium.",
+        "tasks": [
+          "Écrivez et équilibrez l'équation de la réaction entre Al et HCl.",
+          "Calculez le nombre de moles de H₂ recueilli.",
+          "Déduisez le nombre de moles d'aluminium ayant réagi.",
+          "Calculez la masse d'aluminium dans l'alliage.",
+          "Calculez le taux de pureté en aluminium (% massique). Masse molaire : Al = 27 g/mol."
+        ]
+      },
+      "hints": ["2Al + 6HCl → 2AlCl₃ + 3H₂", "n(H₂) = V / 22,4", "D'après l'équation : n(Al) = (2/3) × n(H₂)"],
+      "expected_elements": {
+        "equation": "2Al + 6HCl → 2AlCl₃ + 3H₂",
+        "n_H2": "4,48 / 22,4 = 0,2 mol",
+        "n_Al": "(2/3) × 0,2 = 0,133 mol",
+        "masse_Al": "0,133 × 27 = 3,6 g",
+        "taux_purete": "(3,6 / 5,4) × 100 = 66,7 %"
+      },
+      "rubric": { "equation": 2, "n_H2": 2, "n_Al": 2, "masse_Al": 2, "taux_purete": 2 },
+      "rubric_total": 10,
+      "difficulty": "Moyen",
+      "source": "Inspiré du BEPC Blanc Diocésain Parakou 2025"
+    },
+    {
+      "id": "bepc-phys-12",
+      "title": "Physique — Treuil électrique et radiateur (BEPC Blanc Diocésain Parakou 2025)",
+      "prompt": {
+        "context": "Un treuil électrique est utilisé sur un chantier de construction à Cotonou. Son moteur de puissance utile P = 1 500 W soulève une charge de masse m = 300 kg à une vitesse constante v = 0,5 m/s. Le même circuit alimente un radiateur électrique de résistance R = 44 Ω sous une tension U = 220 V.",
+        "problem": "Analysez le fonctionnement du treuil et du radiateur.",
+        "tasks": [
+          "Calculez le poids de la charge soulevée (g = 10 N/kg).",
+          "Calculez la puissance utile réellement fournie à la charge par le treuil.",
+          "Calculez le rendement du treuil si sa puissance absorbée est 2 000 W.",
+          "Calculez l'intensité du courant traversant le radiateur.",
+          "Calculez la puissance dissipée par le radiateur et l'énergie consommée en 2 heures (en kWh)."
+        ]
+      },
+      "hints": ["P_utile_treuil = P × v", "Rendement η = P_utile / P_absorbée × 100", "I = U / R", "P_radiateur = U × I = U²/R", "E = P × t / 1000 pour kWh"],
+      "expected_elements": {
+        "poids": "P = 300 × 10 = 3 000 N",
+        "P_utile": "3 000 × 0,5 = 1 500 W",
+        "rendement": "η = (1 500 / 2 000) × 100 = 75 %",
+        "intensite": "I = 220 / 44 = 5 A",
+        "puissance_radiateur": "220 × 5 = 1 100 W",
+        "energie_kWh": "1 100 × 2 / 1000 = 2,2 kWh"
+      },
+      "rubric": { "poids": 1, "P_utile": 2, "rendement": 2, "intensite": 2, "puissance_energie": 3 },
+      "rubric_total": 10,
+      "difficulty": "Moyen",
+      "source": "Inspiré du BEPC Blanc Diocésain Parakou 2025"
+    },
+    {
       "id": "bepc-phys-10",
       "title": "Mécanique — Travail et énergie",
       "prompt": {

@@ -124,6 +124,56 @@
       "difficulty": "Difficile"
     },
     {
+      "id": "bac-philo-11",
+      "title": "Dissertation — La conscience comme fondement de la gouvernance (BAC Blanc Bazounkpa 2025)",
+      "prompt": {
+        "context": "Sujet inspiré du BAC Blanc de Zone Bazounkpa, Séries C-D, Février 2025.",
+        "problem": "'La conscience est-elle une condition suffisante pour bien gouverner les hommes ?' Rédigez une dissertation philosophique sur ce sujet.",
+        "tasks": [
+          "Définissez la conscience et la gouvernance dans votre introduction.",
+          "Développez la thèse : la conscience morale est nécessaire au bon gouvernant.",
+          "Développez l'antithèse : la conscience seule ne suffit pas — il faut des lois, des institutions, des compétences.",
+          "Proposez une synthèse : quelle articulation entre conscience individuelle et structures collectives ?",
+          "Rédigez une conclusion avec ouverture."
+        ]
+      },
+      "hints": ["Platon : le philosophe-roi gouverne par la raison et la sagesse (conscience éclairée).", "Machiavel : l'efficacité politique prime sur la morale personnelle.", "Rousseau : la volonté générale transcende les consciences individuelles."],
+      "expected_elements": {
+        "these": "La conscience morale guide le gouvernant vers le bien commun (Platon, Kant : impératif catégorique appliqué au pouvoir).",
+        "antithese": "La conscience individuelle est insuffisante : elle peut être corrompue, aveugle, partiale — d'où la nécessité des lois, de la séparation des pouvoirs, des institutions (Montesquieu).",
+        "synthese": "Le bon gouvernement exige à la fois une conscience éthique et des structures institutionnelles qui encadrent et contrôlent l'exercice du pouvoir."
+      },
+      "rubric": { "introduction": 3, "these": 4, "antithese": 4, "synthese": 4, "conclusion": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile",
+      "source": "Inspiré du BAC Blanc de Zone Bazounkpa, Séries C-D, Février 2025"
+    },
+    {
+      "id": "bac-philo-12",
+      "title": "Commentaire de texte — Spinoza sur la paix et la soumission (BAC Blanc Bazounkpa 2025)",
+      "prompt": {
+        "context": "Texte de Spinoza inspiré du Traité politique : 'La paix n'est pas l'absence de guerre, c'est une vertu qui naît de la force de l'âme. Car l'obéissance qui résulte de la crainte n'est pas la paix, mais la servitude. La vraie paix est celle du peuple qui, libre et fort, ne renonce pas à sa puissance propre.'",
+        "problem": "Expliquez et discutez ce texte de Spinoza sur la paix et la soumission.",
+        "tasks": [
+          "Dégagez la thèse centrale de Spinoza.",
+          "Expliquez la distinction qu'il établit entre paix véritable et servitude.",
+          "Analysez le concept de 'force de l'âme' dans ce contexte.",
+          "Discutez : peut-on toujours distinguer obéissance libre et servitude ?"
+        ]
+      },
+      "hints": ["Pour Spinoza, la paix n'est pas simplement l'absence de conflit armé.", "La vraie paix suppose la liberté, pas la résignation.", "Comparez avec Hobbes qui valorise la paix même au prix de la soumission."],
+      "expected_elements": {
+        "these": "La paix authentique naît de la liberté et de la puissance de l'âme, non de la peur ou de la contrainte.",
+        "distinction": "Paix véritable = accord libre et actif des citoyens; Servitude = soumission passive par crainte.",
+        "force_ame": "La force de l'âme = capacité à agir librement selon la raison, sans être déterminé par la peur.",
+        "discussion": "Hobbes : la paix par la soumission est préférable à la guerre de tous contre tous. Spinoza lui répond : une telle 'paix' n'est qu'une tyrannie déguisée."
+      },
+      "rubric": { "these_centrale": 4, "distinction": 4, "force_ame": 4, "discussion": 3, "redaction": 2 },
+      "rubric_total": 17,
+      "difficulty": "Difficile",
+      "source": "Inspiré du BAC Blanc de Zone Bazounkpa, Séries C-D, Février 2025"
+    },
+    {
       "id": "bac-philo-10",
       "title": "Dissertation — Morale et politique",
       "prompt": {

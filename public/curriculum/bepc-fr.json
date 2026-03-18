@@ -126,6 +126,56 @@
       "difficulty": "Moyen"
     },
     {
+      "id": "bepc-fr-11",
+      "title": "Communication écrite — Article de presse : La protection des arbres (BEPC Blanc 2026)",
+      "prompt": {
+        "context": "Sujet inspiré de l'examen blanc BEPC 2026 – CPEG Les Leaders de l'Afrique / Sainte-Astrid.",
+        "problem": "Rédigez un article de presse d'environ 15 lignes sur la protection des arbres et l'importance de la conservation de l'environnement au Bénin. Votre article doit sensibiliser les lecteurs à l'urgence de préserver les forêts béninoises.",
+        "tasks": [
+          "Choisissez un titre accrocheur.",
+          "Rédigez un chapeau (2-3 lignes résumant l'essentiel).",
+          "Développez 2 à 3 paragraphes : état actuel, menaces, actions à mener.",
+          "Concluez avec un appel à l'action.",
+          "Signez avec un pseudo de journaliste."
+        ]
+      },
+      "hints": ["Un article de presse répond aux questions : Qui ? Quoi ? Où ? Quand ? Pourquoi ? Comment ?", "Utilisez un registre informatif et engagé.", "Citez des données ou exemples concrets du Bénin (déforestation, mangroves, forêt classée...)."],
+      "expected_elements": {
+        "structure": "Titre + Chapeau + Corps de l'article (2-3 §) + Conclusion/Appel à l'action + Signature",
+        "contenu": "État de la déforestation au Bénin, causes (charbon, agriculture), conséquences (érosion, changement climatique), solutions (reboisement, protection légale)",
+        "style": "Registre journalistique, objectif et informatif, quelques données chiffrées"
+      },
+      "rubric": { "titre_chapeau": 3, "corps_article": 5, "conclusion_appel": 2, "style_orthographe": 2, "signature": 1 },
+      "rubric_total": 13,
+      "difficulty": "Moyen",
+      "source": "Inspiré du BEPC Blanc 2026 – CPEG Les Leaders de l'Afrique"
+    },
+    {
+      "id": "bepc-fr-12",
+      "title": "Communication écrite — Texte explicatif : Pourquoi les jeunes lisent-ils moins ? (BEPC Blanc 2026)",
+      "prompt": {
+        "context": "Sujet inspiré de l'examen blanc BEPC 2026 – CPEG Les Leaders de l'Afrique / Sainte-Astrid.",
+        "problem": "Rédigez un texte explicatif d'environ 15 lignes répondant à la question : 'Pourquoi les jeunes africains abandonnent-ils de plus en plus la lecture au profit des technologies numériques (TIC) ?'",
+        "tasks": [
+          "Introduisez le phénomène observé.",
+          "Expliquez 3 causes principales de ce désintérêt pour la lecture.",
+          "Montrez les conséquences de cette tendance sur les jeunes.",
+          "Proposez une conclusion nuancée sur le rôle des TIC dans l'éducation."
+        ]
+      },
+      "hints": ["Un texte explicatif répond à la question 'Pourquoi ?'.", "Causes possibles : réseaux sociaux, vidéos, accessibilité des contenus numériques, manque de bibliothèques...", "Utilisez des connecteurs logiques (parce que, en raison de, c'est pourquoi...)."],
+      "expected_elements": {
+        "introduction": "Constat du recul de la lecture chez les jeunes africains",
+        "causes": "1) Attrait des réseaux sociaux et vidéos (YouTube, TikTok); 2) Manque de bibliothèques et de livres accessibles; 3) Perception du livre comme 'ennuyeux' vs instantanéité du numérique",
+        "consequences": "Baisse du niveau de lecture, appauvrissement du vocabulaire, difficulté de concentration",
+        "conclusion": "Les TIC peuvent aussi être des outils de lecture (e-books, applications éducatives) si bien utilisés"
+      },
+      "rubric": { "introduction": 2, "causes": 5, "consequences": 3, "conclusion": 2, "style_connecteurs": 1 },
+      "rubric_total": 13,
+      "difficulty": "Moyen",
+      "source": "Inspiré du BEPC Blanc 2026 – CPEG Les Leaders de l'Afrique"
+    },
+    {
       "id": "bepc-fr-10",
       "title": "Vocabulaire — Les champs lexicaux",
       "prompt": {

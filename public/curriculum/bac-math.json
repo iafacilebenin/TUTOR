@@ -124,6 +124,61 @@
       "difficulty": "Difficile"
     },
     {
+      "id": "bac-math-11",
+      "title": "Nombres complexes — Modélisation d'un quadrilatère (BAC Série C Bénin 2025)",
+      "prompt": {
+        "context": "Dans le cadre de la rénovation de la statue du roi Emanwolè à Abomey, un architecte modélise la base de la statue par un quadrilatère ABCD dans le plan complexe. Les affixes des sommets sont : zA = 1+2i, zB = 4+i, zC = 5+4i, zD = 2+5i.",
+        "problem": "Étudiez les propriétés géométriques de ce quadrilatère ABCD.",
+        "tasks": [
+          "Calculez les vecteurs AB et DC en utilisant les affixes.",
+          "Montrez que ABCD est un parallélogramme.",
+          "Calculez les modules |AB| et |AD| et déterminez si ABCD est un losange.",
+          "Calculez l'affixe du centre de symétrie de ABCD.",
+          "Calculez l'aire du parallélogramme."
+        ]
+      },
+      "hints": ["AB = zB − zA. Pour un parallélogramme : AB = DC.", "|z| = √(a² + b²).", "Losange : |AB| = |AD|. Centre = (zA + zC)/2."],
+      "expected_elements": {
+        "AB": "zB − zA = 3 − i",
+        "DC": "zC − zD = 3 − i → AB = DC ✓ parallélogramme",
+        "AD": "zD − zA = 1 + 3i → |AD| = √10",
+        "|AB|": "√10 = |AD| → losange ✓",
+        "centre": "(zA + zC)/2 = (6+6i)/2 = 3+3i",
+        "aire": "|Im(AB × conj(AD))| = |Im((3−i)(1−3i))| = |Im(3−9i−i+3i²)| = |Im(−3i)| — à calculer"
+      },
+      "rubric": { "parallelogramme": 4, "modules": 3, "losange": 2, "centre": 2, "aire": 2 },
+      "rubric_total": 13,
+      "difficulty": "Difficile",
+      "source": "Inspiré du BAC Mathématiques Série C Bénin 2025 (thème : rénovation statue roi Emanwolè)"
+    },
+    {
+      "id": "bac-math-12",
+      "title": "Analyse — Étude d'une fonction logarithmique (BAC Série C Bénin 2025)",
+      "prompt": {
+        "context": "Toujours dans le contexte du projet de rénovation d'Abomey, un ingénieur modélise le coût de construction C(x) en millions de FCFA, où x est en mois.",
+        "problem": "Soit f(x) = x·ln(x) − x + 1 définie sur ]0 ; +∞[. Étudiez complètement cette fonction.",
+        "tasks": [
+          "Calculez la limite de f(x) quand x → 0⁺ et quand x → +∞.",
+          "Calculez f'(x) et déterminez le signe de f'(x).",
+          "Dressez le tableau de variations complet.",
+          "Montrez que f(x) ≥ 0 pour tout x > 0 (c'est l'inégalité ln(x) ≥ 1 − 1/x).",
+          "Identifiez l'extremum et son interprétation."
+        ]
+      },
+      "hints": ["f'(x) = ln(x) + 1 − 1 = ln(x).", "f'(x) = 0 → ln(x) = 0 → x = 1.", "f(1) = 0 est le minimum absolu."],
+      "expected_elements": {
+        "limite_0": "lim x→0⁺ f(x) = 0 × (−∞) + 1 → à étudier; lim = 1",
+        "limite_inf": "f(x) → +∞",
+        "derivee": "f'(x) = ln(x) + x·(1/x) − 1 = ln(x)",
+        "signe": "f'(x) < 0 si x < 1, f'(x) > 0 si x > 1",
+        "minimum": "f(1) = 0 est le minimum absolu → f(x) ≥ 0 pour tout x > 0"
+      },
+      "rubric": { "limites": 3, "derivee": 3, "tableau_variations": 3, "inegalite": 2, "extremum": 2 },
+      "rubric_total": 13,
+      "difficulty": "Difficile",
+      "source": "Inspiré du BAC Mathématiques Série C Bénin 2025"
+    },
+    {
       "id": "bac-math-10",
       "title": "Analyse — Limites et continuité",
       "prompt": {
