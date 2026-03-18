@@ -16,7 +16,7 @@ database_id   = "255ef32b-3056-4ca8-a69e-60299ad59a84"
 # ── KV Namespace for rate limiting ─────────────────────────────────────────
 [[kv_namespaces]]
 binding = "RATE_LIMITER"
-id      = "YOUR_KV_NAMESPACE_ID"        # replace after: wrangler kv:namespace create RATE_LIMITER
+id      = "c661d9b20ed04d65bf70ad26cddba764"
 
 # ── Environment variables ──────────────────────────────────────────────────
 [vars]
