@@ -5,30 +5,138 @@
   "exercises": [
     {
       "id": "bepc-hist-1",
-      "title": "Histoire du Bénin",
+      "title": "Histoire — L'indépendance du Bénin",
       "prompt": {
         "context": "L'Afrique francophone a connu une vague d'indépendances au XXe siècle.",
-        "problem": "En quelle année le Dahomey (actuel Bénin) a-t-il accédé à l'indépendance ? Cite le premier président et explique le contexte historique en quelques phrases.",
-        "tasks": [
-          "Indique l'année d'indépendance.",
-          "Cite le nom du premier président.",
-          "Explique brièvement le contexte de la décolonisation en Afrique."
-        ]
+        "problem": "En quelle année le Dahomey a-t-il accédé à l'indépendance ? Cite le premier président et explique brièvement le contexte historique.",
+        "tasks": ["Donne l'année d'indépendance.", "Cite le premier président.", "Décris brièvement le contexte de décolonisation."]
       },
-      "hints": ["L'indépendance a eu lieu en août.", "Le premier président était Hubert Maga."],
-      "expected_elements": {
-        "annee": "1960",
-        "president": "Hubert Maga",
-        "contexte": "Vague de décolonisation de l'Afrique subsaharienne francophone après la Seconde Guerre mondiale."
+      "hints": ["L'indépendance a eu lieu en août 1960.", "Le premier président était Hubert Maga."],
+      "expected_elements": { "annee": "1er août 1960", "president": "Hubert Maga", "contexte": "Vague de décolonisation africaine après la WWII, pression des mouvements nationalistes, accords avec la France." },
+      "rubric": { "date": 2, "president": 2, "contexte": 4, "redaction": 2 },
+      "rubric_total": 10,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-hist-2",
+      "title": "Histoire — La traite négrière",
+      "prompt": {
+        "context": "Ouidah (ancienne Juda) était un centre majeur de la traite atlantique.",
+        "problem": "Expliquez les causes, le déroulement et les conséquences de la traite négrière pour le Bénin actuel.",
+        "tasks": ["Citez 2 causes de la traite négrière.", "Décrivez son déroulement (circuit triangulaire).", "Énoncez 2 conséquences pour l'Afrique."]
       },
-      "rubric": {
-        "annee_correcte": 2,
-        "president": 2,
-        "contexte_historique": 4,
-        "qualite_redaction": 2
-      },
+      "hints": ["Le commerce triangulaire liait l'Europe, l'Afrique et les Amériques.", "Conséquences : dépopulation, instabilité politique."],
+      "expected_elements": { "causes": "Demande de main-d'œuvre dans les colonies, appât du gain, guerres interafricaines", "deroulement": "Europe → marchandises → Afrique → esclaves → Amériques → matières premières → Europe", "consequences": "Dépopulation, sous-développement, instabilité politique en Afrique" },
+      "rubric": { "causes": 3, "circuit": 4, "consequences": 3 },
       "rubric_total": 10,
       "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-hist-3",
+      "title": "Géographie — Le relief du Bénin",
+      "prompt": {
+        "problem": "Décrivez les grandes régions naturelles du Bénin du nord au sud. Citez un exemple de relief ou de particularité géographique pour chaque région.",
+        "tasks": ["Nommez et décrivez la zone nord.", "Nommez et décrivez la zone centrale.", "Nommez et décrivez la zone sud (côtière)."]
+      },
+      "hints": ["Le nord est marqué par la chaîne de l'Atacora.", "Le sud est une plaine côtière avec des lagunes."],
+      "expected_elements": { "nord": "Chaîne de l'Atacora, Mont Sokbaro (641m), savane", "centre": "Plaine du Bénin, zone de transition, forêts dégradées", "sud": "Plaine côtière, lagunes, delta de l'Ouémé, mangroves" },
+      "rubric": { "nord": 3, "centre": 3, "sud": 3, "presentation": 1 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-hist-4",
+      "title": "Histoire — Le royaume du Dahomey",
+      "prompt": {
+        "context": "Le royaume du Dahomey fut l'une des plus grandes entités politiques de l'Afrique de l'Ouest précoloniale.",
+        "problem": "Présentez le royaume du Dahomey : sa localisation, son organisation politique et militaire, et sa chute face à la colonisation française.",
+        "tasks": ["Localisez le royaume.", "Décrivez son organisation.", "Expliquez sa chute (guerres franco-dahoméennes)."]
+      },
+      "hints": ["Capital : Abomey. Roi célèbre : Béhanzin.", "Les guerres franco-dahoméennes ont eu lieu en 1890 et 1892."],
+      "expected_elements": { "localisation": "Actuel Bénin, capitale Abomey", "organisation": "Monarchie absolue, armée des Amazones (Agojie), commerce des esclaves", "chute": "Guerres 1890-1892, défaite de Béhanzin, exil à la Martinique, protectorat français" },
+      "rubric": { "localisation": 2, "organisation": 4, "chute": 4 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-hist-5",
+      "title": "Géographie — Population et villes du Bénin",
+      "prompt": {
+        "problem": "Présentez la répartition de la population béninoise : densité, grands groupes ethniques et principales villes. Expliquez les déséquilibres observés.",
+        "tasks": ["Décrivez la densité de population et ses contrastes.", "Citez 3 groupes ethniques et leurs zones.", "Nommez les 3 plus grandes villes et leur rôle."]
+      },
+      "hints": ["Le sud est plus densément peuplé.", "Groupes : Fon, Yoruba, Bariba, Peul..."],
+      "expected_elements": { "densite": "Forte au sud (Cotonou, Porto-Novo), faible au nord", "ethnies": "Fon (sud), Yoruba (sud-est), Bariba (nord)", "villes": "Cotonou (économique), Porto-Novo (politique), Parakou (nord)" },
+      "rubric": { "densite": 3, "ethnies": 3, "villes": 3, "desequilibres": 1 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-hist-6",
+      "title": "Histoire — Les deux guerres mondiales",
+      "prompt": {
+        "problem": "Comparez les causes de la Première et de la Deuxième Guerre mondiale. Quel a été l'impact de ces guerres sur les colonies africaines comme le Dahomey ?",
+        "tasks": ["Citez 2 causes de la 1ère GM.", "Citez 2 causes de la 2ème GM.", "Expliquez l'impact sur le Dahomey."]
+      },
+      "hints": ["1ère GM : nationalisme, alliance, assassinat de François-Ferdinand.", "2ème GM : montée du fascisme, Traité de Versailles humiliant."],
+      "expected_elements": { "causes_1GM": "Nationalisme, système d'alliances, assassinat Sarajevo 1914", "causes_2GM": "Montée du nazisme, traité de Versailles, crise de 1929", "impact_afrique": "Recrutement de tirailleurs sénégalais, impôts de guerre, prise de conscience nationaliste" },
+      "rubric": { "causes_1GM": 3, "causes_2GM": 3, "impact_afrique": 4 },
+      "rubric_total": 10,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-hist-7",
+      "title": "Géographie — Le climat du Bénin",
+      "prompt": {
+        "problem": "Décrivez les types de climat au Bénin. Comparez le climat du nord avec celui du sud. Citez un impact sur l'agriculture locale.",
+        "tasks": ["Décrivez le climat équatorial au sud.", "Décrivez le climat tropical au nord.", "Donnez un exemple d'impact sur l'agriculture."]
+      },
+      "hints": ["Le sud a 2 saisons des pluies (avril et octobre).", "Le nord a une longue saison sèche (harmattan)."],
+      "expected_elements": { "sud": "Climat subéquatorial : 2 saisons sèches, 2 saisons des pluies, températures 25-30°C", "nord": "Climat tropical soudanien : 1 saison des pluies (juin-sept), harmattan, températures > 35°C", "agriculture": "Sud : cultures de palme, maïs, manioc; Nord : coton, sorgho, mil" },
+      "rubric": { "climat_sud": 3, "climat_nord": 3, "agriculture": 3, "carte": 1 },
+      "rubric_total": 10,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-hist-8",
+      "title": "Histoire — La colonisation française",
+      "prompt": {
+        "context": "La France a colonisé le Dahomey de 1894 à 1960.",
+        "problem": "Décrivez les méthodes de la colonisation française au Dahomey et ses effets positifs et négatifs.",
+        "tasks": ["Décrivez les méthodes d'administration.", "Citez 2 effets positifs (infrastructures, éducation...).", "Citez 2 effets négatifs (exploitation, culture...)."]
+      },
+      "hints": ["La France utilisait l'administration directe.", "Effets positifs : routes, écoles. Effets négatifs : exploitation des ressources, travail forcé."],
+      "expected_elements": { "methodes": "Administration directe, impôts, travail forcé, indigénat", "positifs": "Construction de routes, écoles, hôpitaux, langue commune (français)", "negatifs": "Exploitation économique, destruction des cultures traditionnelles, travail forcé" },
+      "rubric": { "methodes": 3, "effets_positifs": 3, "effets_negatifs": 3, "nuance": 1 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-hist-9",
+      "title": "Géographie — L'économie du Bénin",
+      "prompt": {
+        "problem": "Présentez les piliers de l'économie béninoise : agriculture, commerce et services. Identifiez le principal défi économique du pays.",
+        "tasks": ["Citez les principales cultures d'exportation.", "Décrivez le rôle du port de Cotonou.", "Identifiez le principal défi économique."]
+      },
+      "hints": ["Le coton est la première culture d'exportation.", "Le port de Cotonou dessert les pays enclavés (Niger, Burkina Faso)."],
+      "expected_elements": { "agriculture": "Coton (1er), palmier à huile, manioc, maïs", "port": "Port de transit pour Niger, Burkina, Mali; commerce de réexportation avec le Nigeria", "defi": "Dépendance au Nigeria, corruption, manque de transformation industrielle locale" },
+      "rubric": { "agriculture": 3, "port": 3, "defi": 3, "coherence": 1 },
+      "rubric_total": 10,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-hist-10",
+      "title": "Géographie — L'environnement et le développement durable",
+      "prompt": {
+        "context": "Le Bénin fait face à des défis environnementaux croissants.",
+        "problem": "Identifiez 3 problèmes environnementaux au Bénin, leurs causes et proposez des solutions dans le cadre du développement durable.",
+        "tasks": ["Nommez 3 problèmes environnementaux.", "Expliquez leurs causes.", "Proposez une solution durable pour chacun."]
+      },
+      "hints": ["Problèmes : déforestation, érosion côtière, pollution....", "Développement durable = satisfaire les besoins présents sans compromettre les générations futures."],
+      "expected_elements": { "problemes": "Déforestation, érosion côtière (Cotonou), pollution des lagunes", "causes": "Charbon de bois, construction côtière, déchets industriels et ménagers", "solutions": "Reboisement, digues et brise-lames, gestion des déchets, énergie solaire" },
+      "rubric": { "problemes": 3, "causes": 3, "solutions": 3, "concept_DD": 1 },
+      "rubric_total": 10,
+      "difficulty": "Difficile"
     }
   ]
 }

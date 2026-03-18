@@ -5,30 +5,196 @@
   "exercises": [
     {
       "id": "bepc-phys-1",
-      "title": "Loi d'Ohm",
+      "title": "Électricité — Loi d'Ohm",
       "prompt": {
-        "context": "Un circuit électrique simple est constitué d'une pile et d'une résistance.",
-        "problem": "Un circuit comporte une pile de 12V et une résistance R. L'intensité mesurée est de 0,4A. Calcule la valeur de R et indique son unité.",
-        "tasks": [
-          "Rappelle la loi d'Ohm sous forme littérale.",
-          "Déduis la formule permettant de calculer R.",
-          "Applique numériquement et conclure."
-        ]
+        "context": "Un circuit comporte une pile et une résistance.",
+        "problem": "Un circuit comporte une pile de 12 V et une résistance R. L'intensité mesurée est 0,4 A. Calcule R et indique son unité.",
+        "tasks": ["Énonce la loi d'Ohm.", "Déduis la formule de R.", "Applique numériquement."]
       },
-      "hints": ["Utilise U = R × I", "R = U / I"],
-      "expected_elements": {
-        "loi_ohm": "U = R × I",
-        "formule_R": "R = U / I",
-        "application": "R = 12 / 0,4 = 30 Ω"
+      "hints": ["U = R × I", "R = U / I"],
+      "expected_elements": { "loi": "U = R × I", "formule_R": "R = U / I", "resultat": "R = 30 Ω" },
+      "rubric": { "enonce_loi": 2, "formule": 2, "calcul": 3, "unite": 1 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-phys-2",
+      "title": "Mécanique — Poids et masse",
+      "prompt": {
+        "context": "Un objet a une masse de 5 kg.",
+        "problem": "Calcule le poids de cet objet sur Terre (g = 10 N/kg) puis sur la Lune (g = 1,6 N/kg). Compare les résultats.",
+        "tasks": ["Énonce la relation poids-masse.", "Calcule le poids sur Terre.", "Calcule le poids sur la Lune.", "Compare et explique."]
       },
-      "rubric": {
-        "enonce_loi": 2,
-        "formule": 2,
-        "calcul": 3,
-        "unite": 1
+      "hints": ["P = m × g", "La masse ne change pas mais le poids varie selon l'astre."],
+      "expected_elements": { "relation": "P = m × g", "poids_terre": "50 N", "poids_lune": "8 N", "comparaison": "La masse est la même, le poids est 6× plus faible sur la Lune." },
+      "rubric": { "relation": 2, "poids_terre": 2, "poids_lune": 2, "comparaison": 2 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-phys-3",
+      "title": "Optique — Réflexion et réfraction",
+      "prompt": {
+        "context": "Un rayon lumineux passe de l'air vers l'eau.",
+        "problem": "L'angle d'incidence est 30°. L'indice de réfraction de l'eau est n = 1,33. Calcule l'angle de réfraction.",
+        "tasks": ["Énonce la loi de Snell-Descartes.", "Applique la formule.", "Calcule l'angle de réfraction (sin 30° = 0,5)."]
       },
+      "hints": ["n₁ sin(i₁) = n₂ sin(i₂)", "n_air = 1"],
+      "expected_elements": { "loi": "n₁ sin(i₁) = n₂ sin(i₂)", "calcul": "sin(r) = 0,5/1,33 ≈ 0,376", "angle": "r ≈ 22°" },
+      "rubric": { "enonce_loi": 2, "formule": 2, "calcul": 3, "angle": 1 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-phys-4",
+      "title": "Chimie — Réaction acide-base",
+      "prompt": {
+        "context": "On verse de l'acide chlorhydrique sur de la soude.",
+        "problem": "Écris l'équation de la réaction entre HCl et NaOH. Identifie les réactifs, les produits et le type de réaction.",
+        "tasks": ["Écris l'équation bilan équilibrée.", "Identifie réactifs et produits.", "Nomme le type de réaction."]
+      },
+      "hints": ["Les ions H⁺ et OH⁻ réagissent pour former de l'eau.", "Un sel se forme aussi."],
+      "expected_elements": { "equation": "HCl + NaOH → NaCl + H₂O", "reactifs": "HCl, NaOH", "produits": "NaCl, H₂O", "type": "Réaction de neutralisation acide-base" },
+      "rubric": { "equation": 3, "reactifs_produits": 2, "type_reaction": 2, "equilibrage": 1 },
       "rubric_total": 8,
       "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-phys-5",
+      "title": "Électricité — Circuits en série et parallèle",
+      "prompt": {
+        "context": "Deux résistances R₁ = 6 Ω et R₂ = 12 Ω sont montées.",
+        "problem": "Calcule la résistance équivalente : 1) en série, 2) en parallèle.",
+        "tasks": ["Calcule Réq en série.", "Calcule Réq en parallèle.", "Compare et explique l'effet sur l'intensité."]
+      },
+      "hints": ["Série : Réq = R₁ + R₂", "Parallèle : 1/Réq = 1/R₁ + 1/R₂"],
+      "expected_elements": { "serie": "Réq = 18 Ω", "parallele": "Réq = 4 Ω", "explication": "En parallèle, Réq est plus faible donc l'intensité est plus grande." },
+      "rubric": { "serie": 3, "parallele": 3, "explication": 2 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-phys-6",
+      "title": "Mécanique — Vitesse et mouvement",
+      "prompt": {
+        "context": "Un bus relie Cotonou à Porto-Novo (30 km) en 45 minutes.",
+        "problem": "Calcule la vitesse moyenne du bus en km/h puis en m/s.",
+        "tasks": ["Convertis le temps en heures.", "Calcule la vitesse en km/h.", "Convertis en m/s."]
+      },
+      "hints": ["v = d / t", "1 km/h = 1/3,6 m/s"],
+      "expected_elements": { "temps_h": "0,75 h", "vitesse_kmh": "40 km/h", "vitesse_ms": "≈ 11,1 m/s" },
+      "rubric": { "conversion_temps": 1, "vitesse_kmh": 3, "vitesse_ms": 3, "unite": 1 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-phys-7",
+      "title": "Chimie — Combustion du carbone",
+      "prompt": {
+        "problem": "Écris et équilibre l'équation de la combustion complète du carbone (C) dans le dioxygène (O₂). Identifie les réactifs et les produits.",
+        "tasks": ["Écris l'équation non équilibrée.", "Équilibre l'équation.", "Nomme réactifs et produits."]
+      },
+      "hints": ["Le produit de la combustion complète du carbone est le dioxyde de carbone CO₂.", "C + O₂ → ?"],
+      "expected_elements": { "equation": "C + O₂ → CO₂", "reactifs": "C et O₂", "produit": "CO₂ (dioxyde de carbone)" },
+      "rubric": { "equation": 3, "equilibrage": 2, "identification": 2, "nomenclature": 1 },
+      "rubric_total": 8,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-phys-8",
+      "title": "Électricité — Puissance et énergie électrique",
+      "prompt": {
+        "context": "Un appareil électrique fonctionne sous 220 V et absorbe un courant de 2 A.",
+        "problem": "Calcule sa puissance. S'il fonctionne 3 heures par jour pendant 30 jours, calcule l'énergie consommée en kWh et le coût (1 kWh = 120 FCFA).",
+        "tasks": ["Calcule la puissance P en watts.", "Calcule l'énergie en kWh.", "Calcule le coût total."]
+      },
+      "hints": ["P = U × I", "E = P × t (en heures) / 1000 pour kWh"],
+      "expected_elements": { "puissance": "440 W", "energie": "39,6 kWh", "cout": "4 752 FCFA" },
+      "rubric": { "puissance": 2, "energie": 3, "cout": 3 },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-phys-9",
+      "title": "Chimie — Classification périodique",
+      "prompt": {
+        "problem": "L'atome de sodium (Na) a le numéro atomique Z = 11. Donne la configuration électronique, identifie sa période et sa famille dans le tableau périodique.",
+        "tasks": ["Donne la configuration électronique de Na.", "Identifie la période.", "Identifie la famille (colonne)."]
+      },
+      "hints": ["Les couches électroniques : K(2), L(8), M(8)...", "La période = nombre de couches occupées. La famille = nombre d'électrons sur la dernière couche."],
+      "expected_elements": { "configuration": "(K:2, L:8, M:1)", "periode": "3ème période", "famille": "Famille IA (1 électron de valence)" },
+      "rubric": { "configuration": 3, "periode": 2, "famille": 2, "justification": 1 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-phys-11",
+      "title": "Chimie — Réaction de l'aluminium avec l'acide chlorhydrique (BEPC Blanc Diocésain Parakou 2025)",
+      "prompt": {
+        "context": "Un alliage commercial contient de l'aluminium (Al) et d'autres métaux inertes. Pour déterminer la qualité de cet alliage, un technicien fait réagir un échantillon de 5,4 g de cet alliage avec une solution d'acide chlorhydrique (HCl) en excès. Il recueille 4,48 L de dihydrogène (H₂) mesuré dans les conditions normales (1 mol de gaz = 22,4 L à T.N.).",
+        "problem": "Déterminez la composition massique de l'alliage et son taux de pureté en aluminium.",
+        "tasks": [
+          "Écrivez et équilibrez l'équation de la réaction entre Al et HCl.",
+          "Calculez le nombre de moles de H₂ recueilli.",
+          "Déduisez le nombre de moles d'aluminium ayant réagi.",
+          "Calculez la masse d'aluminium dans l'alliage.",
+          "Calculez le taux de pureté en aluminium (% massique). Masse molaire : Al = 27 g/mol."
+        ]
+      },
+      "hints": ["2Al + 6HCl → 2AlCl₃ + 3H₂", "n(H₂) = V / 22,4", "D'après l'équation : n(Al) = (2/3) × n(H₂)"],
+      "expected_elements": {
+        "equation": "2Al + 6HCl → 2AlCl₃ + 3H₂",
+        "n_H2": "4,48 / 22,4 = 0,2 mol",
+        "n_Al": "(2/3) × 0,2 = 0,133 mol",
+        "masse_Al": "0,133 × 27 = 3,6 g",
+        "taux_purete": "(3,6 / 5,4) × 100 = 66,7 %"
+      },
+      "rubric": { "equation": 2, "n_H2": 2, "n_Al": 2, "masse_Al": 2, "taux_purete": 2 },
+      "rubric_total": 10,
+      "difficulty": "Moyen",
+      "source": "Inspiré du BEPC Blanc Diocésain Parakou 2025"
+    },
+    {
+      "id": "bepc-phys-12",
+      "title": "Physique — Treuil électrique et radiateur (BEPC Blanc Diocésain Parakou 2025)",
+      "prompt": {
+        "context": "Un treuil électrique est utilisé sur un chantier de construction à Cotonou. Son moteur de puissance utile P = 1 500 W soulève une charge de masse m = 300 kg à une vitesse constante v = 0,5 m/s. Le même circuit alimente un radiateur électrique de résistance R = 44 Ω sous une tension U = 220 V.",
+        "problem": "Analysez le fonctionnement du treuil et du radiateur.",
+        "tasks": [
+          "Calculez le poids de la charge soulevée (g = 10 N/kg).",
+          "Calculez la puissance utile réellement fournie à la charge par le treuil.",
+          "Calculez le rendement du treuil si sa puissance absorbée est 2 000 W.",
+          "Calculez l'intensité du courant traversant le radiateur.",
+          "Calculez la puissance dissipée par le radiateur et l'énergie consommée en 2 heures (en kWh)."
+        ]
+      },
+      "hints": ["P_utile_treuil = P × v", "Rendement η = P_utile / P_absorbée × 100", "I = U / R", "P_radiateur = U × I = U²/R", "E = P × t / 1000 pour kWh"],
+      "expected_elements": {
+        "poids": "P = 300 × 10 = 3 000 N",
+        "P_utile": "3 000 × 0,5 = 1 500 W",
+        "rendement": "η = (1 500 / 2 000) × 100 = 75 %",
+        "intensite": "I = 220 / 44 = 5 A",
+        "puissance_radiateur": "220 × 5 = 1 100 W",
+        "energie_kWh": "1 100 × 2 / 1000 = 2,2 kWh"
+      },
+      "rubric": { "poids": 1, "P_utile": 2, "rendement": 2, "intensite": 2, "puissance_energie": 3 },
+      "rubric_total": 10,
+      "difficulty": "Moyen",
+      "source": "Inspiré du BEPC Blanc Diocésain Parakou 2025"
+    },
+    {
+      "id": "bepc-phys-10",
+      "title": "Mécanique — Travail et énergie",
+      "prompt": {
+        "context": "Un ouvrier pousse une caisse de 200 N sur 5 m avec une force de 80 N dans la direction du déplacement.",
+        "problem": "Calcule le travail de la force motrice, le travail du poids et la puissance si le déplacement dure 10 secondes.",
+        "tasks": ["Calcule W = F × d (force motrice).", "Calcule le travail du poids.", "Calcule la puissance P = W / t."]
+      },
+      "hints": ["W = F × d × cos(θ). Ici θ = 0° donc cos = 1.", "Le poids est perpendiculaire au déplacement donc son travail est nul."],
+      "expected_elements": { "travail_force": "400 J", "travail_poids": "0 J (déplacement horizontal)", "puissance": "40 W" },
+      "rubric": { "travail_force": 3, "travail_poids": 2, "puissance": 3 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
     }
   ]
 }

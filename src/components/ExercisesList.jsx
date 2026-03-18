@@ -4,12 +4,12 @@ const ExercisesList = ({ exercises, grades, onSelectExercise }) => {
   const [filter, setFilter] = useState('ALL');
 
   const availableLevels = useMemo(() => {
-    const levels = new Set(exercises.map(ex => ex.level).filter(Boolean));
+    const levels = new Set(exercises.map(ex => ex._meta?.level).filter(Boolean));
     return ['ALL', ...Array.from(levels)];
   }, [exercises]);
 
   const allEx = useMemo(() => {
-    return filter === 'ALL' ? exercises : exercises.filter(ex => ex.level === filter);
+    return filter === 'ALL' ? exercises : exercises.filter(ex => ex._meta?.level === filter);
   }, [filter, exercises]);
 
   return (
@@ -35,9 +35,9 @@ const ExercisesList = ({ exercises, grades, onSelectExercise }) => {
               const lastGrade = grades.findLast(g => g.exerciseId === ex.id);
               return (
                 <div key={ex.id} className="exercise-card" onClick={() => onSelectExercise(ex)}>
-                  <span className="exercise-level">{ex.level}</span>
+                  <span className="exercise-level">{ex._meta?.level}</span>
                   <h3 className="exercise-title">{ex.title}</h3>
-                  <p className="exercise-subject">{ex.subject_name} ({ex.year})</p>
+                  <p className="exercise-subject">{ex._meta?.subject_name} ({ex._meta?.year})</p>
                   <p style={{fontSize: '0.8rem', color: '#666', marginTop: '0.5rem'}}>Pts: {ex.rubric_total || ex.points} | Diff: {ex.difficulty}</p>
                   {lastGrade && (
                     <div className={`last-score`} style={{marginTop: '0.5rem', fontWeight: 'bold', color: 'var(--color-primary)'}}>

@@ -1,0 +1,141 @@
+{
+  "level": "BAC",
+  "subject": "SVT",
+  "year": 2025,
+  "exercises": [
+    {
+      "id": "bac-svt-1",
+      "title": "Génétique — Hérédité liée au sexe",
+      "prompt": {
+        "context": "L'hémophilie est une maladie génétique récessive liée au chromosome X (X^h). Une femme saine porteuse (X^H X^h) épouse un homme sain (X^H Y).",
+        "problem": "Établissez l'échiquier de croisement et calculez les probabilités d'avoir un enfant hémophile.",
+        "tasks": ["Écrivez les génotypes des parents.", "Construisez l'échiquier de croisement.", "Calculez la probabilité d'avoir un garçon hémophile.", "Calculez la probabilité d'avoir une fille porteuse."]
+      },
+      "hints": ["Gamètes de la mère : X^H ou X^h. Gamètes du père : X^H ou Y.", "Garçon hémophile : X^h Y."],
+      "expected_elements": { "echiquier": "X^H X^H / X^h X^H / X^H Y / X^h Y", "prob_garcon_hemophile": "1/4 (25%)", "prob_fille_porteuse": "1/4 (25%)", "conclusion": "50% des garçons seront hémophiles, 50% des filles seront porteuses" },
+      "rubric": { "genotypes_parents": 3, "echiquier": 5, "probabilites": 5, "conclusion": 2 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-2",
+      "title": "Physiologie — La régulation glycémique",
+      "prompt": {
+        "context": "Le taux de glucose dans le sang (glycémie) est normalement maintenu à environ 1 g/L.",
+        "problem": "Expliquez comment l'organisme régule la glycémie après un repas riche en glucides. Décrivez les hormones impliquées et les organes cibles.",
+        "tasks": ["Décrivez l'augmentation de la glycémie après le repas.", "Expliquez le rôle de l'insuline et de son organe de sécrétion.", "Décrivez les effets de l'insuline sur les cellules cibles.", "Expliquez le mécanisme inverse (hypoglycémie → glucagon)."]
+      },
+      "hints": ["L'insuline est sécrétée par le pancréas (cellules β).", "Le glucagon est sécrété par les cellules α du pancréas."],
+      "expected_elements": { "hyperglycemie": "Absorption intestinale du glucose → glycémie > 1 g/L", "insuline": "Cellules β du pancréas sécrètent l'insuline → glycogenèse hépatique et musculaire, captation cellulaire du glucose", "effets": "Foie : stockage en glycogène; muscles : utilisation; tissu adipeux : synthèse de lipides", "glucagon": "Hypoglycémie → cellules α → glucagon → glycogénolyse hépatique → libération glucose" },
+      "rubric": { "hyperglycemie": 3, "insuline": 4, "effets_cellulaires": 4, "glucagon": 4 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-3",
+      "title": "Géologie — La tectonique des plaques",
+      "prompt": {
+        "problem": "Expliquez la théorie de la tectonique des plaques. Décrivez les différents types de frontières et les phénomènes géologiques associés.",
+        "tasks": ["Définissez la lithosphère et l'asthénosphère.", "Décrivez les 3 types de frontières de plaques.", "Pour chaque type, citez un phénomène géologique et un exemple géographique."]
+      },
+      "hints": ["Convergentes : subduction → volcanisme, séismes (Andes).", "Divergentes : dorsales océaniques (Atlantique).", "Transformantes : failles (San Andreas)."],
+      "expected_elements": { "definitions": "Lithosphère = croûte + manteau supérieur rigide; Asthénosphère = manteau plastique sur lequel 'flottent' les plaques", "convergentes": "Subduction, volcanisme, séismes → Japon, Andes", "divergentes": "Extension, rifting, dorsales → Dorsale Médio-Atlantique", "transformantes": "Décrochement, séismes → Faille de San Andreas" },
+      "rubric": { "definitions": 3, "convergentes": 4, "divergentes": 4, "transformantes": 4 },
+      "rubric_total": 15,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bac-svt-4",
+      "title": "Immunologie — La réponse immunitaire",
+      "prompt": {
+        "context": "Un individu est infecté pour la première fois par le virus de la grippe.",
+        "problem": "Décrivez les étapes de la réponse immunitaire spécifique (adaptative) lors d'une première infection, puis lors d'une deuxième exposition au même virus.",
+        "tasks": ["Décrivez la réponse primaire (première infection).", "Expliquez le rôle des lymphocytes B et T.", "Décrivez la réponse secondaire et expliquez pourquoi elle est plus rapide."]
+      },
+      "hints": ["Réponse primaire : latente (5-10 jours), anticorps peu nombreux.", "Réponse secondaire : rapide (1-3 jours), grâce aux cellules mémoire."],
+      "expected_elements": { "reponse_primaire": "Reconnaissance antigène → activation LB et LT → prolifération → production Ac → élimination virus", "LB_LT": "LB → plasmocytes (anticorps); LT cytotoxiques → destruction cellules infectées; LT auxiliaires → coordination", "memoire": "Cellules mémoire B et T gardées → réponse secondaire rapide et intense → vaccination exploite ce mécanisme" },
+      "rubric": { "reponse_primaire": 5, "roles_LB_LT": 5, "reponse_secondaire": 5 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-5",
+      "title": "Biochimie — La respiration cellulaire",
+      "prompt": {
+        "problem": "Comparez la respiration cellulaire et la fermentation. Écrivez les équations bilans, localisez les réactions dans la cellule et comparez les rendements énergétiques.",
+        "tasks": ["Écrivez l'équation de la respiration cellulaire.", "Écrivez l'équation de la fermentation lactique.", "Localisez chaque processus dans la cellule.", "Comparez les rendements en ATP."]
+      },
+      "hints": ["Respiration : mitochondrie, O₂ nécessaire, 36-38 ATP.", "Fermentation : cytoplasme, sans O₂, 2 ATP."],
+      "expected_elements": { "respiration": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + 36-38 ATP (mitochondrie)", "fermentation": "C₆H₁₂O₆ → 2 CH₃CH(OH)COOH + 2 ATP (cytoplasme, anaérobie)", "localisation": "Respiration : cytoplasme (glycolyse) + mitochondrie (cycle Krebs + chaîne respiratoire); Fermentation : cytoplasme uniquement", "rendement": "Respiration : 36-38 ATP; Fermentation : 2 ATP → respiration 18-19× plus efficace" },
+      "rubric": { "equation_respiration": 4, "equation_fermentation": 3, "localisation": 4, "rendement": 4 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-6",
+      "title": "Écologie — Les cycles biogéochimiques",
+      "prompt": {
+        "problem": "Décrivez le cycle du carbone. Identifiez les réservoirs, les flux et l'impact des activités humaines sur ce cycle.",
+        "tasks": ["Identifiez les 3 grands réservoirs de carbone.", "Décrivez les flux naturels entre réservoirs.", "Expliquez comment les activités humaines perturbent ce cycle.", "Proposez une conséquence de cette perturbation."]
+      },
+      "hints": ["Réservoirs : atmosphère (CO₂), biosphère (matière organique), lithosphère (calcaires, charbon).", "Photosynthèse capte CO₂; respiration et décomposition le libèrent."],
+      "expected_elements": { "reservoirs": "Atmosphère (CO₂), biosphère (êtres vivants), lithosphère (combustibles fossiles, roches)", "flux_naturels": "Photosynthèse : CO₂ → matière organique; Respiration/décomposition : matière organique → CO₂", "impact_humain": "Combustion fossiles, déforestation → augmentation CO₂ atmosphérique", "consequence": "Effet de serre renforcé → réchauffement climatique" },
+      "rubric": { "reservoirs": 3, "flux_naturels": 4, "impact_humain": 4, "consequence": 4 },
+      "rubric_total": 15,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bac-svt-7",
+      "title": "Neurologie — La transmission synaptique",
+      "prompt": {
+        "context": "La synapse est la zone de communication entre deux neurones.",
+        "problem": "Décrivez le mécanisme de transmission d'un message nerveux au niveau d'une synapse chimique.",
+        "tasks": ["Décrivez l'arrivée du potentiel d'action au bouton présynaptique.", "Expliquez la libération du neurotransmetteur.", "Décrivez la fixation sur les récepteurs postsynaptiques.", "Expliquez ce qui se passe après la fixation."]
+      },
+      "hints": ["L'arrivée du PA → ouverture des canaux Ca²⁺.", "Le neurotransmetteur traverse la fente synaptique par exocytose."],
+      "expected_elements": { "potentiel_action": "PA → dépolarisation du bouton présynaptique → ouverture canaux Ca²⁺", "liberation": "Afflux Ca²⁺ → fusion vésicules synaptiques avec membrane → exocytose du neurotransmetteur (ex: acétylcholine)", "fixation": "Neurotransmetteur traverse fente synaptique → se fixe sur récepteurs membranaires du neurone postsynaptique", "apres": "Ouverture canaux ioniques → nouveau PA ou inhibition; dégradation ou recapture du neurotransmetteur" },
+      "rubric": { "potentiel_action": 3, "liberation": 4, "fixation": 4, "apres": 4 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-8",
+      "title": "Évolution — Les mécanismes de l'évolution",
+      "prompt": {
+        "problem": "Expliquez les mécanismes de l'évolution selon Darwin et leur complément par la génétique moderne (théorie synthétique). Donnez un exemple africain.",
+        "tasks": ["Résumez les idées clés de Darwin.", "Expliquez le rôle des mutations et de la sélection naturelle.", "Décrivez la dérive génétique.", "Donnez un exemple d'adaptation observé en Afrique."]
+      },
+      "hints": ["Darwin : variation + sélection naturelle + hérédité.", "Mutation : changement aléatoire de l'ADN."],
+      "expected_elements": { "darwin": "Variation individuelle + sélection naturelle des individus les mieux adaptés + transmission des caractères avantageux", "mutations_selection": "Mutations aléatoires créent la variabilité; la sélection naturelle retient les mutations avantageuses", "derive": "Dérive génétique : fluctuation aléatoire des fréquences alléliques dans les petites populations", "exemple": "Résistance à la malaria chez les porteurs d'un allèle de drépanocytose en Afrique subsaharienne" },
+      "rubric": { "darwin": 4, "mutations_selection": 4, "derive": 3, "exemple_africain": 4 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-9",
+      "title": "Embryologie — Le développement embryonnaire",
+      "prompt": {
+        "problem": "Décrivez les grandes étapes du développement embryonnaire humain depuis la fécondation jusqu'à la gastrulation. Expliquez l'importance de la gastrulation.",
+        "tasks": ["Décrivez la fécondation.", "Décrivez la segmentation (de la fécondation à la morula).", "Décrivez la blastulation.", "Expliquez la gastrulation et son importance."]
+      },
+      "hints": ["Fécondation → zygote (2n).", "Gastrulation : formation des 3 feuillets embryonnaires (ectoderme, mésoderme, endoderme)."],
+      "expected_elements": { "fecondation": "Fusion spermatozoïde + ovule → zygote 2n dans la trompe", "segmentation": "Divisions mitotiques successives sans croissance → morula (16-32 cellules)", "blastulation": "Cavité interne (blastocèle) → blastocyste → implantation dans l'utérus", "gastrulation": "Formation des 3 feuillets embryonnaires qui donneront tous les organes: ecto (peau, SN), méso (muscles, squelette), endo (tube digestif)" },
+      "rubric": { "fecondation": 3, "segmentation": 3, "blastulation": 3, "gastrulation": 6 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bac-svt-10",
+      "title": "Biologie moléculaire — L'expression génétique",
+      "prompt": {
+        "problem": "Décrivez le dogme central de la biologie moléculaire : de l'ADN à la protéine. Incluez la transcription et la traduction.",
+        "tasks": ["Expliquez la transcription (ADN → ARNm).", "Expliquez la traduction (ARNm → protéine).", "Définissez codon, anticodon et acide aminé.", "Localisez chaque étape dans la cellule eucaryote."]
+      },
+      "hints": ["Transcription : dans le noyau. Traduction : dans le cytoplasme (ribosomes).", "Codon : triplet de nucléotides sur l'ARNm."],
+      "expected_elements": { "transcription": "ADN déroulé → ARN polymérase → ARNm synthétisé brin par brin (noyau) → maturation → exporté", "traduction": "ARNm → ribosome → ARNt apportent les AA selon les codons → polypeptide synthétisé", "definitions": "Codon : triplet ARNm; Anticodon : triplet ARNt complémentaire; Acide aminé : monomère des protéines", "localisation": "Transcription : noyau; Traduction : cytoplasme (ribosomes libres ou RE rugueux)" },
+      "rubric": { "transcription": 4, "traduction": 4, "definitions": 4, "localisation": 3 },
+      "rubric_total": 15,
+      "difficulty": "Difficile"
+    }
+  ]
+}

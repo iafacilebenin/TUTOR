@@ -1,33 +1,46 @@
-const API_BASE = "https://iabeninois-api.iafacilebenin.workers.dev";
+const API_BASE = import.meta.env.VITE_WORKER_URL || "https://iabeninois-api.iafacilebenin.workers.dev";
 
+// ── POST /evaluate ─────────────────────────────────────────────────────────
 export const evaluateAnswer = async (payload) => {
-  const response = await fetch(API_BASE, {
+  const response = await fetch(`${API_BASE}/evaluate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   });
 
   if (!response.ok) {
-    throw new Error("API call failed");
+    throw new Error(`Evaluation failed: ${response.status}`);
   }
 
   return response.json();
 };
 
+// ── POST /students/register ────────────────────────────────────────────────
 export const registerStudent = async (name, deviceId) => {
-  // Scaffolding POST /students/register
-  console.log(`[Scaffold] Registering student: ${name} with device: ${deviceId}`);
-  return { success: true, name, deviceId, registered_at: new Date().toISOString() };
+  const response = await fetch(`${API_BASE}/students/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, deviceId })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Registration failed: ${response.status}`);
+  }
+
+  return response.json();
 };
 
-export const generateExercises = async (deviceId, topic) => {
-  // Scaffolding POST /exercises/generate
-  // In Phase 2: Cache generated exercises in D1 for 24h
-  // In Phase 2: Rate limit: 10 AI generations per device_id per day
-  console.log(`[Scaffold] Generating exercises for device ${deviceId} on topic ${topic}...`);
-  return {
-    success: true,
-    message: "Exercises scaffolded (Not activated)",
-    exercises: []
-  };
+// ── POST /exercises/generate ───────────────────────────────────────────────
+export const generateExercises = async (deviceId, topic, level) => {
+  const response = await fetch(`${API_BASE}/exercises/generate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ deviceId, topic, level })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Generation failed: ${response.status}`);
+  }
+
+  return response.json();
 };

@@ -1,0 +1,144 @@
+{
+  "level": "BEPC",
+  "subject": "Mathématiques",
+  "year": 2025,
+  "exercises": [
+    {
+      "id": "bepc-math-1",
+      "title": "Algèbre — Équation du premier degré",
+      "prompt": {
+        "problem": "Résous l'équation : 3x − 7 = 2x + 5. Vérifie ta solution.",
+        "tasks": ["Résous l'équation.", "Vérifie en remplaçant x par la valeur trouvée."]
+      },
+      "hints": ["Regroupe les termes en x d'un côté.", "Regroupe les constantes de l'autre côté."],
+      "expected_elements": { "solution": "x = 12", "verification": "3(12)−7 = 29 = 2(12)+5 ✓" },
+      "rubric": { "resolution": 4, "verification": 2, "presentation": 1 },
+      "rubric_total": 7,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-math-2",
+      "title": "Géométrie — Théorème de Pythagore",
+      "prompt": {
+        "context": "Un terrain triangulaire a deux côtés de l'angle droit mesurant 6 m et 8 m.",
+        "problem": "Calcule la longueur de l'hypoténuse. Justifie l'application du théorème.",
+        "tasks": ["Énonce le théorème de Pythagore.", "Applique numériquement.", "Donne le résultat exact puis approché."]
+      },
+      "hints": ["c² = a² + b²", "√100 = 10"],
+      "expected_elements": { "theoreme": "c² = a² + b²", "calcul": "c² = 36 + 64 = 100", "resultat": "c = 10 m" },
+      "rubric": { "enonce": 2, "application": 3, "resultat": 2 },
+      "rubric_total": 7,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-math-3",
+      "title": "Statistiques — Moyenne et médiane",
+      "prompt": {
+        "context": "Voici les notes de 8 élèves sur 20 : 12, 8, 15, 10, 18, 7, 14, 12.",
+        "problem": "Calcule la moyenne et la médiane de cette série.",
+        "tasks": ["Calcule la moyenne.", "Classe les valeurs par ordre croissant.", "Calcule la médiane."]
+      },
+      "hints": ["Moyenne = somme / nombre de valeurs.", "Médiane : valeur centrale après classement."],
+      "expected_elements": { "somme": "96", "moyenne": "12", "valeurs_classees": "7,8,10,12,12,14,15,18", "mediane": "12" },
+      "rubric": { "moyenne": 3, "classement": 1, "mediane": 3 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-math-4",
+      "title": "Algèbre — Système de deux équations",
+      "prompt": {
+        "problem": "Résous le système : { 2x + y = 10  |  x − y = 2 }",
+        "tasks": ["Choisis une méthode (substitution ou addition).", "Trouve x et y.", "Vérifie la solution."]
+      },
+      "hints": ["Par addition : additionne les deux équations pour éliminer y.", "Remplace ensuite x dans l'une des équations."],
+      "expected_elements": { "x": "4", "y": "2", "verification": "2(4)+2=10 ✓ et 4−2=2 ✓" },
+      "rubric": { "methode": 2, "valeur_x": 2, "valeur_y": 2, "verification": 1 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-math-5",
+      "title": "Géométrie — Aire et périmètre du cercle",
+      "prompt": {
+        "context": "Un puits circulaire a un diamètre de 1,4 m.",
+        "problem": "Calcule le périmètre (circonférence) et l'aire du cercle. Utilise π ≈ 3,14.",
+        "tasks": ["Calcule le rayon.", "Calcule la circonférence.", "Calcule l'aire."]
+      },
+      "hints": ["R = D/2", "C = 2πR", "A = πR²"],
+      "expected_elements": { "rayon": "0,7 m", "circonference": "4,396 m ≈ 4,4 m", "aire": "1,5386 m² ≈ 1,54 m²" },
+      "rubric": { "rayon": 1, "circonference": 3, "aire": 3 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-math-6",
+      "title": "Proportionnalité — Règle de trois",
+      "prompt": {
+        "context": "Un véhicule consomme 8 litres d'essence pour 100 km.",
+        "problem": "Quelle quantité d'essence consommera-t-il pour un trajet de 350 km ? Quel sera le coût si le litre coûte 650 FCFA ?",
+        "tasks": ["Calcule la consommation pour 350 km.", "Calcule le coût total du trajet."]
+      },
+      "hints": ["Utilise le tableau de proportionnalité.", "Coût = volume × prix unitaire."],
+      "expected_elements": { "consommation": "28 litres", "cout": "18 200 FCFA" },
+      "rubric": { "tableau": 2, "consommation": 3, "cout": 2 },
+      "rubric_total": 7,
+      "difficulty": "Facile"
+    },
+    {
+      "id": "bepc-math-7",
+      "title": "Algèbre — Factorisation et développement",
+      "prompt": {
+        "problem": "1) Développe et réduis : (2x + 3)(x − 4).  2) Factorise : 6x² − 9x.",
+        "tasks": ["Développe l'expression.", "Réduis les termes semblables.", "Factorise la deuxième expression en mettant le facteur commun en évidence."]
+      },
+      "hints": ["Utilise la distributivité pour développer.", "Pour factoriser, cherche le PGCD des coefficients et la plus petite puissance de x."],
+      "expected_elements": { "developpement": "2x² − 5x − 12", "factorisation": "3x(2x − 3)" },
+      "rubric": { "developpement": 4, "factorisation": 3 },
+      "rubric_total": 7,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-math-8",
+      "title": "Géométrie — Trigonométrie dans le triangle rectangle",
+      "prompt": {
+        "context": "Dans un triangle rectangle ABC, l'angle droit est en B. AB = 5 cm et AC = 13 cm.",
+        "problem": "Calcule BC, puis calcule cos(BAC) et sin(BAC). Donne les valeurs exactes.",
+        "tasks": ["Calcule BC avec Pythagore.", "Calcule cos(BAC) = côté adjacent / hypoténuse.", "Calcule sin(BAC) = côté opposé / hypoténuse."]
+      },
+      "hints": ["BC² = AC² − AB²", "cos = adj/hyp, sin = opp/hyp"],
+      "expected_elements": { "BC": "12 cm", "cos_BAC": "5/13", "sin_BAC": "12/13" },
+      "rubric": { "BC": 3, "cosinus": 2, "sinus": 2 },
+      "rubric_total": 7,
+      "difficulty": "Difficile"
+    },
+    {
+      "id": "bepc-math-9",
+      "title": "Probabilités — Expérience aléatoire",
+      "prompt": {
+        "context": "Un sac contient 4 billes rouges, 3 billes bleues et 5 billes vertes.",
+        "problem": "On tire une bille au hasard. Calcule la probabilité : 1) d'obtenir une bille rouge, 2) d'obtenir une bille qui n'est pas bleue.",
+        "tasks": ["Calcule le nombre total de billes.", "Calcule P(rouge).", "Calcule P(non bleue)."]
+      },
+      "hints": ["P = nombre de cas favorables / nombre de cas possibles.", "P(non bleue) = 1 − P(bleue)."],
+      "expected_elements": { "total": "12", "P_rouge": "4/12 = 1/3", "P_non_bleue": "9/12 = 3/4" },
+      "rubric": { "total": 1, "P_rouge": 3, "P_non_bleue": 3 },
+      "rubric_total": 7,
+      "difficulty": "Moyen"
+    },
+    {
+      "id": "bepc-math-10",
+      "title": "Problème — Taux de remise et TVA",
+      "prompt": {
+        "context": "Un commerçant vend un article à 48 000 FCFA. Il accorde une remise de 15 %.",
+        "problem": "Calcule le prix après remise. Si une TVA de 18 % est appliquée sur le prix réduit, calcule le prix TTC final.",
+        "tasks": ["Calcule la remise en valeur.", "Calcule le prix après remise (HT).", "Calcule le montant de la TVA.", "Calcule le prix TTC."]
+      },
+      "hints": ["Remise = prix × taux / 100.", "TVA = prix HT × 18 / 100."],
+      "expected_elements": { "remise": "7 200 FCFA", "prix_HT": "40 800 FCFA", "TVA": "7 344 FCFA", "prix_TTC": "48 144 FCFA" },
+      "rubric": { "remise": 2, "prix_HT": 2, "TVA": 2, "prix_TTC": 2 },
+      "rubric_total": 8,
+      "difficulty": "Difficile"
+    }
+  ]
+}

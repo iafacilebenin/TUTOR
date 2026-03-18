@@ -59,6 +59,10 @@ useEffect(() => {
             const exData = await exRes.json();
 
             const enriched = exData.exercises.map(ex => {
+              const rubricTotal = ex.rubric_total ||
+                (ex.rubric
+                  ? Object.values(ex.rubric).reduce((sum, pts) => sum + pts, 0)
+                  : (ex.points || 20));
               // Calculate rubric_total from rubric items if available
               const rubricTotal = ex.rubric
                 ? ex.rubric.reduce((sum, r) => sum + (r.points || 0), 0)

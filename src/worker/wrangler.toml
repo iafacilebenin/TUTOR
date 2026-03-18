@@ -1,0 +1,28 @@
+name = "iabeninois-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Cloudflare AI binding ──────────────────────────────────────────────────
+[ai]
+binding = "AI"
+
+# ── D1 Database binding ────────────────────────────────────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "tutor"
+database_id   = "255ef32b-3056-4ca8-a69e-60299ad59a84"
+
+# ── KV Namespace for rate limiting ─────────────────────────────────────────
+[[kv_namespaces]]
+binding = "RATE_LIMITER"
+id      = "c661d9b20ed04d65bf70ad26cddba764"
+
+# ── Environment variables ──────────────────────────────────────────────────
+[vars]
+ENVIRONMENT        = "production"
+RATE_LIMIT_PER_DAY = "10"
+
+# ── Local development overrides ────────────────────────────────────────────
+[env.development]
+vars = { ENVIRONMENT = "development", RATE_LIMIT_PER_DAY = "100" }
