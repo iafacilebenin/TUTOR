@@ -58,14 +58,25 @@ useEffect(() => {
             const exRes = await fetch(subject.path);
             const exData = await exRes.json();
 
-            const enriched = exData.exercises.map(ex => ({
-              ...ex,
-              level: level.id,
-              subject_name: subject.name,
-              year: exData.year || "2025",
-              points: ex.points || 5,
-              difficulty: ex.difficulty || "Moyen"
-            }));
+            const enriched = exData.exercises.map(ex => {
+              const rubricTotal = ex.rubric_total ||
+                (ex.rubric
+                  ? Object.values(ex.rubric).reduce((sum, pts) => sum + pts, 0)
+                  : (ex.points || 20));
+              return {
+                ...ex,
+                _meta: {
+                  level: level.id,
+                  level_name: level.name,
+                  subject_id: subject.id,
+                  subject_name: subject.name,
+                  year: exData.year || "2025"
+                },
+                rubric_total: rubricTotal,
+                difficulty: ex.difficulty || "Moyen",
+                points: ex.points || 5
+              };
+            });
 
             loadedExercises = [...loadedExercises, ...enriched];
           }
