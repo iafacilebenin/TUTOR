@@ -1,10 +1,15 @@
 // ============================================================
 //  Le Mentor Béninois — Cloudflare Worker
+//  AI: Abacus RouteLLM (primary) → HuggingFace (fallback)
+//
 //  Routes:
-//    POST /evaluate            → AI answer grading
-//    POST /students/register   → Register student in D1
-//    POST /exercises/generate  → AI exercise generation (rate-limited + cached)
-//    OPTIONS *                 → CORS preflight
+//    POST /                        → Universal AI mentorship
+//    POST /evaluate                → AI answer grading (structured)
+//    POST /students/register       → Register/update student in D1
+//    POST /grades/save             → Save a graded attempt in D1
+//    GET  /students/history/:id    → Get student grade history
+//    POST /exercises/generate      → AI exercise generation (rate-limited + cached)
+//    OPTIONS *                     → CORS preflight
 // ============================================================
 
 const CORS_HEADERS = {
@@ -22,7 +27,53 @@ function err(message, status = 400) {
   return json({ success: false, error: message }, status);
 }
 
-// ── Benin Curriculum Grading System Prompt ──────────────────
+// ============================================================
+//  AI ROUTING: Abacus RouteLLM → HuggingFace fallback
+// ============================================================
+async function callRouteLLM(env, messages) {
+  const response = await fetch("https://routellm.abacus.ai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${env.ROUTELLM_API_KEY}`
+    },
+    body: JSON.stringify({ model: "route-llm", messages, temperature: 0.7 })
+  });
+  if (!response.ok) throw new Error(`Abacus error: ${response.status}`);
+  const data = await response.json();
+  return data.choices[0].message.content;
+}
+
+async function callHuggingFace(env, messages) {
+  const hfModel = env.HF_MODEL || "mistralai/Mistral-7B-Instruct-v0.3";
+  const response = await fetch(
+    `https://router.huggingface.co/hf-inference/models/${hfModel}/v1/chat/completions`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${env.HF_API}`
+      },
+      body: JSON.stringify({ model: hfModel, messages, max_tokens: 512, temperature: 0.3 })
+    }
+  );
+  if (!response.ok) throw new Error(`HuggingFace error: ${response.status}`);
+  const data = await response.json();
+  return data.choices[0].message.content;
+}
+
+async function callAI(env, messages) {
+  try {
+    return await callRouteLLM(env, messages);
+  } catch (e) {
+    console.log("Abacus failed, trying HuggingFace:", e.message);
+    return await callHuggingFace(env, messages);
+  }
+}
+
+// ============================================================
+//  PROMPTS
+// ============================================================
 const GRADING_SYSTEM_PROMPT = `Tu es le Mentor Béninois, un correcteur expert basé sur les grilles officielles du Ministère de l'Enseignement et de la Recherche Scientifique du Bénin (MENRS).
 
 MISSION : Évaluer la copie d'un élève béninois avec bienveillance, précision et selon la pédagogie officielle.
@@ -44,7 +95,6 @@ FORMAT DE RÉPONSE (JSON strict, aucun texte en dehors) :
   "official_correction": "<éléments clés du corrigé officiel, selon expected_elements>"
 }`;
 
-// ── AI Exercise Generation Prompt ───────────────────────────
 function buildGenerationPrompt(topic, level) {
   return `Tu es un expert en pédagogie béninoise. Génère UN exercice original de niveau ${level} sur le thème "${topic}".
 
@@ -65,7 +115,30 @@ FORMAT JSON strict :
 }
 
 // ============================================================
-//  ROUTE: POST /evaluate
+//  ROUTE: POST / — Universal AI mentorship
+// ============================================================
+async function handleMentorship(request, env) {
+  let body;
+  try { body = await request.json(); } catch { return err("Invalid JSON"); }
+
+  let { messages } = body;
+
+  // Legacy format support: { exercise, studentAnswer }
+  if (!messages && body.exercise) {
+    messages = [
+      { role: "system", content: "Tu es un correcteur strict pour les examens du Bénin. Réponds en JSON: {\"score\": 0-20, \"feedback\": \"...\"}" },
+      { role: "user",   content: `Exercice: ${body.exercise.question}\nRéponse: ${body.studentAnswer}` }
+    ];
+  }
+
+  if (!messages) return err("Format de requête invalide");
+
+  const reply = await callAI(env, messages);
+  return json({ reply });
+}
+
+// ============================================================
+//  ROUTE: POST /evaluate — Structured grading
 // ============================================================
 async function handleEvaluate(request, env) {
   let body;
@@ -98,27 +171,17 @@ ${student_data.answer}
 
 Évalue cette copie et réponds UNIQUEMENT en JSON valide.`;
 
-  try {
-    const aiResponse = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      messages: [
-        { role: "system", content: GRADING_SYSTEM_PROMPT },
-        { role: "user",   content: userPrompt }
-      ],
-      max_tokens: 1024
-    });
+  const messages = [
+    { role: "system", content: GRADING_SYSTEM_PROMPT },
+    { role: "user",   content: userPrompt }
+  ];
 
-    const raw = aiResponse.response || aiResponse.result?.response || "";
-    // Extract JSON from AI response (handles markdown code blocks)
-    const jsonMatch = raw.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) return err("AI returned malformed response", 502);
+  const raw = await callAI(env, messages);
+  const jsonMatch = raw.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) return err("AI returned malformed response", 502);
 
-    const result = JSON.parse(jsonMatch[0]);
-    return json({ success: true, ...result });
-
-  } catch (e) {
-    console.error("AI evaluation error:", e);
-    return err("AI service unavailable", 503);
-  }
+  const result = JSON.parse(jsonMatch[0]);
+  return json({ success: true, ...result });
 }
 
 // ============================================================
@@ -131,19 +194,56 @@ async function handleRegister(request, env) {
   const { name, deviceId } = body;
   if (!name || !deviceId) return err("Missing name or deviceId");
 
-  try {
-    // Upsert student — update name if deviceId already exists
-    await env.DB.prepare(
-      `INSERT INTO students (device_id, name)
-       VALUES (?, ?)
-       ON CONFLICT(device_id) DO UPDATE SET name = excluded.name, updated_at = CURRENT_TIMESTAMP`
-    ).bind(deviceId, name.trim()).run();
+  await env.DB.prepare(
+    `INSERT INTO students (device_id, name)
+     VALUES (?, ?)
+     ON CONFLICT(device_id) DO UPDATE SET name = excluded.name, updated_at = CURRENT_TIMESTAMP`
+  ).bind(deviceId, name.trim()).run();
 
-    return json({ success: true, name, deviceId, registered_at: new Date().toISOString() });
-  } catch (e) {
-    console.error("Register error:", e);
-    return err("Database error", 500);
+  return json({ success: true, name, deviceId, registered_at: new Date().toISOString() });
+}
+
+// ============================================================
+//  ROUTE: POST /grades/save
+// ============================================================
+async function handleSaveGrade(request, env) {
+  let body;
+  try { body = await request.json(); } catch { return err("Invalid JSON"); }
+
+  const {
+    device_id, exercise_id, score, subject, level,
+    title = "", raw_score, rubric_total = 20,
+    mode = "learning", hints_used = 0, answer = "", ai_feedback = ""
+  } = body;
+
+  if (!device_id || !exercise_id || score == null || !subject || !level) {
+    return err("Missing required grade fields");
   }
+
+  await env.DB.prepare(
+    `INSERT INTO grades
+       (device_id, exercise_id, level, subject, title, score, raw_score, rubric_total, mode, hints_used, answer, ai_feedback)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  ).bind(
+    device_id, exercise_id, level, subject, title,
+    score, raw_score ?? score, rubric_total,
+    mode, hints_used, answer, typeof ai_feedback === "object" ? JSON.stringify(ai_feedback) : ai_feedback
+  ).run();
+
+  return json({ success: true });
+}
+
+// ============================================================
+//  ROUTE: GET /students/history/:deviceId
+// ============================================================
+async function handleHistory(request, env, deviceId) {
+  if (!deviceId) return err("Missing student id", 400);
+
+  const { results } = await env.DB.prepare(
+    `SELECT * FROM grades WHERE device_id = ? ORDER BY attempt_date DESC`
+  ).bind(deviceId).all();
+
+  return json(results);
 }
 
 // ============================================================
@@ -179,55 +279,58 @@ async function handleGenerate(request, env) {
   }
 
   // ── AI Generation ──────────────────────────────────────────
-  try {
-    const aiResponse = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      messages: [
-        { role: "system", content: "Tu es un expert en pédagogie béninoise. Réponds UNIQUEMENT en JSON valide." },
-        { role: "user",   content: buildGenerationPrompt(topic, level || "BEPC") }
-      ],
-      max_tokens: 1024
-    });
+  const messages = [
+    { role: "system", content: "Tu es un expert en pédagogie béninoise. Réponds UNIQUEMENT en JSON valide." },
+    { role: "user",   content: buildGenerationPrompt(topic, level || "BEPC") }
+  ];
 
-    const raw = aiResponse.response || aiResponse.result?.response || "";
-    const jsonMatch = raw.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) return err("AI returned malformed response", 502);
+  const raw = await callAI(env, messages);
+  const jsonMatch = raw.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) return err("AI returned malformed response", 502);
 
-    const exercise = JSON.parse(jsonMatch[0]);
+  const exercise = JSON.parse(jsonMatch[0]);
 
-    // ── Save to D1 Cache ──────────────────────────────────────
-    await env.DB.prepare(
-      `INSERT INTO generated_exercises (topic, level, device_id, data) VALUES (?, ?, ?, ?)`
-    ).bind(topic, level || "BEPC", deviceId, JSON.stringify(exercise)).run();
+  // ── Save to D1 Cache ──────────────────────────────────────
+  await env.DB.prepare(
+    `INSERT INTO generated_exercises (topic, level, device_id, data) VALUES (?, ?, ?, ?)`
+  ).bind(topic, level || "BEPC", deviceId, JSON.stringify(exercise)).run();
 
-    // ── Increment rate limit counter ──────────────────────────
-    await env.RATE_LIMITER.put(rateKey, String(count + 1), { expirationTtl: 86400 });
+  // ── Increment rate limit counter ──────────────────────────
+  await env.RATE_LIMITER.put(rateKey, String(count + 1), { expirationTtl: 86400 });
 
-    return json({ success: true, exercise, from_cache: false });
-
-  } catch (e) {
-    console.error("Generation error:", e);
-    return err("AI service unavailable", 503);
-  }
+  return json({ success: true, exercise, from_cache: false });
 }
 
 // ============================================================
 //  MAIN FETCH HANDLER
 // ============================================================
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env) {
     const url = new URL(request.url);
 
-    // CORS preflight
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
 
-    if (request.method === "POST") {
-      if (url.pathname === "/evaluate")           return handleEvaluate(request, env);
-      if (url.pathname === "/students/register")  return handleRegister(request, env);
-      if (url.pathname === "/exercises/generate") return handleGenerate(request, env);
-    }
+    try {
+      if (request.method === "POST") {
+        if (url.pathname === "/")                     return handleMentorship(request, env);
+        if (url.pathname === "/evaluate")             return handleEvaluate(request, env);
+        if (url.pathname === "/students/register")    return handleRegister(request, env);
+        if (url.pathname === "/grades/save")          return handleSaveGrade(request, env);
+        if (url.pathname === "/exercises/generate")   return handleGenerate(request, env);
+      }
 
-    return json({ error: "Not Found" }, 404);
+      if (request.method === "GET") {
+        const historyMatch = url.pathname.match(/^\/students\/history\/(.+)$/);
+        if (historyMatch) return handleHistory(request, env, historyMatch[1]);
+      }
+
+      return json({ error: "Not Found" }, 404);
+
+    } catch (error) {
+      console.error("Worker error:", error.message);
+      return json({ error: error.message }, 500);
+    }
   }
 };
