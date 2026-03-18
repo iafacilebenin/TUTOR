@@ -191,19 +191,19 @@ async function handleRegister(request, env) {
   let body;
   try { body = await request.json(); } catch { return err("Invalid JSON"); }
 
-  const { id, name, school, city, target_level } = body;
-  if (!id || !name) return err("Missing id or name");
+  const { deviceId, name, school, city, target_level } = body;
+  if (!deviceId || !name) return err("Missing deviceId or name");
 
   await env.DB.prepare(
-    `INSERT INTO students (id, name, school, city, target_level, last_seen_at)
+    `INSERT INTO students (device_id, name, school, city, target_level, last_seen_at)
      VALUES (?, ?, ?, ?, ?, datetime('now'))
-     ON CONFLICT(id) DO UPDATE SET
+     ON CONFLICT(device_id) DO UPDATE SET
        name = excluded.name,
        school = excluded.school,
        city = excluded.city,
        target_level = excluded.target_level,
        last_seen_at = datetime('now')`
-  ).bind(id, name.trim(), school ?? null, city ?? null, target_level ?? null).run();
+  ).bind(deviceId, name.trim(), school ?? null, city ?? null, target_level ?? null).run();
 
   return json({ success: true });
 }
@@ -215,16 +215,16 @@ async function handleSaveGrade(request, env) {
   let body;
   try { body = await request.json(); } catch { return err("Invalid JSON"); }
 
-  const { student_id, exercise_id, score, subject, level, feedback } = body;
+  const { device_id, exercise_id, score, subject, level, feedback } = body;
 
-  if (!student_id || !exercise_id || score == null || !subject || !level) {
+  if (!device_id || !exercise_id || score == null || !subject || !level) {
     return err("Missing required grade fields");
   }
 
   await env.DB.prepare(
-    `INSERT INTO grades (student_id, exercise_id, score, subject, level, feedback)
+    `INSERT INTO grades (device_id, exercise_id, score, subject, level, feedback)
      VALUES (?, ?, ?, ?, ?, ?)`
-  ).bind(student_id, exercise_id, score, subject, level, feedback ?? null).run();
+  ).bind(device_id, exercise_id, score, subject, level, feedback ?? null).run();
 
   return json({ success: true });
 }
@@ -236,7 +236,7 @@ async function handleHistory(request, env, studentId) {
   if (!studentId) return err("Missing student id", 400);
 
   const { results } = await env.DB.prepare(
-    `SELECT * FROM grades WHERE student_id = ? ORDER BY created_at DESC`
+    `SELECT * FROM grades WHERE device_id = ? ORDER BY created_at DESC`
   ).bind(studentId).all();
 
   return json(results);
@@ -289,7 +289,7 @@ async function handleGenerate(request, env) {
 
   // ── Save to D1 Cache ──────────────────────────────────────
   await env.DB.prepare(
-    `INSERT INTO generated_exercises (topic, level, student_id, data) VALUES (?, ?, ?, ?)`
+    `INSERT INTO generated_exercises (topic, level, device_id, data) VALUES (?, ?, ?, ?)`
   ).bind(topic, level || "BEPC", deviceId, JSON.stringify(exercise)).run();
 
   // ── Increment rate limit counter ──────────────────────────
