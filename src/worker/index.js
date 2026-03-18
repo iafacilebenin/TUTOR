@@ -191,16 +191,21 @@ async function handleRegister(request, env) {
   let body;
   try { body = await request.json(); } catch { return err("Invalid JSON"); }
 
-  const { name, deviceId } = body;
-  if (!name || !deviceId) return err("Missing name or deviceId");
+  const { id, name, school, city, target_level } = body;
+  if (!id || !name) return err("Missing id or name");
 
   await env.DB.prepare(
-    `INSERT INTO students (device_id, name)
-     VALUES (?, ?)
-     ON CONFLICT(device_id) DO UPDATE SET name = excluded.name, updated_at = CURRENT_TIMESTAMP`
-  ).bind(deviceId, name.trim()).run();
+    `INSERT INTO students (id, name, school, city, target_level, last_seen_at)
+     VALUES (?, ?, ?, ?, ?, datetime('now'))
+     ON CONFLICT(id) DO UPDATE SET
+       name = excluded.name,
+       school = excluded.school,
+       city = excluded.city,
+       target_level = excluded.target_level,
+       last_seen_at = datetime('now')`
+  ).bind(id, name.trim(), school ?? null, city ?? null, target_level ?? null).run();
 
-  return json({ success: true, name, deviceId, registered_at: new Date().toISOString() });
+  return json({ success: true });
 }
 
 // ============================================================
@@ -210,38 +215,29 @@ async function handleSaveGrade(request, env) {
   let body;
   try { body = await request.json(); } catch { return err("Invalid JSON"); }
 
-  const {
-    device_id, exercise_id, score, subject, level,
-    title = "", raw_score, rubric_total = 20,
-    mode = "learning", hints_used = 0, answer = "", ai_feedback = ""
-  } = body;
+  const { student_id, exercise_id, score, subject, level, feedback } = body;
 
-  if (!device_id || !exercise_id || score == null || !subject || !level) {
+  if (!student_id || !exercise_id || score == null || !subject || !level) {
     return err("Missing required grade fields");
   }
 
   await env.DB.prepare(
-    `INSERT INTO grades
-       (device_id, exercise_id, level, subject, title, score, raw_score, rubric_total, mode, hints_used, answer, ai_feedback)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-  ).bind(
-    device_id, exercise_id, level, subject, title,
-    score, raw_score ?? score, rubric_total,
-    mode, hints_used, answer, typeof ai_feedback === "object" ? JSON.stringify(ai_feedback) : ai_feedback
-  ).run();
+    `INSERT INTO grades (student_id, exercise_id, score, subject, level, feedback)
+     VALUES (?, ?, ?, ?, ?, ?)`
+  ).bind(student_id, exercise_id, score, subject, level, feedback ?? null).run();
 
   return json({ success: true });
 }
 
 // ============================================================
-//  ROUTE: GET /students/history/:deviceId
+//  ROUTE: GET /students/history/:studentId
 // ============================================================
-async function handleHistory(request, env, deviceId) {
-  if (!deviceId) return err("Missing student id", 400);
+async function handleHistory(request, env, studentId) {
+  if (!studentId) return err("Missing student id", 400);
 
   const { results } = await env.DB.prepare(
-    `SELECT * FROM grades WHERE device_id = ? ORDER BY attempt_date DESC`
-  ).bind(deviceId).all();
+    `SELECT * FROM grades WHERE student_id = ? ORDER BY created_at DESC`
+  ).bind(studentId).all();
 
   return json(results);
 }
@@ -259,6 +255,7 @@ async function handleGenerate(request, env) {
   // ── Rate Limiting ──────────────────────────────────────────
   const today = new Date().toISOString().split("T")[0];
   const rateKey = `${deviceId}_${today}`;
+
   const limit = parseInt(env.RATE_LIMIT_PER_DAY || "10");
 
   const countRaw = await env.RATE_LIMITER.get(rateKey);
@@ -292,7 +289,7 @@ async function handleGenerate(request, env) {
 
   // ── Save to D1 Cache ──────────────────────────────────────
   await env.DB.prepare(
-    `INSERT INTO generated_exercises (topic, level, device_id, data) VALUES (?, ?, ?, ?)`
+    `INSERT INTO generated_exercises (topic, level, student_id, data) VALUES (?, ?, ?, ?)`
   ).bind(topic, level || "BEPC", deviceId, JSON.stringify(exercise)).run();
 
   // ── Increment rate limit counter ──────────────────────────
