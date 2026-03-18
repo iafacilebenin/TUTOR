@@ -1,13 +1,34 @@
 {
   "level": "BEPC",
   "subject": "Physique-Chimie",
+  "year": 2025,
   "exercises": [
     {
       "id": "bepc-phys-1",
       "title": "Loi d'Ohm",
-      "question": "Un circuit comporte une pile de 12V et une résistance R. L'intensité est de 0,4A. Calcule R.",
-      "hints": ["Utilise U = R x I", "R = U / I"],
-      "correctAnswer": "30 Ω"
+      "prompt": {
+        "context": "Un circuit électrique simple est constitué d'une pile et d'une résistance.",
+        "problem": "Un circuit comporte une pile de 12V et une résistance R. L'intensité mesurée est de 0,4A. Calcule la valeur de R et indique son unité.",
+        "tasks": [
+          "Rappelle la loi d'Ohm sous forme littérale.",
+          "Déduis la formule permettant de calculer R.",
+          "Applique numériquement et conclure."
+        ]
+      },
+      "hints": ["Utilise U = R × I", "R = U / I"],
+      "expected_elements": {
+        "loi_ohm": "U = R × I",
+        "formule_R": "R = U / I",
+        "application": "R = 12 / 0,4 = 30 Ω"
+      },
+      "rubric": {
+        "enonce_loi": 2,
+        "formule": 2,
+        "calcul": 3,
+        "unite": 1
+      },
+      "rubric_total": 8,
+      "difficulty": "Moyen"
     }
   ]
 }

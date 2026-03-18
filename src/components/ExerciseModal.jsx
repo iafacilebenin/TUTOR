@@ -33,8 +33,8 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
         },
         exercise_context: {
           id: exercise.id,
-          level: exercise._meta?.level || "Unknown",
-          subject: exercise._meta?.subject_name || "Unknown",
+          level: exercise.level || "Unknown",
+          subject: exercise.subject_name || "Unknown",
           prompt: exercise.prompt,
           expected_elements: exercise.expected_elements,
           rubric: exercise.rubric,
@@ -79,8 +79,8 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
 
       onSubmit({
         exerciseId: exercise.id,
-        level: exercise._meta?.level || "Unknown",
-        subject: exercise._meta?.subject_name || "Unknown",
+        level: exercise.level || "Unknown",
+        subject: exercise.subject_name || "Unknown",
         title: exercise.title,
         score: scaledScore, // Saved out of 20
         rawScore: rawScore, // Kept for reference
@@ -101,7 +101,7 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
         <div className="modal-header">
           <div>
             <h2 className="modal-title">{exercise.title}</h2>
-            <span className="exercise-badge">{exercise._meta?.subject_name} - {exercise._meta?.level}</span>
+            <span className="exercise-badge">{exercise.subject_name} - {exercise.level}</span>
           </div>
           <button className="modal-close-btn" onClick={onClose}>×</button>
         </div>
