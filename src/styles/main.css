@@ -2,28 +2,23 @@
    LE MENTOR BÉNINOIS - LMS STYLES
    Esthétique scolaire professionnelle
    ======================================== */
-
 :root {
   /* Palette Artistique et Immersive Béninoise */
   --color-primary: #008751; /* Vert du drapeau béninois (vif) */
   --color-secondary: #FCD116; /* Jaune or du drapeau béninois */
   --color-accent: #E8112D; /* Rouge du drapeau béninois */
-
   /* Explicit Fallbacks requested */
   --color-bg-main: #0a3320; /* Dark forest green for page background */
   --color-bg-card: #FFFBEB; /* Warm ambient amber for cards */
   --color-bg-tint: #d4eadc; /* Light green tint for inner sections within cards */
   --color-bg-header: #003d18; /* Deeper forest green for header */
   --color-background: #0a3320;
-
   --color-text-primary: #2c3e50; /* Refined dark slate for better readability and modern feel */
   --color-text-secondary: #596a7a;
   --color-text-muted: #8a9ba8;
   --color-text: #2c3e50;
-
   --color-border: #d4d4d0;
   --color-border-dark: #8a8a80;
-
   /* Notes / Grading Colors */
   --color-grade-excellent: #2d5016; /* 16-20: Très Bien */
   --color-grade-bien: #4a7c2e; /* 14-15: Bien */
@@ -31,11 +26,9 @@
   --color-grade-passable: #d4a017; /* 10-11: Passable */
   --color-grade-insuffisant: #c45911; /* 08-09: Insuffisant */
   --color-grade-mediocre: #b8001f; /* 00-07: Médiocre */
-
   /* Typography */
   --font-primary: 'Georgia', 'Times New Roman', serif;
   --font-secondary: 'Arial', 'Helvetica', sans-serif;
-
   /* Spacing */
   --space-xs: 4px;
   --space-sm: 8px;
@@ -43,13 +36,11 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-xxl: 48px;
-
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
-
 /* ========================================
    RESET & BASE
    ======================================== */
@@ -58,7 +49,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: var(--font-secondary);
   font-size: 16px;
@@ -67,14 +57,12 @@ body {
   background: var(--color-bg-main);
   -webkit-font-smoothing: antialiased;
 }
-
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
   font-weight: 700;
   line-height: 1.3;
   color: var(--color-primary);
 }
-
 /* ========================================
    LAYOUT
    ======================================== */
@@ -83,7 +71,6 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
 }
-
 /* ========================================
    HEADER / EN-TÊTE
    ======================================== */
@@ -94,12 +81,10 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-md);
   border-bottom: 4px solid var(--color-secondary);
 }
-
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .app-title {
   font-size: 1.75rem;
   margin-bottom: var(--space-xs);
@@ -107,21 +92,18 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 .app-subtitle {
   font-size: 0.9rem;
   opacity: 0.9;
   font-family: var(--font-secondary);
   font-weight: 400;
 }
-
 .header-divider {
   height: 2px;
   background: var(--color-secondary);
   margin: var(--space-md) 0;
   opacity: 0.6;
 }
-
 .student-info {
   display: flex;
   justify-content: space-between;
@@ -130,11 +112,9 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-md);
   font-size: 0.875rem;
 }
-
 .student-name {
   font-weight: 600;
 }
-
 .average-display {
   display: flex;
   align-items: center;
@@ -144,17 +124,14 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
 .average-label {
   opacity: 0.8;
 }
-
 .average-value {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-secondary);
 }
-
 /* ========================================
    NAVIGATION
    ======================================== */
@@ -166,14 +143,12 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   z-index: 100;
 }
-
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   gap: 0;
 }
-
 .nav-tab {
   flex: 1;
   padding: var(--space-md);
@@ -189,18 +164,15 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .nav-tab:hover {
   background: var(--color-bg-tint);
   color: var(--color-primary);
 }
-
 .nav-tab.active {
   color: var(--color-primary);
   border-bottom-color: var(--color-secondary);
   background: var(--color-bg-tint);
 }
-
 /* ========================================
    MAIN CONTENT
    ======================================== */
@@ -211,7 +183,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md);
 }
-
 .section-title {
   font-size: 1.5rem;
   margin-bottom: var(--space-lg);
@@ -219,7 +190,6 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 3px solid var(--color-secondary);
   color: var(--color-primary);
 }
-
 /* ========================================
    CARNET DE NOTES (GRADEBOOK)
    ======================================== */
@@ -229,7 +199,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
   box-shadow: var(--shadow-md);
 }
-
 .gradebook-header {
   background: var(--color-primary);
   color: white;
@@ -240,12 +209,10 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 .grades-table {
   width: 100%;
   border-collapse: collapse;
 }
-
 .grades-table th {
   background: var(--color-bg-tint);
   padding: var(--space-md);
@@ -256,16 +223,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
   border-bottom: 2px solid var(--color-border-dark);
 }
-
 .grades-table td {
   padding: var(--space-md);
   border-bottom: 1px solid var(--color-border);
 }
-
 .grades-table tr:hover {
   background: var(--color-bg-tint);
 }
-
 .grade-badge {
   display: inline-block;
   padding: var(--space-xs) var(--space-md);
@@ -276,28 +240,24 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   color: white;
 }
-
 .grade-badge.excellent { background: var(--color-grade-excellent); }
 .grade-badge.bien { background: var(--color-grade-bien); }
 .grade-badge.ab { background: var(--color-grade-ab); }
 .grade-badge.passable { background: var(--color-grade-passable); }
 .grade-badge.insuffisant { background: var(--color-grade-insuffisant); }
 .grade-badge.mediocre { background: var(--color-grade-mediocre); }
-
 .appreciation {
   font-style: italic;
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   margin-top: var(--space-xs);
 }
-
 .no-grades-message {
   padding: var(--space-xxl);
   text-align: center;
   color: var(--color-text-muted);
   font-style: italic;
 }
-
 /* ========================================
    EXERCICES (EXERCISES)
    ======================================== */
@@ -306,7 +266,6 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-lg);
 }
-
 .exercise-card {
   background: var(--color-bg-card);
   border: 2px solid var(--color-border);
@@ -316,13 +275,11 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.2s ease;
   cursor: pointer;
 }
-
 .exercise-card:hover {
   border-color: var(--color-primary);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
-
 .exercise-level {
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);
@@ -334,19 +291,16 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
   margin-bottom: var(--space-sm);
 }
-
 .exercise-title {
   font-size: 1.1rem;
   margin-bottom: var(--space-sm);
   color: var(--color-primary);
 }
-
 .exercise-subject {
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   margin-bottom: var(--space-md);
 }
-
 .exercise-meta {
   display: flex;
   justify-content: space-between;
@@ -355,7 +309,6 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: var(--space-sm);
   border-top: 1px solid var(--color-border);
 }
-
 /* ========================================
    MODAL / EXERCICE VIEW
    ======================================== */
@@ -372,7 +325,6 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1000;
   padding: var(--space-md);
 }
-
 .modal-content {
   background: var(--color-bg-card);
   border: 3px solid var(--color-primary);
@@ -383,7 +335,6 @@ h1, h2, h3, h4, h5, h6 {
   overflow-y: auto;
   box-shadow: var(--shadow-lg);
 }
-
 .modal-header {
   background: var(--color-primary);
   color: white;
@@ -392,20 +343,17 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
 }
-
 .modal-title {
   font-size: 1.3rem;
   color: white;
   margin-bottom: 0.2rem;
 }
-
 .exercise-badge {
   font-size: 0.8rem;
   background: rgba(255, 255, 255, 0.2);
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
 }
-
 .modal-close-btn {
   background: none;
   border: none;
@@ -415,18 +363,15 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-sm);
   line-height: 1;
 }
-
 .modal-body {
   padding: var(--space-xl);
 }
-
 .question-section {
   background: var(--color-bg-tint);
   border-left: 4px solid var(--color-primary);
   padding: var(--space-lg);
   margin-bottom: var(--space-lg);
 }
-
 .question-label {
   font-weight: 700;
   color: var(--color-primary);
@@ -435,17 +380,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
   letter-spacing: 0.5px;
 }
-
 .question-text {
   font-size: 1.1rem;
   line-height: 1.8;
   font-family: var(--font-primary);
 }
-
 .answer-section {
   margin-bottom: var(--space-xl);
 }
-
 .answer-textarea {
   width: 100%;
   min-height: 200px;
@@ -458,17 +400,14 @@ h1, h2, h3, h4, h5, h6 {
   resize: vertical;
   transition: border-color 0.2s ease;
 }
-
 .answer-textarea:focus {
   outline: none;
   border-color: var(--color-primary);
 }
-
 .answer-textarea::placeholder {
   color: var(--color-text-muted);
   font-style: italic;
 }
-
 .hints-section {
   background: #fffbeb;
   border: 2px solid #fcd34d;
@@ -476,25 +415,21 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-lg);
   margin-bottom: var(--space-lg);
 }
-
 .hint-item {
   padding: var(--space-md);
   background: var(--color-bg-card);
   border-left: 3px solid #f59e0b;
   margin-bottom: var(--space-sm);
 }
-
 .hint-item:last-child {
   margin-bottom: 0;
 }
-
 /* ========================================
    SCANDINAVIAN FEEDBACK STYLES
    ======================================== */
 .scandinavian-feedback {
   margin-top: var(--space-lg);
 }
-
 .feedback-banner {
   background: #eef2ff;
   border: 1px solid #c7d2fe;
@@ -505,31 +440,26 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
-
 .feedback-emoji {
   font-size: 2rem;
 }
-
 .encouragement-text {
   font-size: 1.1rem;
   color: #3730a3;
   font-weight: 600;
   margin: 0;
 }
-
 .feedback-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
-
 .feedback-card {
   padding: var(--space-lg);
   border-radius: 8px;
   border: 1px solid var(--color-border);
 }
-
 .feedback-card h4 {
   margin-top: 0;
   margin-bottom: var(--space-sm);
@@ -538,55 +468,44 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: var(--space-xs);
 }
-
 .feedback-card p {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--color-text-secondary);
 }
-
 .feedback-card.positive {
   background: #f0fdf4;
   border-color: #bbf7d0;
 }
-
 .feedback-card.positive h4 { color: #166534; }
-
 .feedback-card.socratic {
   background: #fffbeb;
   border-color: #fef08a;
 }
-
 .feedback-card.socratic h4 { color: #854d0e; }
-
 .feedback-card.improvement {
   background: #fff1f2;
   border-color: #fecdd3;
 }
-
 .feedback-card.improvement h4 { color: #9f1239; }
-
 .official-correction-box {
   background: #f8fafc;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   padding: var(--space-lg);
 }
-
 .official-correction-box h4 {
   margin-top: 0;
   margin-bottom: var(--space-sm);
   color: #334155;
 }
-
 .correction-content {
   font-family: var(--font-primary);
   font-size: 1.05rem;
   line-height: 1.6;
   color: #475569;
 }
-
 /* ========================================
    BUTTONS
    ======================================== */
@@ -595,7 +514,6 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-md);
   flex-wrap: wrap;
 }
-
 .btn {
   padding: var(--space-md) var(--space-lg);
   border: none;
@@ -607,44 +525,36 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .btn-primary {
   background: var(--color-primary);
   color: white;
 }
-
 .btn-primary:hover:not(:disabled) {
   background: var(--color-bg-header);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }
-
 .btn-secondary {
   background: var(--color-secondary);
   color: var(--color-primary);
 }
-
 .btn-secondary:hover:not(:disabled) {
   background: #e5c100;
   transform: translateY(-1px);
 }
-
 .btn-outline {
   background: var(--color-bg-card);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
 }
-
 .btn-outline:hover:not(:disabled) {
   background: var(--color-primary);
   color: white;
 }
-
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 /* ========================================
    TABLEAU DE BORD (DASHBOARD)
    ======================================== */
@@ -654,7 +564,6 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
 }
-
 .stat-card {
   background: var(--color-bg-card, #ffffff);
   border: 2px solid var(--color-border, #d4d4d0);
@@ -663,12 +572,10 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-sm);
   text-align: center;
 }
-
 .stat-icon {
   font-size: 2.5rem;
   margin-bottom: var(--space-sm);
 }
-
 .stat-value {
   font-size: 2rem;
   font-weight: 700;
@@ -676,14 +583,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
   margin-bottom: var(--space-xs);
 }
-
 .stat-label {
   color: var(--color-text-secondary, #4a4a4a);
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .progress-chart {
   background: var(--color-bg-card);
   border: 2px solid var(--color-border);
@@ -691,25 +596,21 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
 }
-
 .chart-title {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: var(--space-lg);
 }
-
 .progress-bar-container {
   margin-bottom: var(--space-lg);
 }
-
 .progress-bar-label {
   display: flex;
   justify-content: space-between;
   margin-bottom: var(--space-xs);
   font-size: 0.875rem;
 }
-
 .progress-bar {
   height: 24px;
   background: var(--color-bg-tint);
@@ -717,7 +618,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
   overflow: hidden;
 }
-
 .progress-fill {
   height: 100%;
   background: var(--color-primary);
@@ -730,7 +630,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   font-size: 0.75rem;
 }
-
 /* ========================================
    MÉTHODOLOGIE SECTION
    ======================================== */
@@ -741,11 +640,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-xl);
   box-shadow: var(--shadow-sm);
 }
-
 .methodology-section {
   margin-bottom: var(--space-xl);
 }
-
 .methodology-section h3 {
   font-size: 1.2rem;
   color: var(--color-primary);
@@ -753,17 +650,14 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: var(--space-sm);
   border-bottom: 2px solid var(--color-secondary);
 }
-
 .methodology-section ol,
 .methodology-section ul {
   padding-left: var(--space-xl);
   line-height: 1.8;
 }
-
 .methodology-section li {
   margin-bottom: var(--space-sm);
 }
-
 .methodology-example {
   background: var(--color-bg-tint);
   border-left: 4px solid var(--color-accent);
@@ -771,7 +665,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: var(--space-md) 0;
   font-style: italic;
 }
-
 /* ========================================
    RESPONSIVE
    ======================================== */
@@ -779,56 +672,44 @@ h1, h2, h3, h4, h5, h6 {
   .app-title {
     font-size: 1.3rem;
   }
-
   .student-info {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .nav-container {
     flex-direction: column;
   }
-
   .nav-tab {
     border-bottom: 1px solid var(--color-border);
     border-left: 3px solid transparent;
   }
-
   .nav-tab.active {
     border-bottom-color: var(--color-border);
     border-left-color: var(--color-secondary);
   }
-
   .exercises-grid {
     grid-template-columns: 1fr;
   }
-
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
-
   .grades-table {
     font-size: 0.875rem;
   }
-
   .grades-table th,
   .grades-table td {
     padding: var(--space-sm);
   }
-
   .action-buttons {
     flex-direction: column;
   }
-
   .btn {
     width: 100%;
   }
-
   .feedback-grid {
       grid-template-columns: 1fr;
   }
 }
-
 /* ========================================
    PRINT STYLES (pour impression Carnet)
    ======================================== */
@@ -838,23 +719,19 @@ h1, h2, h3, h4, h5, h6 {
   .modal-close-btn {
     display: none;
   }
-
   .modal-overlay {
     position: static;
     background: none;
   }
-
   .modal-content {
     border: none;
     box-shadow: none;
     max-height: none;
   }
-
   body {
     background: white;
   }
 }
-
 /* ========================================
    ANIMATIONS
    ======================================== */
@@ -868,7 +745,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0);
   }
 }
-
 .exercise-card,
 .stat-card,
 .gradebook-container {
