@@ -3,11 +3,33 @@ import ScandinavianFeedback from './ScandinavianFeedback';
 import { getGradeCategory } from '../utils/grading';
 import { evaluateAnswer } from '../services/api';
 
+// Treat empty strings/arrays/objects as "missing" so fallback copy is shown.
+// Non-empty structured values (e.g. {these, antithese, synthese}) pass
+// through unchanged so the safe renderer can format them.
+const withFallback = (value, fallback) => {
+  if (value == null) return fallback;
+  if (typeof value === 'string') return value.trim() === '' ? fallback : value;
+  if (Array.isArray(value)) return value.length === 0 ? fallback : value;
+  if (typeof value === 'object') return Object.keys(value).length === 0 ? fallback : value;
+  return value;
+};
+
+// Defensive: the score badge expects a primitive. If the model ever
+// returns a structured object here, log it and show an em dash instead
+// of crashing the modal.
+const safeScoreDisplay = (score) => {
+  if (score == null) return '—';
+  if (typeof score === 'number' || typeof score === 'string') return score;
+  console.warn('[Feedback] Unexpected score shape:', score);
+  return '—';
+};
+
 const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
   const [answer, setAnswer] = useState('');
   const [hintsRevealed, setHintsRevealed] = useState(0);
   const [feedback, setFeedback] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [mode, setMode] = useState('learning'); // 'learning' or 'exam'
 
   const handleRevealHint = () => {
@@ -19,6 +41,14 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
   };
 
   const handleSubmit = async () => {
+    // Defensive empty-answer guard. The submit button is also disabled
+    // when the answer is too short, but this keeps the handler safe if
+    // it's ever invoked programmatically.
+    if (!answer || answer.trim() === '') {
+      setSubmitError("Écris ta réponse avant de soumettre ✍️");
+      return;
+    }
+    setSubmitError(null);
     setIsLoading(true);
     setFeedback(null);
 
@@ -46,11 +76,11 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
 
       setFeedback({
         score: aiResult.score != null ? aiResult.score : 0,
-        encouragement: aiResult.encouragement || "L'effort est là.",
-        what_was_good: aiResult.what_was_good || "Tu as essayé de structurer ta réponse.",
-        what_to_improve: aiResult.what_to_improve || "La réponse nécessite plus de rigueur méthodologique.",
-        guiding_question: aiResult.guiding_question || "Quels mots-clés de l'énoncé as-tu oublié d'exploiter ?",
-        official_correction: aiResult.official_correction || "Le corrigé officiel souligne l'importance des mots-clés."
+        encouragement: withFallback(aiResult.encouragement, "L'effort est là."),
+        what_was_good: withFallback(aiResult.what_was_good, "Tu as essayé de structurer ta réponse."),
+        what_to_improve: withFallback(aiResult.what_to_improve, "La réponse nécessite plus de rigueur méthodologique."),
+        guiding_question: withFallback(aiResult.guiding_question, "Quels mots-clés de l'énoncé as-tu oublié d'exploiter ?"),
+        official_correction: withFallback(aiResult.official_correction, "Le corrigé officiel souligne l'importance des mots-clés.")
       });
 
     } catch (error) {
@@ -154,10 +184,16 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
             <textarea
               className="answer-textarea"
               value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
+              onChange={(e) => {
+                setAnswer(e.target.value);
+                if (submitError) setSubmitError(null);
+              }}
               placeholder="Rédige ta réponse ici. Applique la méthodologie béninoise..."
               disabled={feedback !== null || isLoading}
             />
+            {submitError && (
+              <div className="inline-error" role="alert">{submitError}</div>
+            )}
           </div>
 
           {mode === 'learning' && hintsRevealed > 0 && !feedback && hints.length > 0 && (
@@ -182,7 +218,7 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
               <div className="score-display" style={{marginBottom: '1rem', padding: '1rem', background: '#f5f5f0', borderRadius: '4px', display: 'inline-block'}}>
                 <span className="score-label" style={{fontWeight: 'bold', marginRight: '0.5rem'}}>Note Finale :</span>
                 <span className={`grade-badge ${getGradeCategory(feedback.score)}`}>
-                  {feedback.score}/{exercise.rubric_total || 20}
+                  {safeScoreDisplay(feedback.score)}/{exercise.rubric_total || 20}
                 </span>
               </div>
 
@@ -191,13 +227,13 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
           )}
 
           <div className="action-buttons">
-            {!feedback && !isLoading && (
+            {!feedback && (
               <>
                 {mode === 'learning' && hints.length > 0 && (
                   <button
                     className="btn btn-secondary"
                     onClick={handleRevealHint}
-                    disabled={hintsRevealed >= hints.length}
+                    disabled={hintsRevealed >= hints.length || isLoading}
                   >
                     {hintsRevealed >= hints.length
                       ? 'Tous les indices révélés'
@@ -207,9 +243,9 @@ const ExerciseModal = ({ exercise, onClose, onSubmit }) => {
                 <button
                   className="btn btn-primary"
                   onClick={handleSubmit}
-                  disabled={answer.trim().length < 5}
+                  disabled={isLoading || answer.trim().length < 5}
                 >
-                  Soumettre ma copie
+                  {isLoading ? '🤖 Le Mentor corrige ta copie…' : 'Soumettre ma copie'}
                 </button>
               </>
             )}

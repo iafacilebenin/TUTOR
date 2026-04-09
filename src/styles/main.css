@@ -506,6 +506,59 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
   color: #475569;
 }
+/* Safe-renderer body inside feedback cards. Matches .feedback-card p so
+   strings render with pixel parity with the pre-fix BEPC golden path,
+   while also allowing nested structured content (<div>) without
+   invalid <div>-inside-<p> HTML. */
+.feedback-card .feedback-body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+/* Structured feedback (when the AI returns an object like
+   { these, antithese, synthese } or { prix_achat, prix_vente, benefice }).
+   These rules only apply when renderFeedback() walks into an object/array. */
+.feedback-section {
+  margin-top: var(--space-sm);
+}
+.feedback-section:first-child {
+  margin-top: 0;
+}
+.feedback-section + .feedback-section {
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--color-border);
+}
+.feedback-label {
+  margin: 0 0 var(--space-xs) 0;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.feedback-value {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+.feedback-item + .feedback-item {
+  margin-top: var(--space-xs);
+}
+.correction-content .feedback-label {
+  color: #334155;
+}
+.correction-content .feedback-value {
+  color: #475569;
+}
+/* Inline error under the answer textarea (empty-answer guard). */
+.inline-error {
+  margin-top: var(--space-sm);
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
 /* ========================================
    BUTTONS
    ======================================== */
