@@ -168,12 +168,14 @@ IFU : 3202697019650 | RCCM : RB/COT/26 B 42719 | Cotonou, Bénin
 
 
 
-Section Française 🇫🇷
+
+
+## 🇫🇷 Version Française
 
 🧠 Maître Étude
 Premier Tuteur IA Public du Bénin
 "PREMIER TUTEUR IA PUBLIC DU BÉNIN"
-�
+
 
 🎯 C'est quoi Maître Étude ?
 Maître Étude est la première plateforme de tutorat adaptatif alimentée par l'IA, conçue nativement pour les élèves béninois (du CI jusqu'en Terminale). Pas un outil importé rhabillé pour l'Afrique — conçu de zéro pour l'apprenant béninois, aligné sur le curriculum national officiel.
