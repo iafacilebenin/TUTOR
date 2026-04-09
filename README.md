@@ -165,3 +165,122 @@ IFU : 3202697019650 | RCCM : RB/COT/26 B 42719 | Cotonou, Bénin
 <div align="center">
 <sub>IA FACILE BENIN SARL © 2026 — Cotonou, Bénin</sub>
 </div>
+
+
+
+Section Française 🇫🇷
+
+🧠 Maître Étude
+Premier Tuteur IA Public du Bénin
+"PREMIER TUTEUR IA PUBLIC DU BÉNIN"
+�
+
+🎯 C'est quoi Maître Étude ?
+Maître Étude est la première plateforme de tutorat adaptatif alimentée par l'IA, conçue nativement pour les élèves béninois (du CI jusqu'en Terminale). Pas un outil importé rhabillé pour l'Afrique — conçu de zéro pour l'apprenant béninois, aligné sur le curriculum national officiel.
+Chaque enfant au Bénin mérite un tuteur intelligent disponible 24h/24 — quelle que soit sa localisation, ses revenus ou la qualité de son école.
+⚡ Comment ça marche — Le Moteur d'Apprentissage Adaptatif
+L'idée centrale : le parcours d'apprentissage d'un élève n'est jamais figé. Chaque interaction alimente le système, qui ajuste en temps réel la difficulté, le rythme et le contenu.
+L'élève interagit
+       │
+       ▼
+┌─────────────────────┐
+│   Maître Étude      │
+│   (interface React) │
+└──────────┬──────────┘
+           │ requête
+           ▼
+┌─────────────────────┐      ┌─────────────────┐
+│   Claude (Anthropic)│◄────►│  Jules (Google) │
+│                     │      │                 │
+│ • Logique curriculum│      │ • Qualité code  │
+│ • Explications      │      │ • Développement │
+│ • Exercices         │      │ • Debug & tests │
+│ • Analyse progrès   │      └─────────────────┘
+└──────────┬──────────┘
+           │ réponse personnalisée
+           ▼
+   L'élève reçoit un contenu
+   adapté exactement à son niveau
+Un seul opérateur humain + deux agents IA = produit éducatif complet.
+C'est le nouveau modèle de travail. GitHub affiche "1 contributeur" — c'est intentionnel.
+👥 Adaptation par Groupe d'Âge — 8 à 18 ans
+Maître Étude adapte le contenu, le vocabulaire, les exemples et le rythme à quatre stades cognitifs :
+Groupe
+Âge
+Niveau scolaire
+Style d'apprentissage
+Focus
+🌱 Éveil
+8–10
+CP–CM2
+Jeu, visuel, tactile
+L'IA dans la vie quotidienne, reconnaissance images/sons
+🔍 Explorateur
+11–13
+6e–4e
+Découverte guidée, logique blocs
+Comment fonctionnent les algorithmes, projets créatifs
+🔨 Bâtisseur
+14–16
+3e–2nde
+Projet concret, manipulation
+Entraîner des modèles simples, construire des chatbots
+🚀 Innovateur
+17–18
+1ère–Tle
+Autonome, orienté déploiement
+Agents, NLP basique, déploiements publics
+Chaque groupe reçoit un vocabulaire différent, des exemples différents, une profondeur différente — même plateforme.
+🔄 Le Cycle d'Apprentissage Récursif
+Chaque session suit un cycle en 8 étapes qui s'auto-alimente :
+ÉTAPE 1 — ANCRAGE
+  └─ Connecter le nouveau concept à quelque chose que l'élève connaît déjà
+     (contexte béninois : marchés, zémidjans, famille, musique)
+
+ÉTAPE 2 — DÉCOUVERTE
+  └─ Démonstration guidée. L'élève observe, pose des questions, anticipe.
+
+ÉTAPE 3 — EXPLORATION
+  └─ L'élève essaie. Fait des erreurs. C'est ça, les données.
+
+ÉTAPE 4 — CONSTRUCTION
+  └─ Premier vrai projet. Contraintes données. L'élève choisit son approche.
+
+ÉTAPE 5 — RUPTURE
+  └─ Défi intentionnel : cas limites, entrées difficiles, "et si... ?"
+
+ÉTAPE 6 — RÉPARATION
+  └─ Déboguer comme pédagogie. Claude explique POURQUOI ça ne marchait pas.
+
+ÉTAPE 7 — PRÉSENTATION
+  └─ L'élève explique son projet aux autres.
+     Enseigner = la forme d'apprentissage la plus profonde.
+
+ÉTAPE 8 — INJECTION
+  └─ Données de la session analysées → difficulté du cycle suivant ajustée
+     ┌──────────────────────────────────────────┐
+     │  C'est l'étape récursive.                │
+     │  Le système apprend. L'élève apprend.    │
+     │  Les deux progressent simultanément.     │
+     └──────────────────────────────────────────┘
+Résultat : 8 étapes × N cycles = une courbe d'apprentissage exponentielle, pas linéaire. Chaque cycle commence plus intelligent que le précédent.
+🛠️ Stack Technique
+Frontend    React 18 + Vite 5
+Style       CSS (personnalisé — aucune dépendance framework)
+Déploiement Cloudflare Pages (CDN mondial, ~50ms depuis Cotonou)
+Agents IA   Claude par Anthropic  — pédagogie, contenu, analyse
+            Jules par Google      — développement, tests, build
+Curriculum  Benin_Republic_Education_Curriculum___AI_Tutor_Intelligence_Brief.html
+            (voir fichier dans ce repo — mapping complet curriculum national)
+🇧🇯 Souveraineté d'abord
+Construit sur une philosophie Posséder > Louer :
+Aucune dépendance à des APIs IA tierces payantes pour la logique centrale
+Les données des élèves béninois restent entre des mains béninoises
+Architecture déployable sur matériel local — fonctionne hors ligne
+Architecture réplicable pour toute école ou institution béninoise
+👤 Développeur
+Samuel Dieu-Donné GNIGLA
+Fondateur & Co-Gérant — IA FACILE BENIN SARL
+IFU : 3202697019650 | RCCM : RB/COT/26 B 42719 | Cotonou, Bénin
+📧 iafacilebenin@gmail.com
+"Nous ne construisons pas des outils pour l'Afrique. Nous construisons des outils africains."
