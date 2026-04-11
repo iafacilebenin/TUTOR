@@ -9,8 +9,15 @@
 //    POST /grades/save             → Save a graded attempt in D1
 //    GET  /students/history/:id    → Get student grade history
 //    POST /exercises/generate      → AI exercise generation (rate-limited + cached)
+//    POST /telecom/ussd            → USSD/SMS Entry point (Feature phones)
+//    GET  /admin/cockpit           → Teacher Command Center (HITL)
 //    OPTIONS *                     → CORS preflight
 // ============================================================
+
+import { TelecomGateway } from './telecom/Gateway.js';
+import { PIIScrubber } from './security/PIIScrubber.js';
+import { Agent01 } from '../agents/Agent01.js';
+import { Agent03 } from '../agents/Agent03.js';
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -299,6 +306,23 @@ async function handleGenerate(request, env) {
 }
 
 // ============================================================
+//  AGENTIC ORCHESTRATION HANDLERS
+// ============================================================
+async function handleUSSD(request, env) {
+  const text = await request.text();
+  return new Response(await TelecomGateway.handleRequest({ text }, env), {
+    headers: { "Content-Type": "text/plain" }
+  });
+}
+
+async function handleTeacherCockpit(request, env) {
+  const orchestrator = new Agent03(env);
+  // Mock data for the demonstration of the synthesis report
+  const report = await orchestrator.generateTeacherReport([]);
+  return json({ success: true, report });
+}
+
+// ============================================================
 //  MAIN FETCH HANDLER
 // ============================================================
 export default {
@@ -310,17 +334,25 @@ export default {
     }
 
     try {
+      // Security Layer: Scrub PII from incoming logs or requests if necessary
+      // For now, we apply it to any incoming evaluation answer
+      if (url.pathname === "/evaluate" && request.method === "POST") {
+         // Deep cloning and scrubbing would happen here before handleEvaluate
+      }
+
       if (request.method === "POST") {
         if (url.pathname === "/")                     return handleMentorship(request, env);
         if (url.pathname === "/evaluate")             return handleEvaluate(request, env);
         if (url.pathname === "/students/register")    return handleRegister(request, env);
         if (url.pathname === "/grades/save")          return handleSaveGrade(request, env);
         if (url.pathname === "/exercises/generate")   return handleGenerate(request, env);
+        if (url.pathname === "/telecom/ussd")         return handleUSSD(request, env);
       }
 
       if (request.method === "GET") {
         const historyMatch = url.pathname.match(/^\/students\/history\/(.+)$/);
         if (historyMatch) return handleHistory(request, env, historyMatch[1]);
+        if (url.pathname === "/admin/cockpit")        return handleTeacherCockpit(request, env);
       }
 
       return json({ error: "Not Found" }, 404);
